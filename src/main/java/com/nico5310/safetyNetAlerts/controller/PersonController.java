@@ -10,7 +10,11 @@ import org.springframework.web.bind.annotation.RestController;
 public class PersonController {
 
     @Autowired
-    private PersonService personsService;
+    private PersonService personService;
 
+    @GetMapping("/persons")
+    public Iterable<Person> getPersons() {
+        return personService.getPersons();
+    }
 
 }

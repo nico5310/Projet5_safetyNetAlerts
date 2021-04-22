@@ -15,5 +15,7 @@ public class MedicalrecordService {
     @Autowired
     private final MedicalrecordRepository medicalrecordRepository;
 
-
+    public Iterable<Medicalrecord> getMedicalrecords() {
+        return medicalrecordRepository.findAll();
+    }
 }

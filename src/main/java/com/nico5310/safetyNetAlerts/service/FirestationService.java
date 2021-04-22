@@ -16,5 +16,9 @@ public class FirestationService {
     @Autowired
     private final FirestationRepository firestationRepository;
 
+    public Iterable<Firestation> getFirestations(){
+        return firestationRepository.findAll();
+    }
+
 
 }

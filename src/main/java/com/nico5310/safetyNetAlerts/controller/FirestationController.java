@@ -13,5 +13,10 @@ public class FirestationController {
     @Autowired
     private FirestationService firestationService;
 
+    @GetMapping("/firestations")
+    public Iterable<Firestation> getFirestations(){
+        return firestationService.getFirestations();
+    }
+
 
 }
