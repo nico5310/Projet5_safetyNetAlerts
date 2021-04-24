@@ -6,16 +6,18 @@ import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
-@Service // Bean class for Spring - Communicate with MedicalrecordsRepository interface
-@Data // Lombok annotation Getters and Setters.
-public class MedicalrecordService {
+@Service
+@Data
+public class MedicalrecordService implements MedicalrecordServiceInterface {
 
     @Autowired
     private final MedicalrecordRepository medicalrecordRepository;
 
-    public Iterable<Medicalrecord> getMedicalrecords() {
-        return medicalrecordRepository.findAll();
+    @Override
+    public List<Medicalrecord> findMedicalrecordList() {
+        return  medicalrecordRepository.getMedicalrecordList();
     }
 }

@@ -7,18 +7,24 @@ import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service // Bean class for Spring - Communicate with FirestationsRepository interface
 @Data // Lombok annotation Getters and Setters.
-public class FirestationService {
+public class FirestationService implements FirestationServiceInterface{
 
     @Autowired
     private final FirestationRepository firestationRepository;
 
-    public Iterable<Firestation> getFirestations(){
-        return firestationRepository.findAll();
+    /**
+     * Return firestation list
+     * @return firestation list
+     */
+    public List<Firestation> findFirestationList() {
+        return firestationRepository.getFirestationList();
     }
+
 
 
 }

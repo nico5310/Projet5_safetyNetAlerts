@@ -6,18 +6,40 @@ import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 
-@Data // Lombok annotation Getters and Setters.
-@Service // Bean class for Spring - Communicate with PersonsRepository interface
-public class PersonService {
+@Service
+@Data
+public class PersonService implements PersonServiceInterface{
 
     @Autowired
     private final PersonRepository personRepository;
 
-    public Iterable<Person> getPersons() {
-        return personRepository.findAll();
+    @Override
+    public List<Person> findPersonList(){
+        return  personRepository.getPersonList();
     }
+
+//    public Person addPersonList(Person person) {
+//        Person addPerson = personRepository.getPersonList();
+//        return addPerson;
+//    }
+//
+//    public List<Person> savePersonList(Person person) {
+//        List<Person> savePerson = personRepository.getPersonList();
+//        return savePerson;
+//    }
+
+//    public Person updatePersonList(Person person) {
+//        List<Person> updatePerson = personRepository.getPersonList();
+//        return updatePerson;
+//    }
+
+//    public Person deletePersonList(Person person) {
+//        List<Person> deletePerson = personRepository.getPersonList();
+//        return deletePerson;
+//    }
 
 }

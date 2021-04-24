@@ -6,15 +6,20 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController // Bean class for Spring - Communicate with Medicalrecords Class
 public class MedicalrecordController {
 
     @Autowired
     private MedicalrecordService medicalrecordService;
 
-    @GetMapping("/medicalrecords")
-    public Iterable<Medicalrecord> getMedicalrecords() {
-        return medicalrecordService.getMedicalrecords();
+    @GetMapping("/medicalRecords")
+    public List<Medicalrecord> findMedicalrecordList(){
+        List<Medicalrecord> findMedicalrecord = medicalrecordService.findMedicalrecordList();
+        return findMedicalrecord;
     }
+
+
 
 }

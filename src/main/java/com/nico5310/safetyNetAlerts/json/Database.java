@@ -23,20 +23,23 @@ public class Database {
 
     @PostConstruct
     public void initDatabase() throws IOException {
+
+        Database database = new Database();
         byte[] jsonData = Files.readAllBytes(Paths.get("src/main/resources/data.json"));
 
-        // create ObjectMapper instance
         ObjectMapper objectMapper = new ObjectMapper();
+        try {
+            database = objectMapper.readValue(jsonData, Database.class);
+        }catch (IOException e) {
+            e.printStackTrace();
+        }
 
-        // convert json string to object
-        Database database = objectMapper.readValue(jsonData, Database.class);
         this.persons = database.getPersons();
         this.medicalrecords = database.getMedicalrecords();
         this.firestations = database.getFirestations();
+
         System.out.println("Database Object\n" + database);
-
     }
-
 
     @Override
     public String toString(){
