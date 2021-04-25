@@ -6,5 +6,5 @@ import java.util.List;
 
 public interface MedicalrecordServiceInterface {
 
-    List<Medicalrecord> findMedicalrecordList();
+    List<Medicalrecord> findMedicalrecordAll();
 }

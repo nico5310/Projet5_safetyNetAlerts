@@ -16,9 +16,9 @@ public class FirestationController {
     private FirestationService firestationService;
 
     @GetMapping ("/firestations")
-    public List<Firestation> findFirestationList(){
-        List<Firestation> findFirestation = firestationService.findFirestationList();
-        return findFirestation;
+    public List<Firestation> findFirestationAll(){
+        List<Firestation> findFirestationAll = firestationService.findFirestationAll();
+        return findFirestationAll;
     }
 
 }

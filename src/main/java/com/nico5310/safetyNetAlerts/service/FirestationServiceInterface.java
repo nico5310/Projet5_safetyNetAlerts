@@ -6,5 +6,5 @@ import java.util.List;
 
 public interface FirestationServiceInterface {
 
-    List<Firestation> findFirestationList();
+    List<Firestation> findFirestationAll();
 }

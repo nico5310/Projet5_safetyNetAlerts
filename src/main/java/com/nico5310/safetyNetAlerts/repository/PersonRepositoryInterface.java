@@ -6,5 +6,5 @@ import java.util.List;
 
 public interface PersonRepositoryInterface {
 
-    List<Person> getPersonList();
+    List<Person> getPersonAll();
 }

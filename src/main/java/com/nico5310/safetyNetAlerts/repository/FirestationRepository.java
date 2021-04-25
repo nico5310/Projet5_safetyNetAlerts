@@ -16,7 +16,7 @@ public class FirestationRepository implements FirestationRepositoryInterface{
     Database database;
 
     @Override
-    public List<Firestation> getFirestationList() {
+    public List<Firestation> getFirestationAll() {
         return database.getFirestations();
     }
 

@@ -7,8 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
-
 
 @Service
 @Data
@@ -18,19 +16,25 @@ public class PersonService implements PersonServiceInterface{
     private final PersonRepository personRepository;
 
     @Override
-    public List<Person> findPersonList(){
-        return  personRepository.getPersonList();
+    public List<Person> findPersonAll(){
+        return  personRepository.getPersonAll();
     }
 
-//    public Person addPersonList(Person person) {
+    @Override
+    public List<Person> savePersonList(Person person) {
+            List<Person> savePerson = personRepository.getPersonAll();
+            savePerson.add(person);
+            return savePerson;
+        }
+
+//    @Override
+//    public Person addPersonList(String firstName, String lastName, String address, String city, String zip, String phone, String email) {
 //        Person addPerson = personRepository.getPersonList();
+//        addPerson.add(persons)
 //        return addPerson;
 //    }
-//
-//    public List<Person> savePersonList(Person person) {
-//        List<Person> savePerson = personRepository.getPersonList();
-//        return savePerson;
-//    }
+
+
 
 //    public Person updatePersonList(Person person) {
 //        List<Person> updatePerson = personRepository.getPersonList();

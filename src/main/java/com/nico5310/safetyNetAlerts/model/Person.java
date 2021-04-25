@@ -1,5 +1,6 @@
 package com.nico5310.safetyNetAlerts.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 @Data
@@ -12,6 +13,12 @@ public class Person {
     private String zip;
     private String phone;
     private String email;
+    @JsonIgnore
+    private String firstNameAndLastName;
+
+    public String getFirstNameAndLastName() {
+        return firstName + lastName;
+    }
 
     @Override
     public String toString(){

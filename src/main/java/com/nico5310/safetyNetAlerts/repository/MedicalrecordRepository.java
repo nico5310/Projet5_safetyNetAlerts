@@ -16,7 +16,7 @@ public class MedicalrecordRepository implements MedicalrecordRepositoryInterface
     Database database;
 
     @Override
-    public  List<Medicalrecord> getMedicalrecordList () {
+    public  List<Medicalrecord> getMedicalrecordAll () {
         return database.getMedicalrecords();
     }
 

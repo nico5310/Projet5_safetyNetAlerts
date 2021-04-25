@@ -6,6 +6,6 @@ import java.util.List;
 
 public interface PersonServiceInterface {
 
-    List<Person> findPersonList();
-
+    List<Person> findPersonAll();
+    List<Person> savePersonList(Person person);
 }

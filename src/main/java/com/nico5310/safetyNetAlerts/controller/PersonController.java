@@ -14,8 +14,8 @@ public class PersonController {
     private PersonService personService;
 
     @GetMapping("/persons")
-    public List<Person> findPersonList(){
-        return personService.findPersonList();
+    public List<Person> findPersonAll(){
+                return  personService.findPersonAll();
         }
 
 }

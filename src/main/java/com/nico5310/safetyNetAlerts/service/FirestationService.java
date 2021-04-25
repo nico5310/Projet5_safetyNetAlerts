@@ -21,8 +21,8 @@ public class FirestationService implements FirestationServiceInterface{
      * Return firestation list
      * @return firestation list
      */
-    public List<Firestation> findFirestationList() {
-        return firestationRepository.getFirestationList();
+    public List<Firestation> findFirestationAll() {
+        return firestationRepository.getFirestationAll();
     }
 
 
