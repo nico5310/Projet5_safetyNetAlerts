@@ -6,6 +6,9 @@ import java.util.List;
 
 public interface PersonServiceInterface {
 
-    List<Person> findPersonList();
+    List<Person> findPersonAll();
+    List<Person> savePersonList(Person person);
+    Person updatePersonList(Person person);
+    boolean deletePersonList(String firstName, String lastName);
 
 }
