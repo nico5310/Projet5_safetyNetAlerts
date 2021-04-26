@@ -20,20 +20,20 @@ public class PersonController {
 
     @PostMapping("/person")
     public List<Person> addPerson(Person person) {
-        List<Person> newPerson = personServiceInterface.savePersonList(person);
-        return  newPerson;
+        List<Person> newPers = personServiceInterface.savePersonList(person);
+        return  newPers;
     }
 
     @PutMapping("/person")
     public Person updatePerson(Person person) {
-        Person updatePerson = personServiceInterface.updatePersonList(person);
-        return updatePerson;
+        Person updatePers = personServiceInterface.updatePersonList(person);
+        return updatePers;
     }
 
     @DeleteMapping("/person")
     public boolean deletePerson(String firstName, String lastName) {
-        boolean deletePerson = personServiceInterface.deletePersonList(firstName, lastName);
-        return deletePerson;
+        boolean deletePers = personServiceInterface.deletePersonList(firstName, lastName);
+        return deletePers;
     }
 
 }
