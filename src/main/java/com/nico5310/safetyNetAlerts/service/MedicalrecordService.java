@@ -14,20 +14,20 @@ public class MedicalrecordService implements MedicalrecordServiceInterface {
     MedicalrecordRepositoryInterface medicalrecordRepositoryInterface;
 
     @Override
-    public List<Medicalrecord> findMedicalrecordList() {
-        return  medicalrecordRepositoryInterface.getMedicalrecordList();
+    public List<Medicalrecord> findMedicalrecordAll() {
+        return  medicalrecordRepositoryInterface.getMedicalrecordAll();
     }
 
     @Override
     public List<Medicalrecord> saveMedicalrecordList(Medicalrecord medicalrecord) {
-        List<Medicalrecord> saveMedical = medicalrecordRepositoryInterface.getMedicalrecordList();
+        List<Medicalrecord> saveMedical = medicalrecordRepositoryInterface.getMedicalrecordAll();
         saveMedical.add(medicalrecord);
         return saveMedical;
     }
 
     @Override
     public Medicalrecord updateMedicalrecordList(Medicalrecord medicalrecord) {
-        List<Medicalrecord> updateMedical = medicalrecordRepositoryInterface.getMedicalrecordList();
+        List<Medicalrecord> updateMedical = medicalrecordRepositoryInterface.getMedicalrecordAll();
         for (Medicalrecord update : updateMedical) {
             if (update.getFirstNameAndLastName().equals(medicalrecord.getFirstNameAndLastName())) {
                 update.setBirthdate(medicalrecord.getBirthdate());
@@ -39,9 +39,10 @@ public class MedicalrecordService implements MedicalrecordServiceInterface {
     }
 
     @Override
-    public boolean deleteMedicalrecordList(String firstName, String lastName) {
-        List<Medicalrecord> deleteMedical = medicalrecordRepositoryInterface.getMedicalrecordList();
-        return deleteMedical.removeIf(medicalrecord -> medicalrecord.getFirstNameAndLastName().equals(medicalrecord.getFirstName()+medicalrecord.getLastName()));
+    public List<Medicalrecord> deleteMedicalrecordList(String firstNameAndLastName) {
+        List<Medicalrecord> deleteMedical = medicalrecordRepositoryInterface.getMedicalrecordAll();
+        deleteMedical.removeIf(medicalrecord -> medicalrecord.getFirstNameAndLastName().equals(firstNameAndLastName));
+        return  deleteMedical;
     }
 
 }

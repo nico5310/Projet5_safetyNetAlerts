@@ -9,6 +9,5 @@ public interface PersonServiceInterface {
     List<Person> findPersonAll();
     List<Person> savePersonList(Person person);
     Person updatePersonList(Person person);
-    boolean deletePersonList(String firstName, String lastName);
-
+    List<Person> deletePersonList(String firstNameAndLastName);
 }

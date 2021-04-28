@@ -14,27 +14,26 @@ public class FirestationController {
     private FirestationServiceInterface firestationServiceInterface;
 
     @GetMapping ("/firestation")
-    public List<Firestation> findFirestationList(){
-        List<Firestation> findFirestation = firestationServiceInterface.findFirestationList();
+    public List<Firestation> findFirestationAll(){
+        List<Firestation> findFirestation = firestationServiceInterface.findFirestationAll();
         return findFirestation;
     }
 
     @PostMapping("firestation")
-    public List<Firestation> addFirestation(Firestation firestation) {
-        List<Firestation> newFire = firestationServiceInterface.findFirestationList();
+    public List<Firestation> addFirestation(@RequestBody Firestation firestation) {
+        List<Firestation> newFire = firestationServiceInterface.saveFirestationList(firestation);
         return  newFire;
     }
 
     @PutMapping("/firestation")
-    public Firestation updateFirestation(Firestation firestation) {
+    public Firestation updateFirestation(@RequestBody Firestation firestation) {
         Firestation updateFire = firestationServiceInterface.updateFirestationList(firestation);
         return updateFire;
     }
 
-    @DeleteMapping("/firestation")
-    public boolean deleteFirestation(String address) {
-        boolean deleteFire = firestationServiceInterface.deleteFirestationList(address);
-        return deleteFire;
+    @DeleteMapping("/firestation/{address}")
+    public List<Firestation> deleteFirestation(@PathVariable String address) {
+        return firestationServiceInterface.deleteFirestationList(address);
     }
 
 

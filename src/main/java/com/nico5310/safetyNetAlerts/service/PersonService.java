@@ -8,25 +8,28 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class PersonService implements PersonServiceInterface{
+public class PersonService implements PersonServiceInterface {
 
     @Autowired
     PersonRepositoryInterface personRepositoryInterface;
 
     @Override
-    public List<Person> findPersonAll(){
-           return  personRepositoryInterface.getPersonAll();
-        }
+    public List<Person> findPersonAll() {
+
+        return personRepositoryInterface.getPersonAll();
+    }
 
     @Override
     public List<Person> savePersonList(Person person) {
+
         List<Person> savePerson = personRepositoryInterface.getPersonAll();
-            savePerson.add(person);
-            return savePerson;
-        }
+        savePerson.add(person);
+        return savePerson;
+    }
 
     @Override
     public Person updatePersonList(Person person) {
+
         List<Person> updatePerson = personRepositoryInterface.getPersonAll();
         for (Person update : updatePerson) {
             if (update.getFirstNameAndLastName().equals(person.getFirstNameAndLastName())) {
@@ -37,13 +40,18 @@ public class PersonService implements PersonServiceInterface{
                 update.setEmail(person.getEmail());
                 return update;
             }
-        } return null;
+        }
+        return null;
     }
 
     @Override
-    public boolean deletePersonList(String firstName, String lastName) {
+    public List<Person> deletePersonList(String firstNameAndLastName) {
         List<Person> deletePerson = personRepositoryInterface.getPersonAll();
-        return deletePerson.removeIf(person -> person.getFirstNameAndLastName().equals(person.getFirstName() + person.getLastName()));
+        deletePerson.removeIf(person -> person.getFirstNameAndLastName().equals(firstNameAndLastName));
+        return deletePerson;
     }
 
 }
+
+
+

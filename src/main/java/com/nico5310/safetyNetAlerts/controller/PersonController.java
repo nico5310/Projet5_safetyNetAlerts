@@ -19,21 +19,20 @@ public class PersonController {
     }
 
     @PostMapping("/person")
-    public List<Person> addPerson(Person person) {
+    public List<Person> addPerson( @RequestBody Person person) {
         List<Person> newPers = personServiceInterface.savePersonList(person);
         return  newPers;
     }
 
     @PutMapping("/person")
-    public Person updatePerson(Person person) {
+    public Person updatePerson(@RequestBody Person person) {
         Person updatePers = personServiceInterface.updatePersonList(person);
         return updatePers;
     }
 
-    @DeleteMapping("/person")
-    public boolean deletePerson(String firstName, String lastName) {
-        boolean deletePers = personServiceInterface.deletePersonList(firstName, lastName);
-        return deletePers;
+    @DeleteMapping("/person/{firstNameAndLastName}")
+    public List<Person> deletePerson(@PathVariable String firstNameAndLastName) {
+        return personServiceInterface.deletePersonList(firstNameAndLastName);
     }
 
-}
+ }
