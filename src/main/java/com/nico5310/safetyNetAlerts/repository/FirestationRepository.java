@@ -13,7 +13,7 @@ import java.util.List;
 public class FirestationRepository implements FirestationRepositoryInterface{
 
     @Autowired
-    Database database;
+    private Database database;
 
     @Override
     public List<Firestation> getFirestationAll() {

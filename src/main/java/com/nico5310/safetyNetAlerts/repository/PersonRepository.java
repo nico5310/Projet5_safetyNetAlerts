@@ -13,7 +13,7 @@ import java.util.List;
 public class PersonRepository implements PersonRepositoryInterface {
 
     @Autowired
-    Database database;
+    private Database database;
 
     @Override
     public List<Person> getPersonAll() {

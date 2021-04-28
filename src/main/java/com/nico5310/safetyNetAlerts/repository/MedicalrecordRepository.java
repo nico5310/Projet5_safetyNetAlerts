@@ -13,7 +13,7 @@ import java.util.List;
 public class MedicalrecordRepository implements MedicalrecordRepositoryInterface{
 
     @Autowired
-    Database database;
+    private Database database;
 
     @Override
     public  List<Medicalrecord> getMedicalrecordAll () {
