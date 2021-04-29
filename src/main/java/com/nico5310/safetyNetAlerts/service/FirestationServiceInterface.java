@@ -7,4 +7,7 @@ import java.util.List;
 public interface FirestationServiceInterface {
 
     List<Firestation> findFirestationAll();
+    List<Firestation> saveFirestationList(Firestation firestation);
+    Firestation updateFirestationList(Firestation firestation);
+    List<Firestation> deleteFirestationList(String address);
 }

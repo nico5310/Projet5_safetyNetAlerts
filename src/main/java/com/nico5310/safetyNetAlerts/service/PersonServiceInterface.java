@@ -8,4 +8,6 @@ public interface PersonServiceInterface {
 
     List<Person> findPersonAll();
     List<Person> savePersonList(Person person);
+    Person updatePersonList(Person person);
+    List<Person> deletePersonList(String firstNameAndLastName);
 }
