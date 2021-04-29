@@ -2,12 +2,14 @@ package com.nico5310.safetyNetAlerts.controller;
 
 import com.nico5310.safetyNetAlerts.model.Firestation;
 import com.nico5310.safetyNetAlerts.service.FirestationServiceInterface;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController // Bean class for Spring - Communicate with Firestations Class
+@RestController
+@Slf4j
 public class FirestationController {
 
     @Autowired
@@ -15,24 +17,49 @@ public class FirestationController {
 
     @GetMapping ("/firestation")
     public List<Firestation> findFirestationAll(){
+
         List<Firestation> findFirestation = firestationServiceInterface.findFirestationAll();
+        if (findFirestation != null) {
+            log.info("findFirestation GET request SUCCESS");
+        }else {
+            log.error("findFirestation GET request FAILED");
+        }
         return findFirestation;
     }
 
     @PostMapping("firestation")
     public List<Firestation> addFirestation(@RequestBody Firestation firestation) {
+
         List<Firestation> newFire = firestationServiceInterface.saveFirestationList(firestation);
+        if (newFire != null) {
+            log.info("addFirestation POST request SUCCESS");
+        }else {
+            log.error("addFirestation POST request FAILED");
+        }
         return  newFire;
     }
 
     @PutMapping("/firestation")
     public Firestation updateFirestation(@RequestBody Firestation firestation) {
+
         Firestation updateFire = firestationServiceInterface.updateFirestationList(firestation);
+        if (updateFire != null) {
+            log.info("updateFirestation PUT request SUCCESS");
+        }else {
+            log.error("updateFirestation PUT request FAILED");
+        }
         return updateFire;
     }
 
     @DeleteMapping("/firestation/{address}")
     public List<Firestation> deleteFirestation(@PathVariable String address) {
+
+        List<Firestation> deleteFire = firestationServiceInterface.findFirestationAll();
+        if (deleteFire != null) {
+            log.info("deleteFirestation DELETE request SUCCESS");
+        }else {
+            log.error("deleteFirestation DELETE request FAILED");
+        }
         return firestationServiceInterface.deleteFirestationList(address);
     }
 
