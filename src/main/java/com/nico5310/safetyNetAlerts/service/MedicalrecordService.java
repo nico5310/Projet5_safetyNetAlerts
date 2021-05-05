@@ -6,6 +6,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -67,16 +68,52 @@ public class MedicalrecordService implements MedicalrecordServiceInterface {
     }
 
     @Override
-    public List<Medicalrecord> deleteMedicalrecordList(String firstNameAndLastName) {
+    public boolean deleteMedicalrecordList(String firstNameAndLastName) {
 
         try {
             List<Medicalrecord> deleteMedical = medicalrecordRepositoryInterface.getMedicalrecordAll();
-            deleteMedical.removeIf(medicalrecord -> medicalrecord.getFirstNameAndLastName().equals(firstNameAndLastName));
-            return deleteMedical;
-        }catch (Exception exception) {
+            return deleteMedical.removeIf(medicalrecord -> medicalrecord.getFirstNameAndLastName().equals(firstNameAndLastName));
+
+        } catch (Exception exception) {
             log.error("Error for deleting the Medicalrecord");
         }
-        return null; //TODO: modify return
+        return false;
     }
+
+    //Endpoints
+    @Override
+    public  Medicalrecord findById(String firstNameAndLastName) {
+
+        for (Medicalrecord medicalrecord : medicalrecordRepositoryInterface.getMedicalrecordAll()) {
+            if (medicalrecord.getFirstNameAndLastName().equals(firstNameAndLastName)) {
+                return medicalrecord;
+            }
+        }
+        return  null;
+    }
+
+    @Override
+    public Medicalrecord findByFirstName(String firstName) {
+
+            for (Medicalrecord medicalRecord : medicalrecordRepositoryInterface.getMedicalrecordAll()) {
+            if (medicalRecord.getFirstName().equals(firstName)) {
+                return medicalRecord;
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public List<Medicalrecord> findByLastName(String lastName) {
+
+        List<Medicalrecord> listMedicalRecords = new ArrayList<>();
+        for (Medicalrecord medicalRecord : medicalrecordRepositoryInterface.getMedicalrecordAll()) {
+            if (medicalRecord.getLastName().equals(lastName)) {
+                listMedicalRecords.add(medicalRecord);
+            }
+        }
+        return listMedicalRecords;
+    }
+
 
 }

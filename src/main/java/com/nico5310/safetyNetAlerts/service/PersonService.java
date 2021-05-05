@@ -6,6 +6,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -69,19 +70,57 @@ public class PersonService implements PersonServiceInterface {
         return null; // TODO: modify return
     }
 
-
     @Override
-    public List<Person> deletePersonList(String firstNameAndLastName) {
+    public boolean deletePersonList(String firstNameAndLastName) {
 
         try {
             List<Person> deletePerson = personRepositoryInterface.getPersonAll();
-            deletePerson.removeIf(person -> person.getFirstNameAndLastName().equals(firstNameAndLastName));
-            return deletePerson;
+            return deletePerson.removeIf(person -> person.getFirstNameAndLastName().equals(firstNameAndLastName));
+
         } catch (Exception exception) {
             log.error("Error for deleting the Person" + exception.getMessage());
         }
-        return null; // TODO: modify return
+        return false;
     }
+
+    // Endpoints
+    @Override
+    public Person findById(String firstNameAndLastName) {
+
+        for (Person person : personRepositoryInterface.getPersonAll()) {
+            if (person.getFirstNameAndLastName().equals(firstNameAndLastName)) {
+                return person;
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public List<Person> findByAddress(String address) {
+
+        List<Person> listPerson = new ArrayList<>();
+        for (Person person : personRepositoryInterface.getPersonAll()) {
+            if (person.getAddress().equals(address)) {
+                listPerson.add(person);
+            }
+        }
+        return listPerson;
+    }
+
+    @Override
+    public List<Person> findEmailByCity(String city) {
+
+        List<Person> listPerson = new ArrayList<>();
+        List<String> mail = new ArrayList<>();
+        for (Person person : personRepositoryInterface.getPersonAll()) {
+            if (person.getCity().equals(city)) {
+                listPerson.add(person);
+            }
+        }
+        return  listPerson;
+    }
+
+
 
 }
 

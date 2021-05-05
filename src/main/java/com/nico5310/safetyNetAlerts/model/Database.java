@@ -1,9 +1,6 @@
-package com.nico5310.safetyNetAlerts.json;
+package com.nico5310.safetyNetAlerts.model;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.nico5310.safetyNetAlerts.model.Firestation;
-import com.nico5310.safetyNetAlerts.model.Medicalrecord;
-import com.nico5310.safetyNetAlerts.model.Person;
 import lombok.Data;
 import org.springframework.stereotype.Component;
 
@@ -38,7 +35,7 @@ public class Database {
         this.medicalrecords = database.getMedicalrecords();
         this.firestations = database.getFirestations();
 
-        System.out.println("Database Object\n" + database);
+//        System.out.println("Database Object\n" + database);
     }
 
     @Override

@@ -13,12 +13,21 @@ public class Person {
     private String zip;
     private String phone;
     private String email;
+
     @JsonIgnore
     private String firstNameAndLastName;
-
     public String getFirstNameAndLastName() {
         return firstName + lastName;
     }
+
+    @JsonIgnore
+    private int age;
+
+    @JsonIgnore
+    private Medicalrecord medicalrecord;
+
+    @JsonIgnore
+    private Firestation firestation;
 
     @Override
     public String toString(){

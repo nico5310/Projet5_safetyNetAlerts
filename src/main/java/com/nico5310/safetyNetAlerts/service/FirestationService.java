@@ -6,6 +6,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -67,17 +68,42 @@ public class FirestationService implements FirestationServiceInterface{
     }
 
     @Override
-    public List<Firestation> deleteFirestationList(String address) {
+    public boolean deleteFirestationList(String address) {
 
         try {
             List<Firestation> deleteFirestation = firestationRepositoryInterface.getFirestationAll();
-            deleteFirestation.removeIf(firestation -> firestation.getAddress().equals(address));
-            return  deleteFirestation;
+            return deleteFirestation.removeIf(firestation -> firestation.getAddress().equals(address));
+
         }catch (Exception exception) {
             log.error("Error for deleting the Firestation");
         }
-        return  null; // TODO: modify return
+        return  false;
     }
+
+    //Endpoints
+    @Override
+    public Firestation findById(String firestationAddress) {
+
+        for (Firestation address : firestationRepositoryInterface.getFirestationAll()) {
+            if (address.getAddress().equals(firestationAddress)) {
+                return address;
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public  List<Firestation> findAddressByStation(String station) {
+
+        List<Firestation> listFirestation = new ArrayList<>();
+        for (Firestation firestation : firestationRepositoryInterface.getFirestationAll()) {
+            if (firestation.getStation().equals(station)) {
+                listFirestation.add(firestation);
+            }
+        }
+        return listFirestation;
+    }
+
 
 
 }

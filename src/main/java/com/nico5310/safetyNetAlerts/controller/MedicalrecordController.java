@@ -51,16 +51,14 @@ public class MedicalrecordController {
         return updateMedical;
     }
 
-    @DeleteMapping("medicalRecord/{firstNameAndLastName}")
-    public List<Medicalrecord> deleteMedicalrecord(@PathVariable String firstNameAndLastName ) {
+    @DeleteMapping("/medicalRecord")
+    public void deleteMedicalrecord(@RequestParam String firstNameAndLastName ) {
 
-        List<Medicalrecord> deleteMedical = medicalrecordServiceInterface.findMedicalrecordAll();
-        if (deleteMedical != null) {
+        if (medicalrecordServiceInterface.deleteMedicalrecordList(firstNameAndLastName)) {
             log.info("deleteMedicalrecord DELETE request SUCCESS");
         }else {
             log.error("deleteMedicalrecord DELETE request FAILED");
         }
-        return medicalrecordServiceInterface.deleteMedicalrecordList(firstNameAndLastName);
     }
 
 }

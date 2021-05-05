@@ -7,7 +7,12 @@ import java.util.List;
 public interface PersonServiceInterface {
 
     List<Person> findPersonAll();
+
     List<Person> savePersonList(Person person);
     Person updatePersonList(Person person);
-    List<Person> deletePersonList(String firstNameAndLastName);
+    boolean deletePersonList(String firstNameAndLastName);
+
+    Person findById(String firstNameAndLastName) throws Exception;
+    List<Person> findByAddress(String address);
+    List<Person> findEmailByCity(String city);
 }

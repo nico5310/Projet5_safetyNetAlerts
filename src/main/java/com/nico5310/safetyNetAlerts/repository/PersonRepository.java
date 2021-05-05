@@ -1,6 +1,6 @@
 package com.nico5310.safetyNetAlerts.repository;
 
-import com.nico5310.safetyNetAlerts.json.Database;
+import com.nico5310.safetyNetAlerts.model.Database;
 import com.nico5310.safetyNetAlerts.model.Person;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;

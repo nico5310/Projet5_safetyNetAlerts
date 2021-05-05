@@ -9,5 +9,9 @@ public interface MedicalrecordServiceInterface {
     List<Medicalrecord> findMedicalrecordAll();
     List<Medicalrecord> saveMedicalrecordList(Medicalrecord medicalrecord);
     Medicalrecord updateMedicalrecordList(Medicalrecord medicalrecord);
-    List<Medicalrecord> deleteMedicalrecordList(String firstNameAndLastName);
+    boolean deleteMedicalrecordList(String firstNameAndLastName);
+
+    Medicalrecord findById(String firstNameAndLastName);
+    Medicalrecord findByFirstName(String firstName);
+    List<Medicalrecord> findByLastName(String lastName);
 }

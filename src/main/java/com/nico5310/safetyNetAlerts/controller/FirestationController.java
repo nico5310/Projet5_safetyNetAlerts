@@ -15,13 +15,13 @@ public class FirestationController {
     @Autowired
     private FirestationServiceInterface firestationServiceInterface;
 
-    @GetMapping ("/firestation")
-    public List<Firestation> findFirestationAll(){
+    @GetMapping("/firestation")
+    public List<Firestation> findFirestationAll() {
 
         List<Firestation> findFirestation = firestationServiceInterface.findFirestationAll();
         if (findFirestation != null) {
             log.info("findFirestation GET request SUCCESS");
-        }else {
+        } else {
             log.error("findFirestation GET request FAILED");
         }
         return findFirestation;
@@ -33,10 +33,10 @@ public class FirestationController {
         List<Firestation> newFire = firestationServiceInterface.saveFirestationList(firestation);
         if (newFire != null) {
             log.info("addFirestation POST request SUCCESS");
-        }else {
+        } else {
             log.error("addFirestation POST request FAILED");
         }
-        return  newFire;
+        return newFire;
     }
 
     @PutMapping("/firestation")
@@ -45,23 +45,22 @@ public class FirestationController {
         Firestation updateFire = firestationServiceInterface.updateFirestationList(firestation);
         if (updateFire != null) {
             log.info("updateFirestation PUT request SUCCESS");
-        }else {
+        } else {
             log.error("updateFirestation PUT request FAILED");
         }
         return updateFire;
     }
 
-    @DeleteMapping("/firestation/{address}")
-    public List<Firestation> deleteFirestation(@PathVariable String address) {
+    @DeleteMapping("/firestation")
+    public void deleteFirestation(@RequestParam String address) {
 
-        List<Firestation> deleteFire = firestationServiceInterface.findFirestationAll();
-        if (deleteFire != null) {
+        if (firestationServiceInterface.deleteFirestationList(address)) {
             log.info("deleteFirestation DELETE request SUCCESS");
-        }else {
+        } else {
             log.error("deleteFirestation DELETE request FAILED");
         }
-        return firestationServiceInterface.deleteFirestationList(address);
     }
+
 
 
 }

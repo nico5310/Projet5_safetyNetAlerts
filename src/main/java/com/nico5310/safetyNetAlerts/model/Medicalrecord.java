@@ -11,14 +11,16 @@ public class Medicalrecord {
 
     private String       firstName;
     private String       lastName;
-
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
     private String       birthdate;
     private List<String> medications;
     private List<String> allergies;
+
+    @JsonIgnore
+    private int age;
+
     @JsonIgnore
     private String firstNameAndLastName;
-
     public String getFirstNameAndLastName() {
         return firstName + lastName;
     }
