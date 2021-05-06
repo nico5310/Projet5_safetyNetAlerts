@@ -1,5 +1,6 @@
 package com.nico5310.safetyNetAlerts.service;
 
+import com.nico5310.safetyNetAlerts.dto.MedicalRecordDto;
 import com.nico5310.safetyNetAlerts.model.Medicalrecord;
 import com.nico5310.safetyNetAlerts.repository.MedicalrecordRepositoryInterface;
 import lombok.extern.slf4j.Slf4j;
@@ -115,5 +116,17 @@ public class MedicalrecordService implements MedicalrecordServiceInterface {
         return listMedicalRecords;
     }
 
+
+    // Dto conversion
+
+    private Medicalrecord fromDtoToEntity(MedicalRecordDto medicalRecordDto) {
+        Medicalrecord medicalrecord = new Medicalrecord();
+        return medicalrecord;
+    }
+
+    private MedicalRecordDto fromEntityToDto(Medicalrecord medicalrecord) {
+        MedicalRecordDto medicalrecordDto = new MedicalRecordDto();
+        return medicalrecordDto;
+    }
 
 }

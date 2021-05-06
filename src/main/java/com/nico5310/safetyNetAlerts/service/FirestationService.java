@@ -1,11 +1,13 @@
 package com.nico5310.safetyNetAlerts.service;
 
+import com.nico5310.safetyNetAlerts.dto.FirestationDto;
 import com.nico5310.safetyNetAlerts.model.Firestation;
 import com.nico5310.safetyNetAlerts.repository.FirestationRepositoryInterface;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -104,6 +106,15 @@ public class FirestationService implements FirestationServiceInterface{
         return listFirestation;
     }
 
+    //Dto conversion
+    private Firestation fromDtoToEntity(FirestationDto firestationDto) {
+        Firestation firestation = new Firestation();
+        return firestation;
+    }
 
+    private FirestationDto fromEntityToDto(Firestation firestation) {
+        FirestationDto firestationDto = new FirestationDto();
+        return  firestationDto;
+    }
 
 }

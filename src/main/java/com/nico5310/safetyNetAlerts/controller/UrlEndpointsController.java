@@ -1,5 +1,8 @@
 package com.nico5310.safetyNetAlerts.controller;
 
+import com.nico5310.safetyNetAlerts.dto.PersonDto;
+import com.nico5310.safetyNetAlerts.dto.url1firestation.PersonStation;
+import com.nico5310.safetyNetAlerts.dto.url1firestation.PersonsByStation;
 import com.nico5310.safetyNetAlerts.dto.url7communityEmail.EmailList;
 import com.nico5310.safetyNetAlerts.model.Person;
 import com.nico5310.safetyNetAlerts.service.UrlEndpointService;
@@ -17,6 +20,7 @@ public class UrlEndpointsController {
     @Autowired
     UrlEndpointService urlEndpointService;
 
+    //URL 7 communityEmail
         @GetMapping("/communityEmail")
         public EmailList allEmailByCity (@RequestParam ("city") String city) {
 

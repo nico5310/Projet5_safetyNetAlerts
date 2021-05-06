@@ -1,11 +1,13 @@
 package com.nico5310.safetyNetAlerts.service;
 
+import com.nico5310.safetyNetAlerts.dto.PersonDto;
 import com.nico5310.safetyNetAlerts.model.Person;
 import com.nico5310.safetyNetAlerts.repository.PersonRepositoryInterface;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -106,7 +108,10 @@ public class PersonService implements PersonServiceInterface {
         }
         return listPerson;
     }
+    //----------------------------------------------------------------------
+    //URLS
 
+    // URL 7 communityEmail
     @Override
     public List<Person> findEmailByCity(String city) {
 
@@ -119,6 +124,41 @@ public class PersonService implements PersonServiceInterface {
         }
         return  listPerson;
     }
+    //-----------------------------------------------------------------------
+
+    // Dto conversion
+
+    private Person fromDtoToEntity(PersonDto personDto) {
+
+        Person person = new Person();
+        person.setFirstName(personDto.getFirstName());
+        person.setLastName(personDto.getLastName());
+        person.setAddress(personDto.getAddress());
+        person.setZip(personDto.getZip());
+        person.setPhone(personDto.getPhone());
+        person.setEmail(personDto.getEmail());
+        person.setAge(personDto.getAge());
+        person.setMedicalrecord(personDto.getMedicalrecord());
+        person.setFirestation(personDto.getFirestation());
+        return person;
+    }
+
+    private PersonDto fromEntityToDto(Person person) {
+
+        PersonDto personDto = new PersonDto();
+        personDto.setFirstName(person.getFirstName());
+        personDto.setLastName(person.getLastName());
+        personDto.setAddress(person.getAddress());
+        personDto.setZip(person.getZip());
+        personDto.setPhone(person.getPhone());
+        personDto.setEmail(person.getEmail());
+        personDto.setAge(personDto.getAge());
+        personDto.setMedicalrecord(person.getMedicalrecord());
+        personDto.setFirestation(person.getFirestation());
+        return personDto;
+    }
+
+
 
 
 

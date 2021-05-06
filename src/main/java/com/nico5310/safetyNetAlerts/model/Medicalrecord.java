@@ -11,7 +11,7 @@ public class Medicalrecord {
 
     private String       firstName;
     private String       lastName;
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
+    @JsonFormat(pattern = "dd/MM/yyyy")
     private String       birthdate;
     private List<String> medications;
     private List<String> allergies;
@@ -21,8 +21,29 @@ public class Medicalrecord {
 
     @JsonIgnore
     private String firstNameAndLastName;
+
+        /**
+     * Constructor ID
+     * @return
+     */
     public String getFirstNameAndLastName() {
         return firstName + lastName;
+    }
+
+    /**
+     * Constructor Medicalrecord
+     */
+    public Medicalrecord() {
+            super();
+    }
+
+    public Medicalrecord(String firstName, String lastName, String birthdate, List<String> medications, List<String> allergies) {
+        super();
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.birthdate = birthdate;
+        this.medications = medications;
+        this.allergies = allergies;
     }
 
     @Override
