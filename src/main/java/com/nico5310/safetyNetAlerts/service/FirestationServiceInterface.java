@@ -12,6 +12,6 @@ public interface FirestationServiceInterface {
     boolean deleteFirestationList(String address);
 
     Firestation findById(String firestationAddress);
-    List<Firestation> findAddressByStation(String station);
+    List<Firestation> findAddressByStation(int station);
 
 }

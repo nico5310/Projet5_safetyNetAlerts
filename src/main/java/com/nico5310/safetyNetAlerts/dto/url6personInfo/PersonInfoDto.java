@@ -5,13 +5,13 @@ import lombok.Data;
 import java.util.List;
 
 @Data
-public class PersonInfo {
+public class PersonInfoDto {
 
-    private List<PersonInfoList> personInfoLists;
+    private List<PersonInfoListDto> personInfoListDto;
 
     @Override
     public String toString() {
-        return "PersonInfo [" + getPersonInfoLists() + "]";
+        return "PersonInfo [" + getPersonInfoListDto() + "]";
     }
 
 }

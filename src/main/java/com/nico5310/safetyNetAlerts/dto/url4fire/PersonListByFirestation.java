@@ -1,16 +1,16 @@
 package com.nico5310.safetyNetAlerts.dto.url4fire;
 
-import com.nico5310.safetyNetAlerts.dto.urlData.PersonFireFloodList;
+import com.nico5310.safetyNetAlerts.dto.urlData.PersonFireFloodListDto;
 import lombok.Data;
 
 import java.util.List;
 
 @Data
-public class Fire {
+public class PersonListByFirestation {
 
     private String fireStationNumber;
-    private String                    address;
-    private List<PersonFireFloodList> personFireFloodList;
+    private String                       address;
+    private List<PersonFireFloodListDto> personFireFloodList;
 
     @Override
     public String toString() {

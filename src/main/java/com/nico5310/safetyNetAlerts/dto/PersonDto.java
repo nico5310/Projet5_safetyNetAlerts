@@ -1,12 +1,13 @@
 package com.nico5310.safetyNetAlerts.dto;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.nico5310.safetyNetAlerts.model.Firestation;
-import com.nico5310.safetyNetAlerts.model.Medicalrecord;
 import com.nico5310.safetyNetAlerts.model.Person;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import org.springframework.stereotype.Component;
 
+@AllArgsConstructor
 @Data
+@Component
 public class PersonDto {
 
     private String firstName;
@@ -16,50 +17,31 @@ public class PersonDto {
     private String zip;
     private String phone;
     private String email;
-
-    @JsonIgnore
-    private String firstNameAndLastName;
-        /**
-     * Constructeur for Id
-     * @return
-     */
-    public String getFirstNameAndLastName() {
-        return firstName + lastName;
-    }
-
-    @JsonIgnore
     private int age;
+    private MedicalRecordDto medicalRecordDto;
+    private FirestationDto firestationDto;
 
-    @JsonIgnore
-    private Medicalrecord medicalrecord;
+    private String firstNameAndLastName;
 
-    @JsonIgnore
-    private Firestation firestation;
-
-
-    /**
-     * Constructor for PersonDto
-     */
     public PersonDto() {
         super();
     }
 
-    public PersonDto(Person person) {
+    public  PersonDto ( Person person) {
+
         this.firstName = person.getFirstName();
         this.lastName = person.getLastName();
         this.address = person.getAddress();
-        this.city = person.getAddress();
+        this.city = person.getCity();
         this.zip = person.getZip();
         this.phone = person.getPhone();
         this.email = person.getEmail();
-        this.firstNameAndLastName = person.getFirstNameAndLastName();
         this.age = person.getAge();
-        this.medicalrecord = person.getMedicalrecord();
-        this.firestation = person.getFirestation();
+        this.medicalRecordDto = getMedicalRecordDto();
+        this.firestationDto = getFirestationDto();
+        this.firstNameAndLastName = person.getFirstNameAndLastName();
     }
 
 
-
-
-  }
+}
 

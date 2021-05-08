@@ -1,22 +1,25 @@
 package com.nico5310.safetyNetAlerts.service;
 
 import com.nico5310.safetyNetAlerts.dto.PersonDto;
+import com.nico5310.safetyNetAlerts.model.Firestation;
 import com.nico5310.safetyNetAlerts.model.Person;
 import com.nico5310.safetyNetAlerts.repository.PersonRepositoryInterface;
+import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
+@AllArgsConstructor
 @Service
 @Slf4j
 public class PersonService implements PersonServiceInterface {
 
     @Autowired
     PersonRepositoryInterface personRepositoryInterface;
+
 
     @Override
     public List<Person> findPersonAll() {
@@ -100,7 +103,7 @@ public class PersonService implements PersonServiceInterface {
     @Override
     public List<Person> findByAddress(String address) {
 
-        List<Person> listPerson = new ArrayList<>();
+        List<Person> listPerson = new ArrayList<Person>();
         for (Person person : personRepositoryInterface.getPersonAll()) {
             if (person.getAddress().equals(address)) {
                 listPerson.add(person);
@@ -108,25 +111,46 @@ public class PersonService implements PersonServiceInterface {
         }
         return listPerson;
     }
-    //----------------------------------------------------------------------
-    //URLS
 
-    // URL 7 communityEmail
     @Override
-    public List<Person> findEmailByCity(String city) {
+    public List<Person> findByLastName(String lastName) {
 
-        List<Person> listPerson = new ArrayList<>();
-        List<String> mail = new ArrayList<>();
+        List<Person> listPerson = new ArrayList<Person>();
         for (Person person : personRepositoryInterface.getPersonAll()) {
-            if (person.getCity().equals(city)) {
+            if (person.getLastName().equals(lastName)) {
                 listPerson.add(person);
             }
         }
         return  listPerson;
     }
-    //-----------------------------------------------------------------------
+
+    @Override
+    public  List<Person> findEmailByCity(String city) {
+
+        List<Person> listPerson = new ArrayList<Person>();
+        List<String> mail = new ArrayList<String>();
+        for (Person person : personRepositoryInterface.getPersonAll()) {
+            if (person.getCity().equals(city)) {
+                listPerson.add(person);
+            }
+        }
+        return listPerson;
+    }
 
     // Dto conversion
+    private PersonDto fromEntityToDto(Person person) {
+
+        PersonDto personDto = new PersonDto();
+        personDto.setFirstName(person.getFirstName());
+        personDto.setLastName(person.getLastName());
+        personDto.setAddress(person.getAddress());
+        personDto.setZip(person.getZip());
+        personDto.setPhone(person.getPhone());
+        personDto.setEmail(person.getEmail());
+        personDto.setAge(person.getAge());
+
+        return personDto;
+    }
 
     private Person fromDtoToEntity(PersonDto personDto) {
 
@@ -138,31 +162,8 @@ public class PersonService implements PersonServiceInterface {
         person.setPhone(personDto.getPhone());
         person.setEmail(personDto.getEmail());
         person.setAge(personDto.getAge());
-        person.setMedicalrecord(personDto.getMedicalrecord());
-        person.setFirestation(personDto.getFirestation());
         return person;
     }
 
-    private PersonDto fromEntityToDto(Person person) {
-
-        PersonDto personDto = new PersonDto();
-        personDto.setFirstName(person.getFirstName());
-        personDto.setLastName(person.getLastName());
-        personDto.setAddress(person.getAddress());
-        personDto.setZip(person.getZip());
-        personDto.setPhone(person.getPhone());
-        personDto.setEmail(person.getEmail());
-        personDto.setAge(personDto.getAge());
-        personDto.setMedicalrecord(person.getMedicalrecord());
-        personDto.setFirestation(person.getFirestation());
-        return personDto;
-    }
-
-
-
-
 
 }
-
-
-

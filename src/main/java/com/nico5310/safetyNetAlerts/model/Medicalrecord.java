@@ -2,27 +2,29 @@ package com.nico5310.safetyNetAlerts.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import org.springframework.stereotype.Component;
 
+import java.time.LocalDate;
 import java.util.List;
 
+@AllArgsConstructor
 @Data
+@Component
 public class Medicalrecord {
 
     private String       firstName;
     private String       lastName;
-    @JsonFormat(pattern = "dd/MM/yyyy")
-    private String       birthdate;
+    private LocalDate       birthdate;
     private List<String> medications;
     private List<String> allergies;
-
     @JsonIgnore
     private int age;
-
     @JsonIgnore
     private String firstNameAndLastName;
 
-        /**
+    /**
      * Constructor ID
      * @return
      */
@@ -35,15 +37,6 @@ public class Medicalrecord {
      */
     public Medicalrecord() {
             super();
-    }
-
-    public Medicalrecord(String firstName, String lastName, String birthdate, List<String> medications, List<String> allergies) {
-        super();
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.birthdate = birthdate;
-        this.medications = medications;
-        this.allergies = allergies;
     }
 
     @Override

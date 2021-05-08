@@ -5,7 +5,7 @@ import lombok.Data;
 import java.util.List;
 
 @Data
-public class MedicalBackGround {
+public class MedicalBackGroundDto {
 
     private List<String> medications;
     private List<String> allergies;

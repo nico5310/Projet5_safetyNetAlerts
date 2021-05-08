@@ -7,7 +7,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -60,7 +59,7 @@ public class FirestationService implements FirestationServiceInterface{
                 return null; // TODO: modify return
             }
             for (Firestation update : updateFirestation) {
-                if (update.getAddress().equals(firestation.getAddress()) && !update.getStation().equals(firestation.getStation())) {
+                if (update.getAddress().equals(firestation.getAddress()))  {
                     update.setStation(firestation.getStation());
                     return update;
                 }
@@ -95,11 +94,11 @@ public class FirestationService implements FirestationServiceInterface{
     }
 
     @Override
-    public  List<Firestation> findAddressByStation(String station) {
+    public  List<Firestation> findAddressByStation(int station) {
 
         List<Firestation> listFirestation = new ArrayList<>();
         for (Firestation firestation : firestationRepositoryInterface.getFirestationAll()) {
-            if (firestation.getStation().equals(station)) {
+            if (firestation.getStation()== station) {
                 listFirestation.add(firestation);
             }
         }
@@ -108,12 +107,17 @@ public class FirestationService implements FirestationServiceInterface{
 
     //Dto conversion
     private Firestation fromDtoToEntity(FirestationDto firestationDto) {
+
         Firestation firestation = new Firestation();
+        firestation.setAddress(firestationDto.getAddress());
+        firestation.setStation(firestationDto.getStation());
         return firestation;
     }
 
     private FirestationDto fromEntityToDto(Firestation firestation) {
         FirestationDto firestationDto = new FirestationDto();
+        firestationDto.setAddress(firestation.getAddress());
+        firestationDto.setStation(firestation.getStation());
         return  firestationDto;
     }
 
