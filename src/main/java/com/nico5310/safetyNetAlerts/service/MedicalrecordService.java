@@ -1,18 +1,13 @@
 package com.nico5310.safetyNetAlerts.service;
 
-import com.nico5310.safetyNetAlerts.dto.MedicalRecordDto;
-import com.nico5310.safetyNetAlerts.model.Firestation;
 import com.nico5310.safetyNetAlerts.model.Medicalrecord;
 import com.nico5310.safetyNetAlerts.repository.MedicalrecordRepositoryInterface;
-import lombok.AllArgsConstructor;
-import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-
 
 @Slf4j
 @Service
@@ -122,28 +117,28 @@ public class MedicalrecordService implements MedicalrecordServiceInterface {
 
     // Dto conversion
 
-    private Medicalrecord fromDtoToEntity(MedicalRecordDto medicalRecordDto) {
-        Medicalrecord medicalrecord = new Medicalrecord();
-        medicalrecord.setFirstName(medicalRecordDto.getFirstName());
-        medicalrecord.setLastName(medicalRecordDto.getLastName());
-        medicalrecord.setAge(medicalRecordDto.getAge());
-        medicalrecord.setMedications(medicalRecordDto.getMedications());
-        medicalrecord.setAllergies(medicalRecordDto.getAllergies());
-        medicalrecord.setAge(medicalRecordDto.getAge());
-
-        return medicalrecord;
-    }
-
-    private MedicalRecordDto fromEntityToDto(Medicalrecord medicalrecord) {
-        MedicalRecordDto medicalrecordDto = new MedicalRecordDto();
-        medicalrecordDto.setFirstName(medicalrecord.getFirstName());
-        medicalrecordDto.setLastName(medicalrecord.getLastName());
-        medicalrecordDto.setAge(medicalrecord.getAge());
-        medicalrecordDto.setMedications(medicalrecord.getMedications());
-        medicalrecordDto.setAllergies(medicalrecord.getAllergies());
-        medicalrecordDto.setAge(medicalrecord.getAge());
-
-        return medicalrecordDto;
-    }
+//    private Medicalrecord fromDtoToEntity(MedicalRecordDto medicalRecordDto) {
+//        Medicalrecord medicalrecord = new Medicalrecord();
+//        medicalrecord.setFirstName(medicalRecordDto.getFirstName());
+//        medicalrecord.setLastName(medicalRecordDto.getLastName());
+//        medicalrecord.setAge(medicalRecordDto.getAge());
+//        medicalrecord.setMedications(medicalRecordDto.getMedications());
+//        medicalrecord.setAllergies(medicalRecordDto.getAllergies());
+//        medicalrecord.setAge(medicalRecordDto.getAge());
+//
+//        return medicalrecord;
+//    }
+//
+//    private MedicalRecordDto fromEntityToDto(Medicalrecord medicalrecord) {
+//        MedicalRecordDto medicalrecordDto = new MedicalRecordDto();
+//        medicalrecordDto.setFirstName(medicalrecord.getFirstName());
+//        medicalrecordDto.setLastName(medicalrecord.getLastName());
+//        medicalrecordDto.setAge(medicalrecord.getAge());
+//        medicalrecordDto.setMedications(medicalrecord.getMedications());
+//        medicalrecordDto.setAllergies(medicalrecord.getAllergies());
+//        medicalrecordDto.setAge(medicalrecord.getAge());
+//
+//        return medicalrecordDto;
+//    }
 
 }

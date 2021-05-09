@@ -11,7 +11,7 @@ public class PhoneAlertListDto {
 
     /**
      * Constructeur of phoneNumberList
-     * @param listPhones
+     *
      */
     public PhoneAlertListDto(List<String> listPhones) {
         this.listPhones = listPhones;

@@ -10,8 +10,8 @@ import java.util.List;
 public class ChildByAddressDto {
 
     private List<Person> listPersons;
-    private List<Medicalrecord>  listMedicalrecords;
-    private List<Long> listAges;
+    private List<Medicalrecord> listMedicalrecords;
+    private List<Integer>       listAges;
 
     private static long children;
 
@@ -19,7 +19,7 @@ public class ChildByAddressDto {
      * constructor ChildByAddressDto
      *
      */
-    public ChildByAddressDto(List<Person> listPersons, List<Medicalrecord> listMedicalrecords, List<Long> listAges, long children) {
+    public ChildByAddressDto(List<Person> listPersons, List<Medicalrecord> listMedicalrecords, List<Integer> listAges, long children) {
         super();
         this.listPersons = listPersons;
         this.listMedicalrecords = listMedicalrecords;

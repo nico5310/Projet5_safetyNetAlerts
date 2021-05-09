@@ -14,7 +14,7 @@ public class Medicalrecord {
     private String firstName;
     private String lastName;
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
-    private LocalDate birthdate;
+    private String birthdate;
     private List<String> medications;
     private List<String> allergies;
     @JsonIgnore
@@ -36,7 +36,7 @@ public class Medicalrecord {
     public Medicalrecord() {
 
     }
-    public Medicalrecord(String firstName, String lastName, LocalDate birthdate, List<String> medications, List<String> allergies, int age, String firstNameAndLastName) {
+    public Medicalrecord(String firstName, String lastName, String birthdate, List<String> medications, List<String> allergies, int age, String firstNameAndLastName) {
 
         this.firstName            = firstName;
         this.lastName             = lastName;

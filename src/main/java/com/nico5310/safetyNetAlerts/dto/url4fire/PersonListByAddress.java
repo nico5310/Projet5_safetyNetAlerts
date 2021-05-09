@@ -8,14 +8,14 @@ import lombok.Data;
 import java.util.List;
 
 @Data
-public class PersonListByFirestation {
+public class PersonListByAddress {
 
    List<Person> listPersons;
    List<Medicalrecord> listMedicalrecords;
-   List<Long> listAges;
+   List<Integer> listAges;
    Firestation firestation;
 
-    public PersonListByFirestation(List<Person> listPersons, List<Medicalrecord> listMedicalrecords, List<Long> listAges, Firestation firestation) {
+    public PersonListByAddress(List<Person> listPersons, List<Medicalrecord> listMedicalrecords, List<Integer> listAges, Firestation firestation) {
 
         this.listPersons        = listPersons;
         this.listMedicalrecords = listMedicalrecords;

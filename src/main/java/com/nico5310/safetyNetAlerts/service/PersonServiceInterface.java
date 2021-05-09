@@ -1,7 +1,5 @@
 package com.nico5310.safetyNetAlerts.service;
 
-import com.nico5310.safetyNetAlerts.dto.PersonDto;
-import com.nico5310.safetyNetAlerts.model.Firestation;
 import com.nico5310.safetyNetAlerts.model.Person;
 
 import java.util.List;

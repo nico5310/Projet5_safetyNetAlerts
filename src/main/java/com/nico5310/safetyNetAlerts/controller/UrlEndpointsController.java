@@ -3,8 +3,7 @@ package com.nico5310.safetyNetAlerts.controller;
 import com.nico5310.safetyNetAlerts.dto.url1firestation.PersonsByStationDto;
 import com.nico5310.safetyNetAlerts.dto.url2childAlert.ChildByAddressDto;
 import com.nico5310.safetyNetAlerts.dto.url3phoneAlert.PhoneAlertListDto;
-import com.nico5310.safetyNetAlerts.dto.url4fire.PersonListByFirestation;
-
+import com.nico5310.safetyNetAlerts.dto.url4fire.PersonListByAddress;
 import com.nico5310.safetyNetAlerts.service.UrlEndpointService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,13 +22,13 @@ public class UrlEndpointsController {
 
     //URL 1 firestation
     @GetMapping(value = "/firestation{stationNumber}")
-    public PersonsByStationDto allPersonsByStation (@PathVariable int stationNumber) throws ParseException{
+    public PersonsByStationDto allPersonsByStation (@PathVariable int stationNumber) {
         return urlEndpointService.allPersonsByStation(stationNumber);
     }
 
     //URL 2 childAlerts
     @GetMapping(value = "/childAlert{address}")
-    public ChildByAddressDto allChildByAddress (@PathVariable String address) throws ParseException {
+    public ChildByAddressDto allChildByAddress (@PathVariable String address) {
         ChildByAddressDto childByAddressDto = urlEndpointService.allChildByAddress(address);
         long children = ChildByAddressDto.getChildren();
         if (children == 0) {
@@ -47,8 +46,8 @@ public class UrlEndpointsController {
 
     // URL 4 fire
     @GetMapping(value = "/fire{address}")
-    public PersonListByFirestation allPersonsByFirestation(@PathVariable String address) throws ParseException {
-        return urlEndpointService.allPersonsByFirestation(address);
+    public PersonListByAddress allPersonsByAddress(@PathVariable String address) throws ParseException {
+        return urlEndpointService.allPersonsByAddress(address);
     }
 
     // URL 5 flood

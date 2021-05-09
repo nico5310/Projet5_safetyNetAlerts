@@ -1,7 +1,6 @@
 package com.nico5310.safetyNetAlerts.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Data
