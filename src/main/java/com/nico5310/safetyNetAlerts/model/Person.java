@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
-@AllArgsConstructor
 @Data
 public class Person {
 
@@ -15,16 +14,15 @@ public class Person {
     private String zip;
     private String phone;
     private String email;
-
     @JsonIgnore
-    private int age;
+    int age;
     @JsonIgnore
     private Medicalrecord medicalrecord;
     @JsonIgnore
     private Firestation firestation;
-
     @JsonIgnore
     private String firstNameAndLastName;
+
     /**
      * Constructor Id
      * @return ID firstName + lastName
@@ -37,7 +35,22 @@ public class Person {
      * Constructor for Person
      */
     public Person() {
-        super();
+
+    }
+
+    public Person(String firstName, String lastName, String address, String city, String zip, String phone, String email, int age, Medicalrecord medicalrecord, Firestation firestation, String firstNameAndLastName) {
+
+        this.firstName            = firstName;
+        this.lastName             = lastName;
+        this.address              = address;
+        this.city                 = city;
+        this.zip                  = zip;
+        this.phone                = phone;
+        this.email                = email;
+        this.age                  = age;
+        this.medicalrecord        = medicalrecord;
+        this.firestation          = firestation;
+        this.firstNameAndLastName = firstNameAndLastName;
     }
 
 

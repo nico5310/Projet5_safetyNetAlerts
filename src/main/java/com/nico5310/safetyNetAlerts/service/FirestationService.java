@@ -3,20 +3,19 @@ package com.nico5310.safetyNetAlerts.service;
 import com.nico5310.safetyNetAlerts.dto.FirestationDto;
 import com.nico5310.safetyNetAlerts.model.Firestation;
 import com.nico5310.safetyNetAlerts.repository.FirestationRepositoryInterface;
+import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-
-@Service
 @Slf4j
+@Service
 public class FirestationService implements FirestationServiceInterface{
 
     @Autowired
     FirestationRepositoryInterface firestationRepositoryInterface;
-
 
     @Override
     public List<Firestation> findFirestationAll() {
@@ -104,6 +103,7 @@ public class FirestationService implements FirestationServiceInterface{
         }
         return listFirestation;
     }
+
 
     //Dto conversion
     private Firestation fromDtoToEntity(FirestationDto firestationDto) {

@@ -8,13 +8,13 @@ import java.time.Period;
 import java.util.ArrayList;
 import java.util.List;
 
-@AllArgsConstructor
+
 @Data
 public class Calculator {
 
     private long children = 0;
     private long adults = 0;
-    private long age = 0;
+    private int age = 0;
     private final List<Long> listAgeCalculate = new ArrayList<Long>();
 
     /**
@@ -23,40 +23,12 @@ public class Calculator {
     public Calculator() {
 
     }
+    public Calculator(long children, long adults, int age) {
 
-   /**
-     * Constructor of children
-     * @return numChildrenber children
-     */
-    public long getChildren() {
-        return children;
+        this.children = children;
+        this.adults   = adults;
+        this.age      = age;
     }
-
-    /**
-     * Constructor of Adults
-     * @return numAdults
-     */
-    public long getAdults() {
-        return adults;
-    }
-
-    /**
-     * Constructor of age
-     * @return age
-     */
-    public long getAge() {
-        return age;
-    }
-
-    /**
-     * Constructor of listAgeCalculate
-     * @return listAgeCalculate
-     */
-    public List<Long> getListAgeCalculate() {
-
-        return listAgeCalculate;
-    }
-
 
 
     public void calculateAge(LocalDate birthDate) {
@@ -70,6 +42,7 @@ public class Calculator {
         }else {
             adults++;
         }
+
 
     }
 

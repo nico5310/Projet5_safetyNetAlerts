@@ -16,15 +16,16 @@ public class Firestation {
     /**
      * Constructor firestation
      */
-    public Firestation(String address, int station) {
-        this.address = address;
-        this.station = station;
-    }
-
     public Firestation() {
 
     }
 
+    public Firestation(String address, int station, List<Person> person) {
+
+        this.address = address;
+        this.station = station;
+        this.person  = person;
+    }
 
     @Override
     public String toString(){

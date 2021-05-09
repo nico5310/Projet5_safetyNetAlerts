@@ -5,6 +5,7 @@ import com.nico5310.safetyNetAlerts.model.Firestation;
 import com.nico5310.safetyNetAlerts.model.Medicalrecord;
 import com.nico5310.safetyNetAlerts.repository.MedicalrecordRepositoryInterface;
 import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,9 +13,9 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 
-@AllArgsConstructor
-@Service
+
 @Slf4j
+@Service
 public class MedicalrecordService implements MedicalrecordServiceInterface {
 
     @Autowired
@@ -129,7 +130,7 @@ public class MedicalrecordService implements MedicalrecordServiceInterface {
         medicalrecord.setMedications(medicalRecordDto.getMedications());
         medicalrecord.setAllergies(medicalRecordDto.getAllergies());
         medicalrecord.setAge(medicalRecordDto.getAge());
-        medicalrecord.setFirstNameAndLastName(medicalRecordDto.getFirstNameAndLastName());
+
         return medicalrecord;
     }
 
@@ -141,7 +142,7 @@ public class MedicalrecordService implements MedicalrecordServiceInterface {
         medicalrecordDto.setMedications(medicalrecord.getMedications());
         medicalrecordDto.setAllergies(medicalrecord.getAllergies());
         medicalrecordDto.setAge(medicalrecord.getAge());
-        medicalrecordDto.setFirstNameAndLastName(medicalrecord.getFirstNameAndLastName());
+
         return medicalrecordDto;
     }
 

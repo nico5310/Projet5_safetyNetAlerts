@@ -1,24 +1,21 @@
 package com.nico5310.safetyNetAlerts.controller;
 
-
-import com.nico5310.safetyNetAlerts.dto.PersonDto;
 import com.nico5310.safetyNetAlerts.dto.url1firestation.PersonsByStationDto;
 import com.nico5310.safetyNetAlerts.dto.url2childAlert.ChildByAddressDto;
 import com.nico5310.safetyNetAlerts.dto.url3phoneAlert.PhoneAlertListDto;
-import com.nico5310.safetyNetAlerts.dto.url6personInfo.PersonInfoListDto;
-import com.nico5310.safetyNetAlerts.dto.url7communityEmail.EmailListDto;
+import com.nico5310.safetyNetAlerts.dto.url4fire.PersonListByFirestation;
+
 import com.nico5310.safetyNetAlerts.service.UrlEndpointService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.text.ParseException;
-import java.util.ArrayList;
-import java.util.List;
-
 
 @RestController
+@Slf4j
 public class UrlEndpointsController {
 
     @Autowired
@@ -55,26 +52,26 @@ public class UrlEndpointsController {
     }
 
     // URL 5 flood
-    @GetMapping(value = "/flood/stations{listofstationNumber")
-    public FamilyListByStation allFamilyByStation(@PathVariable String address) throws ParseException {
-        return urlEndpointService.allFamilyByStation(address);
-    }
+//    @GetMapping(value = "/flood/stations{listofstationNumber")
+//    public FamilyListByStation allFamilyByStation(@PathVariable String address) throws ParseException {
+//        return urlEndpointService.allFamilyByStation(address);
+//    }
 
     // URL 6 personinfo
-    @GetMapping(value = "/personInfo{lastName}")
-    public PersonInfoListDto allPersonInfo(@PathVariable String firstNameAndLastName) throws ParseException {
-        return  urlEndpointService.allPersonInfo(firstNameAndLastName);
-    }
+//    @GetMapping(value = "/personInfo{lastName}")
+//    public PersonInfoListDto allPersonInfo(@PathVariable String firstNameAndLastName) throws ParseException {
+//        return  urlEndpointService.allPersonInfo(firstNameAndLastName);
+//    }
 
     //URL 7 communityEmail
-    @GetMapping(value = "/communityEmail{city}")
-    public EmailListDto listEmailByCity(@PathVariable String city) {
-
-        List<String> email = new ArrayList<String>();
-        for (PersonDto personDto : urlEndpointService.allEmailByCity(city)) {
-            email.add(personDto.getEmail());
-        }
-        return urlEndpointService.allEmailByCity(city);
-    }
+//    @GetMapping(value = "/communityEmail{city}")
+//    public EmailListDto listEmailByCity(@PathVariable String city) {
+//
+//        List<String> email = new ArrayList<String>();
+//        for (PersonDto personDto : urlEndpointService.allEmailByCity(city)) {
+//            email.add(personDto.getEmail());
+//        }
+//        return urlEndpointService.allEmailByCity(city);
+//    }
 
 }

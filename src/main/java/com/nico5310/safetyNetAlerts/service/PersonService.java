@@ -5,6 +5,7 @@ import com.nico5310.safetyNetAlerts.model.Firestation;
 import com.nico5310.safetyNetAlerts.model.Person;
 import com.nico5310.safetyNetAlerts.repository.PersonRepositoryInterface;
 import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,9 +13,8 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 
-@AllArgsConstructor
-@Service
 @Slf4j
+@Service
 public class PersonService implements PersonServiceInterface {
 
     @Autowired
@@ -23,7 +23,6 @@ public class PersonService implements PersonServiceInterface {
 
     @Override
     public List<Person> findPersonAll() {
-
         try {
             return personRepositoryInterface.getPersonAll();
         } catch (Exception exception) {
