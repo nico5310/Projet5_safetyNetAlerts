@@ -9,24 +9,21 @@ import java.util.List;
 @Data
 public class ChildByAddressDto {
 
-    private List<Person>         listPers;
-    private List<Medicalrecord>  listMedicalrecord;
-    private List<Long> age;
+    private List<Person> listPersons;
+    private List<Medicalrecord>  listMedicalrecords;
+    private List<Long> listAges;
 
     private static long children;
 
     /**
      * constructor ChildByAddressDto
-     * @param listPers
-     * @param listMedicalrecord
-     * @param age
-     * @param children
+     *
      */
-    public ChildByAddressDto(List<Person> listPers, List<Medicalrecord> listMedicalrecord, List<Long> age, long children) {
+    public ChildByAddressDto(List<Person> listPersons, List<Medicalrecord> listMedicalrecords, List<Long> listAges, long children) {
         super();
-        this.listPers = listPers;
-        this.listMedicalrecord = listMedicalrecord;
-        this.age = age;
+        this.listPersons = listPersons;
+        this.listMedicalrecords = listMedicalrecords;
+        this.listAges = listAges;
         this.children = children;
     }
 
@@ -40,7 +37,7 @@ public class ChildByAddressDto {
 
     @Override
     public String toString() {
-        return "ChildByAddress [" + getListPers() + ", " + getListMedicalrecord() + ", " + getAge() + "]";
+        return "ChildByAddress [" + getListPersons() + ", " + getListMedicalrecords() + ", " + getListAges() + "]";
     }
 
 }

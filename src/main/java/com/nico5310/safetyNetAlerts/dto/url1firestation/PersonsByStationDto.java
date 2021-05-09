@@ -9,10 +9,15 @@ import java.util.List;
 public class PersonsByStationDto {
 
    private List<Person> listPersons;
-   private int adults;
-   private int children;
+   private long adults;
+   private long children;
 
-   public PersonsByStationDto(List<Person> listPers, long nbAdult, long nbChild) {}
+   public PersonsByStationDto(List<Person> listPersons, long adults, long children) {
+
+      this.listPersons = listPersons;
+      this.adults      = adults;
+      this.children    = children;
+   }
 
    @Override
    public String toString() {

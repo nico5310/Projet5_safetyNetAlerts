@@ -9,15 +9,19 @@ import java.util.Set;
 @Data
 public class EmailListDto {
 
-   private List<String> emails;
+    private List<String> listEmails;
 
-    public EmailListDto () {
-        super();
+    /**
+     * Constructor
+     */
+    public EmailListDto(List<String> listEmails) {
+        this.listEmails = listEmails;
     }
+
 
     @Override
     public String toString(){
-        return "EmailList [" + getEmails() + "]";
+        return "EmailList [" + getListEmails() + "]";
     }
 
 

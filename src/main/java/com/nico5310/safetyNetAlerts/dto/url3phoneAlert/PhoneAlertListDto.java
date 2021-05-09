@@ -7,28 +7,20 @@ import java.util.List;
 @Data
 public class PhoneAlertListDto {
 
-    private List<String> phoneNumberList;
+    private List<String> listPhones;
 
     /**
      * Constructeur of phoneNumberList
-     * @param phoneNumberList
+     * @param listPhones
      */
-    public PhoneAlertListDto(List<String> phoneNumberList) {
-        this.phoneNumberList = phoneNumberList;
-    }
-
-    /**
-     * Getter for phoneNumberList
-     * @return phoneNumberList
-     */
-    public List<String> getPhoneNumberList() {
-        return phoneNumberList;
+    public PhoneAlertListDto(List<String> listPhones) {
+        this.listPhones = listPhones;
     }
 
 
     @Override
     public String toString() {
-        return "PhoneAlert [" + getPhoneNumberList() + "]";
+        return "PhoneAlert [" + getListPhones() + "]";
     }
 
 }
