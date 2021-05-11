@@ -16,4 +16,5 @@ public interface PersonServiceInterface {
     List<Person> findByAddress(String address);
     List<Person> findByLastName(String lastName);
     List<Person> findEmailByCity(String city);
+
 }

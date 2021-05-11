@@ -7,13 +7,14 @@ import lombok.Data;
 import java.util.List;
 
 @Data
-public class PersonsByStations {
+public class FamilyListByStation {
 
-    private List<Person> listPersons;
+    private List<Person>        listPersons;
     private List<Medicalrecord> listMedicalrecords;
-    private List<Long> listAges;
+    private List<Integer>       listAges;
 
-    public PersonsByStations(List<Person> listPersons, List<Medicalrecord> listMedicalrecords, List<Long> listAges) {
+
+    public FamilyListByStation(List<Person> listPersons, List<Medicalrecord> listMedicalrecords, List<Integer> listAges) {
 
         this.listPersons        = listPersons;
         this.listMedicalrecords = listMedicalrecords;

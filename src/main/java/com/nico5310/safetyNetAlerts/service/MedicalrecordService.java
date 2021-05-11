@@ -115,30 +115,4 @@ public class MedicalrecordService implements MedicalrecordServiceInterface {
         return listMedicalRecords;
     }
 
-    // Dto conversion
-
-//    private Medicalrecord fromDtoToEntity(MedicalRecordDto medicalRecordDto) {
-//        Medicalrecord medicalrecord = new Medicalrecord();
-//        medicalrecord.setFirstName(medicalRecordDto.getFirstName());
-//        medicalrecord.setLastName(medicalRecordDto.getLastName());
-//        medicalrecord.setAge(medicalRecordDto.getAge());
-//        medicalrecord.setMedications(medicalRecordDto.getMedications());
-//        medicalrecord.setAllergies(medicalRecordDto.getAllergies());
-//        medicalrecord.setAge(medicalRecordDto.getAge());
-//
-//        return medicalrecord;
-//    }
-//
-//    private MedicalRecordDto fromEntityToDto(Medicalrecord medicalrecord) {
-//        MedicalRecordDto medicalrecordDto = new MedicalRecordDto();
-//        medicalrecordDto.setFirstName(medicalrecord.getFirstName());
-//        medicalrecordDto.setLastName(medicalrecord.getLastName());
-//        medicalrecordDto.setAge(medicalrecord.getAge());
-//        medicalrecordDto.setMedications(medicalrecord.getMedications());
-//        medicalrecordDto.setAllergies(medicalrecord.getAllergies());
-//        medicalrecordDto.setAge(medicalrecord.getAge());
-//
-//        return medicalrecordDto;
-//    }
-
 }

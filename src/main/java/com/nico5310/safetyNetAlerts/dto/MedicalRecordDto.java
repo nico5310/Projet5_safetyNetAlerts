@@ -2,7 +2,6 @@ package com.nico5310.safetyNetAlerts.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.nico5310.safetyNetAlerts.model.Medicalrecord;
-import lombok.AllArgsConstructor;
 import lombok.Data;
 
 import java.util.List;
@@ -43,4 +42,4 @@ public class MedicalRecordDto {
         this.firstNameAndLastName = medicalRecord.getFirstNameAndLastName();
     }
 
-   }
+}

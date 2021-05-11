@@ -92,32 +92,16 @@ public class FirestationService implements FirestationServiceInterface{
     }
 
     @Override
-    public  List<Firestation> findAddressByStation(int station) {
+    public  List<Firestation> findAddressByStation(int stationNumber) {
 
         List<Firestation> listFirestation = new ArrayList<>();
         for (Firestation firestation : firestationRepositoryInterface.getFirestationAll()) {
-            if (firestation.getStation() == station) {
+            if (firestation.getStation() == stationNumber) {
                 listFirestation.add(firestation);
             }
         }
         return listFirestation;
     }
 
-
-    //Dto conversion
-//    private Firestation fromDtoToEntity(FirestationDto firestationDto) {
-//
-//        Firestation firestation = new Firestation();
-//        firestation.setAddress(firestationDto.getAddress());
-//        firestation.setStation(firestationDto.getStation());
-//        return firestation;
-//    }
-//
-//    private FirestationDto fromEntityToDto(Firestation firestation) {
-//        FirestationDto firestationDto = new FirestationDto();
-//        firestationDto.setAddress(firestation.getAddress());
-//        firestationDto.setStation(firestation.getStation());
-//        return  firestationDto;
-//    }
 
 }

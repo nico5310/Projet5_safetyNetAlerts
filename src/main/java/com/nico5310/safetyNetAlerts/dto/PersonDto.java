@@ -1,9 +1,6 @@
 package com.nico5310.safetyNetAlerts.dto;
 
-import com.nico5310.safetyNetAlerts.model.Person;
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import org.springframework.stereotype.Component;
 
 @Data
 public class PersonDto {
@@ -15,31 +12,28 @@ public class PersonDto {
     private String zip;
     private String phone;
     private String email;
-    private int age;
+    private long age;
     private MedicalRecordDto medicalRecordDto;
     private FirestationDto firestationDto;
 
     private String firstNameAndLastName;
 
+    public PersonDto(String firstName, String lastName, String address, String city, String zip, String phone, String email, int age, MedicalRecordDto medicalRecordDto, FirestationDto firestationDto, String firstNameAndLastName) {
+
+        this.firstName            = firstName;
+        this.lastName             = lastName;
+        this.address              = address;
+        this.city                 = city;
+        this.zip                  = zip;
+        this.phone                = phone;
+        this.email                = email;
+        this.age                  = age;
+        this.medicalRecordDto     = medicalRecordDto;
+        this.firestationDto       = firestationDto;
+        this.firstNameAndLastName = firstNameAndLastName;
+    }
+
     public PersonDto() {
-        super();
+
     }
-
-    public  PersonDto ( Person person) {
-
-        this.firstName = person.getFirstName();
-        this.lastName = person.getLastName();
-        this.address = person.getAddress();
-        this.city = person.getCity();
-        this.zip = person.getZip();
-        this.phone = person.getPhone();
-        this.email = person.getEmail();
-        this.age = person.getAge();
-        this.medicalRecordDto = getMedicalRecordDto();
-        this.firestationDto = getFirestationDto();
-        this.firstNameAndLastName = person.getFirstNameAndLastName();
-    }
-
-
 }
-

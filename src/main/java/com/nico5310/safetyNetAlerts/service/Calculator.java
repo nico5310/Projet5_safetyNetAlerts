@@ -4,11 +4,12 @@ import lombok.Data;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.Period;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
-@Service
 @Data
 public class Calculator {
 
@@ -16,6 +17,8 @@ public class Calculator {
     private long adults = 0;
     private       int           age              = 0;
     private final List<Integer> listAgeCalculate = new ArrayList<Integer>();
+
+
 
     /**
      * Constructor for calculator
@@ -32,9 +35,11 @@ public class Calculator {
 
 
     public void calculateAge(String birthDate) {
+        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
 
         int age;
-        age = Period.between(LocalDate.parse(birthDate), LocalDate.now()).getYears();
+
+        age = Period.between(LocalDate.parse(birthDate, dateTimeFormatter), LocalDate.now()).getYears();
         listAgeCalculate.add(age);
 
         if (age < 18) {

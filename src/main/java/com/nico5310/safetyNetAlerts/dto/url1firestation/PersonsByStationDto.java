@@ -19,9 +19,11 @@ public class PersonsByStationDto {
       this.children    = children;
    }
 
+
+
    @Override
    public String toString() {
-      return "PersonsByStation [" + getListPersons() + ", " + getAdults() + ", " + getChildren() + "]";
+      return "PersonsByStationDto [adults=" + adults + ", children=" + children + ", PersonsByFirestation=" + listPersons.toString() + "]";
    }
 
 }

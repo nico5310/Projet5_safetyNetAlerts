@@ -11,7 +11,7 @@ public class PersonInfoDto {
 
     private List<Person> listPersons;
     private List<Medicalrecord> listMedicalrecords;
-    private List<Long> listAges;
+    private List<Integer> listAges;
 
     /**
      * Constructor
@@ -19,7 +19,7 @@ public class PersonInfoDto {
      * @param listMedicalrecords
      * @param listAges
      */
-    public PersonInfoDto(List<Person> listPersons, List<Medicalrecord> listMedicalrecords, List<Long> listAges) {
+    public PersonInfoDto(List<Person> listPersons, List<Medicalrecord> listMedicalrecords, List<Integer> listAges) {
 
         this.listPersons          = listPersons;
         this.listMedicalrecords = listMedicalrecords;
