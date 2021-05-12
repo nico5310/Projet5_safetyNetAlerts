@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.text.ParseException;
-import java.util.List;
+
 
 @RestController
 @Slf4j
@@ -27,7 +27,7 @@ public class UrlEndpointsController {
 
     //URL 1 firestation
     @GetMapping(value = "/firestation/{stationNumber}")
-    public List<PersonsByStationDto> allPersonsByStation (@PathVariable int stationNumber) {
+    public PersonsByStationDto allPersonsByStation (@PathVariable int stationNumber) throws ParseException, org.json.simple.parser.ParseException {
         return urlEndpointService.allPersonsByStation(stationNumber);
     }
 
@@ -63,7 +63,7 @@ public class UrlEndpointsController {
 
     // URL 6 personinfo
     @GetMapping(value = "/personInfo/{firstName}{lastName}")
-    public List<PersonInfoDto> allPersonInfo(@RequestParam(value = "firstname") String firstName, @RequestParam (value = "lastName") String lastName)  {
+    public PersonInfoDto allPersonInfo(@RequestParam(value = "firstname") String firstName, @RequestParam (value = "lastName") String lastName) throws ParseException, org.json.simple.parser.ParseException {
         return  urlEndpointService.allPersonInfo(firstName, lastName);
     }
 
