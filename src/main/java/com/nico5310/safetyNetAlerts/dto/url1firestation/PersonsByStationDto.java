@@ -25,7 +25,7 @@ public class PersonsByStationDto {
 
    @Override
    public String toString() {
-      return "PersonsByStationDto [adults=" + adults + ", children=" + children + ", PersonsByFirestation=" + listPersons.toString() + "]";
+      return " [ PersonsByFirestation=" + listPersons.toString() + " adults=" + adults + ", children=" + children + "]";
    }
 
 }

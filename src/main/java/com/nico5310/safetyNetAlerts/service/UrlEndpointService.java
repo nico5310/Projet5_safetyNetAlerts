@@ -1,6 +1,5 @@
 package com.nico5310.safetyNetAlerts.service;
 
-import com.nico5310.safetyNetAlerts.dto.url1firestation.PersonsByFirestation;
 import com.nico5310.safetyNetAlerts.dto.url1firestation.PersonsByStationDto;
 import com.nico5310.safetyNetAlerts.dto.url2childAlert.ChildByAddressDto;
 import com.nico5310.safetyNetAlerts.dto.url3phoneAlert.PhoneAlertListDto;
@@ -31,8 +30,7 @@ public class UrlEndpointService {
     @Autowired
     MedicalrecordServiceInterface medicalrecordServiceInterface;
 
-
-    /**
+        /**
      * Constructor UrlEndpointService
      */
     public UrlEndpointService(PersonServiceInterface personServiceInterface, FirestationServiceInterface firestationServiceInterface, MedicalrecordServiceInterface medicalrecordServiceInterface) {
@@ -43,7 +41,7 @@ public class UrlEndpointService {
     }
 
     // URL 1 firestation
-    public PersonsByStationDto allPersonsByStation(int stationNumber)  {
+    public PersonsByStationDto allPersonsByStation(int stationNumber) throws ParseException  {
 
         Calculator calculator = new Calculator();
         List<Person> listPersons   = new ArrayList<Person>();
@@ -59,6 +57,7 @@ public class UrlEndpointService {
         return new PersonsByStationDto(listPersons, calculator.getAdults(), calculator.getChildren());
 
     }
+
 
 
 
