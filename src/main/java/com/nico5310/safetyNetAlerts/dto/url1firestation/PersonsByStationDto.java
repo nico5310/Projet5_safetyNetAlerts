@@ -1,31 +1,31 @@
 package com.nico5310.safetyNetAlerts.dto.url1firestation;
 
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.nico5310.safetyNetAlerts.model.Person;
 import lombok.Data;
+
+import java.util.List;
 
 @Data
 public class PersonsByStationDto {
-
-   private String firstName;
-   private String lastName;
-   private String address;
-   private String phone;
+   @JsonIgnoreProperties({"zip", "city", "email"})
+   private List<Person> listPersons;
    private long adults;
    private long children;
 
+   public PersonsByStationDto(List<Person> listPersons, long adults, long children) {
 
-   public PersonsByStationDto(String firstName, String lastName, String address, String phone, long adults, long children) {
-
-      this.firstName = firstName;
-      this.lastName  = lastName;
-      this.address   = address;
-      this.phone     = phone;
-      this.adults    = adults;
-      this.children  = children;
+      this.listPersons = listPersons;
+      this.adults      = adults;
+      this.children    = children;
    }
+
+
 
    @Override
    public String toString() {
-      return "PersonsByStationDto [=" + adults + ", children=" + children + ", PersonsByFirestation=" + listPersons.toString() + "]";
+      return "PersonsByStationDto [adults=" + adults + ", children=" + children + ", PersonsByFirestation=" + listPersons.toString() + "]";
    }
 
 }
