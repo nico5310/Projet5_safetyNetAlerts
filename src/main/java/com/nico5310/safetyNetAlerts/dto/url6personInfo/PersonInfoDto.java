@@ -1,6 +1,8 @@
 package com.nico5310.safetyNetAlerts.dto.url6personInfo;
 
 
+import com.nico5310.safetyNetAlerts.model.Medicalrecord;
+import com.nico5310.safetyNetAlerts.model.Person;
 import lombok.Data;
 
 import java.util.List;
@@ -8,21 +10,26 @@ import java.util.List;
 @Data
 public class PersonInfoDto {
 
-    private String lastName;
-    private String address;
-    private int age;
-    private String email;
-    private List<String> medications;
-    private List<String> allergies;
+    private List<Person>        listPersons;
+    private List<Medicalrecord> listMedicalrecords;
+    private List<Integer>       listAges;
 
-      public PersonInfoDto(String lastName, String address, int age, String email, List<String> medications, List<String> allergies) {
+    /**
+     * Constructor
+     * @param listPersons
+     * @param listMedicalrecords
+     * @param listAges
+     */
+    public PersonInfoDto(List<Person> listPersons, List<Medicalrecord> listMedicalrecords, List<Integer> listAges) {
 
-        this.lastName    = lastName;
-        this.address     = address;
-        this.age         = age;
-        this.email       = email;
-        this.medications = medications;
-        this.allergies   = allergies;
+        this.listPersons          = listPersons;
+        this.listMedicalrecords = listMedicalrecords;
+        this.listAges           = listAges;
+    }
+
+    @Override
+    public String toString() {
+        return "PersonInfo [" + getListPersons() + "]";
     }
 
 }
