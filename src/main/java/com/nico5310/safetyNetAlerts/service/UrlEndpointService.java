@@ -17,6 +17,7 @@ import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,19 +33,12 @@ public class UrlEndpointService {
     MedicalrecordServiceInterface medicalrecordServiceInterface;
 
 
-    /**
-     * Constructor UrlEndpointService
-     */
-    public UrlEndpointService(PersonServiceInterface personServiceInterface, FirestationServiceInterface firestationServiceInterface, MedicalrecordServiceInterface medicalrecordServiceInterface) {
 
-        this.personServiceInterface        = personServiceInterface;
-        this.firestationServiceInterface   = firestationServiceInterface;
-        this.medicalrecordServiceInterface = medicalrecordServiceInterface;
-    }
 
     // URL 1 firestation
-    public PersonsByStationDto allPersonsByStation(int stationNumber)  {
+    public List<PersonsByStationDto> allPersonsByStation(int stationNumber)  {
 
+        List<PersonsByStationDto> personsByStationDtoList = new ArrayList<PersonsByStationDto>();
         Calculator calculator = new Calculator();
         List<Person> listPersons   = new ArrayList<Person>();
         for (Firestation firestation1 : firestationServiceInterface.findAddressByStation(stationNumber)) {
@@ -54,9 +48,10 @@ public class UrlEndpointService {
             for (Person person : listPerson1) {
                 Medicalrecord medicalrecord = medicalrecordServiceInterface.findByFirstName(person.getFirstName());
                 calculator.calculateAge(medicalrecord.getBirthdate());
+                personsByStationDtoList.add(new PersonsByStationDto(person.getFirstName(), person.getLastName(), person.getAddress(), person.getPhone(), calculator.getAdults(), calculator.getChildren()));
             }
         }
-        return new PersonsByStationDto(listPersons, calculator.getAdults(), calculator.getChildren());
+        return personsByStationDtoList;
 
     }
 
@@ -135,20 +130,21 @@ public class UrlEndpointService {
     }
 
     // URL 6 personinfo
-    public PersonInfoDto allPersonInfo (String firstName, String lastName) throws ParseException {
+    public List<PersonInfoDto> allPersonInfo (String firstName, String lastName) {
 
-        List<Person> listPersons2 = personServiceInterface.findByLastName(lastName);
-        List<Person> listPersons = new ArrayList<>(listPersons2);
-
-
+        List<Person> listPers = personServiceInterface.findByLastName(lastName);
+        List<Person> listPersons = new ArrayList<Person>(listPers);
+        List<PersonInfoDto> personInfoDtoList = new ArrayList<PersonInfoDto>();
         Calculator calculator = new Calculator();
-        List<Medicalrecord> listMedicalrecord = new ArrayList<>();
+
         for (Person person : listPersons) {
             Medicalrecord medicalrecord = medicalrecordServiceInterface.findByFirstName(person.getFirstName());
-            listMedicalrecord.add(medicalrecord);
             calculator.calculateAge(medicalrecord.getBirthdate());
+
+            personInfoDtoList.add(new PersonInfoDto(person.getLastName(), person.getAddress(), calculator.getAge(), person.getEmail(), medicalrecord.getMedications(), medicalrecord.getAllergies()));
+
         }
-        return new PersonInfoDto(listPersons, listMedicalrecord,calculator.getListAgeCalculate());
+        return personInfoDtoList;
 
     }
 

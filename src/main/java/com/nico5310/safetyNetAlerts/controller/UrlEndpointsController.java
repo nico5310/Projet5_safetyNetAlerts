@@ -7,7 +7,6 @@ import com.nico5310.safetyNetAlerts.dto.url4fire.PersonListByAddress;
 import com.nico5310.safetyNetAlerts.dto.url5flood.FamilyListByStation;
 import com.nico5310.safetyNetAlerts.dto.url6personInfo.PersonInfoDto;
 import com.nico5310.safetyNetAlerts.dto.url7communityEmail.EmailListDto;
-import com.nico5310.safetyNetAlerts.model.Person;
 import com.nico5310.safetyNetAlerts.service.UrlEndpointService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.text.ParseException;
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -29,7 +27,7 @@ public class UrlEndpointsController {
 
     //URL 1 firestation
     @GetMapping(value = "/firestation/{stationNumber}")
-    public PersonsByStationDto allPersonsByStation (@PathVariable int stationNumber) {
+    public List<PersonsByStationDto> allPersonsByStation (@PathVariable int stationNumber) {
         return urlEndpointService.allPersonsByStation(stationNumber);
     }
 
@@ -65,7 +63,7 @@ public class UrlEndpointsController {
 
     // URL 6 personinfo
     @GetMapping(value = "/personInfo/{firstName}{lastName}")
-    public PersonInfoDto allPersonInfo(@RequestParam(value = "firstname") String firstName, @RequestParam (value = "lastName") String lastName) throws ParseException, org.json.simple.parser.ParseException {
+    public List<PersonInfoDto> allPersonInfo(@RequestParam(value = "firstname") String firstName, @RequestParam (value = "lastName") String lastName)  {
         return  urlEndpointService.allPersonInfo(firstName, lastName);
     }
 
