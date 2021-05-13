@@ -15,7 +15,7 @@ public class FirestationController {
     @Autowired
     private FirestationServiceInterface firestationServiceInterface;
 
-    @GetMapping("/firestation")
+    @GetMapping("/firestations")
     public List<Firestation> findFirestationAll() {
 
         List<Firestation> findFirestation = firestationServiceInterface.findFirestationAll();
@@ -27,7 +27,7 @@ public class FirestationController {
         return findFirestation;
     }
 
-    @PostMapping("firestation")
+    @PostMapping("/firestation")
     public List<Firestation> addFirestation(@RequestBody Firestation firestation) {
 
         List<Firestation> newFire = firestationServiceInterface.saveFirestationList(firestation);

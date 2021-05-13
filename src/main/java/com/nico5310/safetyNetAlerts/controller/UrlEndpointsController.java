@@ -27,50 +27,50 @@ public class UrlEndpointsController {
     UrlEndpointService urlEndpointService;
 
     //URL 1 firestation
-    @GetMapping(value = "/firestation/{stationNumber}")
-    public PersonsByStationDto allPersonsByStation(@PathVariable int stationNumber) throws ParseException {
+    @GetMapping(value = "/firestation")
+    public PersonsByStationDto allPersonsByStation(@RequestParam (value = "stationNumber") int stationNumber) throws ParseException {
 
         return urlEndpointService.allPersonsByStation(stationNumber);
     }
 
     //URL 2 childAlerts
-    @GetMapping(value = "/childAlert/{address}")
-    public ChildByAddressDto allChildByAddress(@PathVariable String address) throws ParseException {
+    @GetMapping(value = "/childAlert")
+    public ChildByAddressDto allChildByAddress(@RequestParam (value = "address") String address) throws ParseException {
 
         return urlEndpointService.allChildByAddress(address);
     }
 
     // URL 3 phoneAlert
-    @GetMapping(value = "/phoneAlert/{firestationNumber}")
-    public PhoneAlertListDto allPhoneByFirestation(@PathVariable int firestationNumber) {
+    @GetMapping(value = "/phoneAlert")
+    public PhoneAlertListDto allPhoneByFirestation(@RequestParam (value = "firestationNumber") int firestationNumber) {
 
         return urlEndpointService.allPhoneByFirestation(firestationNumber);
     }
 
     // URL 4 fire
-    @GetMapping(value = "/fire/{address}")
-    public PersonListByAddress allPersonsByAddress(@PathVariable String address) {
+    @GetMapping(value = "/fire")
+    public PersonListByAddress allPersonsByAddress(@RequestParam (value = "address") String address) {
 
         return urlEndpointService.allPersonsByAddress(address);
     }
 
     // URL 5 flood
-    @GetMapping(value = "/flood/stations/{stationNumber}")
-    public List<FamilyListByStation> allFamilyByStation(@PathVariable List<Integer> stationNumber) throws ParseException {
+    @GetMapping(value = "/flood/stations")
+    public List<FamilyListByStation> allFamilyByStation(@RequestParam (value = "stationNumber") List<Integer> stationNumber) throws ParseException {
 
         return urlEndpointService.allFamilyByStation(stationNumber);
     }
 
     // URL 6 personinfo
-    @GetMapping(value = "/personInfo/{firstName}{lastName}")
-    public List<PersonInfoDto> allPersonInfo(@RequestParam(value = "firstname") String firstName, @RequestParam(value = "lastName") String lastName) throws ParseException, org.json.simple.parser.ParseException {
+    @GetMapping(value = "/personInfo")
+    public List<PersonInfoDto> allPersonInfo(@RequestParam(value = "firstName") String firstName, @RequestParam(value = "lastName") String lastName) throws ParseException {
 
         return urlEndpointService.allPersonInfo(firstName, lastName);
     }
 
     //URL 7 communityEmail
-    @GetMapping(value = "/communityEmail/{city}")
-    public EmailListDto allEmailsByCity(@PathVariable String city) {
+    @GetMapping(value = "/communityEmail")
+    public EmailListDto allEmailsByCity(@RequestParam (value = "city") String city) {
 
         return urlEndpointService.allEmailsByCity(city);
     }

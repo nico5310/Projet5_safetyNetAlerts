@@ -24,7 +24,7 @@ public class MedicalrecordService implements MedicalrecordServiceInterface {
         } catch (Exception exception) {
             log.error("Error retrieving the Medicalrecord list" + exception.getMessage());
         }
-        return null; // TODO: modify return
+        return null;
     }
 
     @Override
@@ -34,7 +34,7 @@ public class MedicalrecordService implements MedicalrecordServiceInterface {
             List<Medicalrecord> saveMedical = medicalrecordRepositoryInterface.getMedicalrecordAll();
             for (Medicalrecord saveMedic : saveMedical) {
                 if (saveMedic.getFirstNameAndLastName().equals(medicalrecord.getFirstNameAndLastName())) {
-                    return null; //TODO: modify return
+                    return null;
                 }
             }
             saveMedical.add(medicalrecord);
@@ -42,7 +42,7 @@ public class MedicalrecordService implements MedicalrecordServiceInterface {
         } catch (Exception exception) {
             log.error("Error saving the Medicalrecord to list" + exception.getMessage());
         }
-        return null; //TODO: modify return
+        return null;
     }
 
     @Override
@@ -65,7 +65,7 @@ public class MedicalrecordService implements MedicalrecordServiceInterface {
                 }
             }
         }
-        return null; //TODO: modify return
+        return null;
     }
 
     @Override
@@ -94,6 +94,16 @@ public class MedicalrecordService implements MedicalrecordServiceInterface {
         return null;
     }
 
+    @Override
+    public Medicalrecord findByFirstNameAndLastName(String firstName, String lastName) {
+
+        for (Medicalrecord medicalRecord : medicalrecordRepositoryInterface.getMedicalrecordAll()) {
+            if (medicalRecord.getFirstName().equals(firstName) && (medicalRecord.getLastName().equals(lastName))) {
+                return medicalRecord;
+            }
+        }
+        return null;
+    }
 
 }
 

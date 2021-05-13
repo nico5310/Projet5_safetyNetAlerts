@@ -149,17 +149,17 @@ public class UrlEndpointService {
     }
 
     // URL 6 personinfo
-    public List<PersonInfoDto> allPersonInfo(String firstName, String lastName) {
+    public List<PersonInfoDto> allPersonInfo(String firstName, String lastName) throws ParseException{
 
-        List<Person>        listPersons2      = personServiceInterface.findByLastName(lastName);
-        List<Person>        listPersons       = new ArrayList<>(listPersons2);
-        List<PersonInfoDto> personInfoDtoList = new ArrayList<>();
+        List<Person>        listPersons2      = personServiceInterface.findByFirstNameAndLastName(firstName, lastName);
+        List<Person>        listPersons       = new ArrayList<Person>(listPersons2);
+        List<PersonInfoDto> personInfoDtoList = new ArrayList<PersonInfoDto>();
 
         Calculator calculator = new Calculator();
         for (Person person : listPersons) {
             Medicalrecord medicalrecord = medicalrecordServiceInterface.findByFirstName(person.getFirstName());
             calculator.calculateAge(medicalrecord.getBirthdate());
-            personInfoDtoList.add(new PersonInfoDto(person.getLastName(), person.getAddress(), person.getAge(), person.getEmail(), medicalrecord
+            personInfoDtoList.add(new PersonInfoDto(person.getLastName(), person.getAddress(), calculator.getAge(), person.getEmail(), medicalrecord
                     .getMedications(), medicalrecord.getAllergies()));
         }
         return personInfoDtoList;

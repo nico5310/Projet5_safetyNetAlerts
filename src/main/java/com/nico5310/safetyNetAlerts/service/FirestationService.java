@@ -24,7 +24,7 @@ public class FirestationService implements FirestationServiceInterface {
         } catch (Exception exception) {
             log.error("Error retrieving the Firestation List");
         }
-        return null; //TODO: modify return
+        return null;
     }
 
     @Override
@@ -34,7 +34,7 @@ public class FirestationService implements FirestationServiceInterface {
             List<Firestation> saveFirestation = firestationRepositoryInterface.getFirestationAll();
             for (Firestation saveFire : saveFirestation) {
                 if (saveFire.getAddress().equals(firestation.getAddress())) {
-                    return null; // TODO: modify return
+                    return null;
                 }
             }
             saveFirestation.add(firestation);
@@ -42,7 +42,7 @@ public class FirestationService implements FirestationServiceInterface {
         } catch (Exception exception) {
             log.error("Error saving the Firestation to list");
         }
-        return null; //TODO: modify return
+        return null;
     }
 
     @Override
@@ -54,7 +54,7 @@ public class FirestationService implements FirestationServiceInterface {
                 updateFirestation = firestationRepositoryInterface.getFirestationAll();
             } catch (Exception exception) {
                 log.error("Error updating the People to list" + exception.getMessage());
-                return null; // TODO: modify return
+                return null;
             }
             for (Firestation update : updateFirestation) {
                 if (update.getAddress().equals(firestation.getAddress())) { ///
@@ -63,7 +63,7 @@ public class FirestationService implements FirestationServiceInterface {
                 }
             }
         }
-        return null; // TODO: modify return
+        return null;
     }
 
     @Override

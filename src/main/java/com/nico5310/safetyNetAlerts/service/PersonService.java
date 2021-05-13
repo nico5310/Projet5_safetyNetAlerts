@@ -26,7 +26,7 @@ public class PersonService implements PersonServiceInterface {
         } catch (Exception exception) {
             log.error("Error retrieving the People list" + exception.getMessage());
         }
-        return null; // TODO: modify return
+        return null;
     }
 
     @Override
@@ -36,7 +36,7 @@ public class PersonService implements PersonServiceInterface {
             List<Person> savePerson = personRepositoryInterface.getPersonAll();
             for (Person savePers : savePerson) {
                 if (savePers.getFirstNameAndLastName().equals(person.getFirstNameAndLastName())) {
-                    return null; // TODO: modify return
+                    return null;
                 }
             }
             savePerson.add(person);
@@ -44,7 +44,7 @@ public class PersonService implements PersonServiceInterface {
         } catch (Exception exception) {
             log.error("Error saving the People to list" + exception.getMessage());
         }
-        return null; // TODO: modify return
+        return null;
     }
 
     @Override
@@ -56,7 +56,7 @@ public class PersonService implements PersonServiceInterface {
                 updatePerson = personRepositoryInterface.getPersonAll();
             } catch (Exception exception) {
                 log.error("Error updating the People to list" + exception.getMessage());
-                return null; // TODO: modify return
+                return null;
             }
             for (Person update : updatePerson) {
                 if (update.getFirstNameAndLastName().equals(person.getFirstNameAndLastName())) {
@@ -69,7 +69,7 @@ public class PersonService implements PersonServiceInterface {
                 }
             }
         }
-        return null; // TODO: modify return
+        return null;
     }
 
     @Override
@@ -105,6 +105,18 @@ public class PersonService implements PersonServiceInterface {
         List<Person> listPerson = new ArrayList<Person>();
         for (Person person : personRepositoryInterface.getPersonAll()) {
             if (person.getLastName().equals(lastName)) {
+                listPerson.add(person);
+            }
+        }
+        return listPerson;
+    }
+
+    @Override
+    public List<Person> findByFirstNameAndLastName(String firstName, String lastName) {
+
+        List<Person> listPerson = new ArrayList<Person>();
+        for (Person person : personRepositoryInterface.getPersonAll()) {
+            if (person.getFirstName().equals(firstName) && (person.getLastName().equals(lastName))) {
                 listPerson.add(person);
             }
         }
