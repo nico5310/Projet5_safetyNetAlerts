@@ -3,6 +3,7 @@ package com.nico5310.safetyNetAlerts.controller;
 import com.nico5310.safetyNetAlerts.dto.url1firestation.PersonsByStationDto;
 import com.nico5310.safetyNetAlerts.dto.url2childAlert.ChildByAddressDto;
 import com.nico5310.safetyNetAlerts.dto.url3phoneAlert.PhoneAlertListDto;
+import com.nico5310.safetyNetAlerts.dto.url4fire.PersonFireAddress;
 import com.nico5310.safetyNetAlerts.dto.url4fire.PersonListByAddress;
 import com.nico5310.safetyNetAlerts.dto.url5flood.FamilyListByStation;
 import com.nico5310.safetyNetAlerts.dto.url6personInfo.PersonInfoDto;
@@ -34,7 +35,7 @@ public class UrlEndpointsController {
 
     //URL 2 childAlerts
     @GetMapping(value = "/childAlert/{address}")
-    public List<ChildByAddressDto> allChildByAddress (@PathVariable String address) throws ParseException{
+    public ChildByAddressDto allChildByAddress (@PathVariable String address) throws ParseException{
        return urlEndpointService.allChildByAddress(address);
     }
 
@@ -46,7 +47,7 @@ public class UrlEndpointsController {
 
     // URL 4 fire
     @GetMapping(value = "/fire/{address}")
-    public PersonListByAddress allPersonsByAddress(@PathVariable String address)  {
+    public List<PersonFireAddress> allPersonsByAddress(@PathVariable String address)  {
         return urlEndpointService.allPersonsByAddress(address);
     }
 
