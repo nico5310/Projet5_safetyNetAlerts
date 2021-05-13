@@ -47,7 +47,7 @@ public class UrlEndpointsController {
 
     // URL 4 fire
     @GetMapping(value = "/fire/{address}")
-    public List<PersonFireAddress> allPersonsByAddress(@PathVariable String address)  {
+    public PersonListByAddress allPersonsByAddress(@PathVariable String address)  {
         return urlEndpointService.allPersonsByAddress(address);
     }
 

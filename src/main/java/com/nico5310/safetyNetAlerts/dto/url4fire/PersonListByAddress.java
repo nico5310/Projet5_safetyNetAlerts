@@ -10,13 +10,18 @@ import java.util.List;
 @Data
 public class PersonListByAddress {
 
-    private Firestation             firestation;
-    private List<PersonFireAddress> personFireAddress;
+    private Firestation             firestationNumber;
+    private List<PersonFireAddress> listPersonsByAddress;
 
+    public PersonListByAddress(Firestation firestationNumber, List<PersonFireAddress> listPersonsByAddress) {
+
+        this.firestationNumber = firestationNumber;
+        this.listPersonsByAddress = listPersonsByAddress;
+    }
 
     @Override
     public String toString() {
 
-        return "PersonFireAddress [firestation=" + getFirestation() + ", personFireAddress=" + getPersonFireAddress() + "]";
+        return "PersonFireAddress [firestation=" + getFirestationNumber() + ", personFireAddress=" + getListPersonsByAddress() + "]";
     }
 }

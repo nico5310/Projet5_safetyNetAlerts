@@ -10,22 +10,22 @@ import java.util.List;
 @Data
 public class PersonsByStationDto {
    @JsonIgnoreProperties({"zip", "city", "email"})
-   private List<Person> listPersons;
-   private long adults;
-   private long children;
+   private List<Person> listPersonsStation;
+   private long         adults;
+   private long         children;
 
-   public PersonsByStationDto(List<Person> listPersons, long adults, long children) {
+   public PersonsByStationDto(List<Person> listPersonsStation, long adults, long children) {
 
-      this.listPersons = listPersons;
-      this.adults      = adults;
-      this.children    = children;
+      this.listPersonsStation = listPersonsStation;
+      this.adults             = adults;
+      this.children           = children;
    }
 
 
 
    @Override
    public String toString() {
-      return " [ PersonsByFirestation=" + listPersons.toString() + " adults=" + adults + ", children=" + children + "]";
+      return " [ PersonsByFirestation=" + listPersonsStation.toString() + " adults=" + adults + ", children=" + children + "]";
    }
 
 }
