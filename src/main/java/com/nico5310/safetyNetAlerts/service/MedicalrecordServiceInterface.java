@@ -7,11 +7,15 @@ import java.util.List;
 public interface MedicalrecordServiceInterface {
 
     List<Medicalrecord> findMedicalrecordAll();
+
     List<Medicalrecord> saveMedicalrecordList(Medicalrecord medicalrecord);
+
     Medicalrecord updateMedicalrecordList(Medicalrecord medicalrecord);
+
     boolean deleteMedicalrecordList(String firstNameAndLastName);
 
-    Medicalrecord findById(String firstNameAndLastName);
+    // Url Endpoint
+
     Medicalrecord findByFirstName(String firstName);
-    List<Medicalrecord> findByLastName(String lastName);
+
 }

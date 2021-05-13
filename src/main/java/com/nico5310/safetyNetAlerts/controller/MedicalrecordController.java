@@ -33,7 +33,7 @@ public class MedicalrecordController {
         List<Medicalrecord> newMedical = medicalrecordServiceInterface.saveMedicalrecordList(medicalrecord);
         if (newMedical != null) {
             log.info("addMedicalrecord POST request SUCCESS");
-        }else {
+        } else {
             log.error("addMedicalrecord POST request FAILED");
         }
         return newMedical;
@@ -45,18 +45,18 @@ public class MedicalrecordController {
         Medicalrecord updateMedical = medicalrecordServiceInterface.updateMedicalrecordList(medicalrecord);
         if (updateMedical != null) {
             log.info("updateMedicalrecord PUT request SUCCESS");
-        }else {
+        } else {
             log.error("updateMedicalrecord PUT request FAILED");
         }
         return updateMedical;
     }
 
     @DeleteMapping("/medicalRecord")
-    public void deleteMedicalrecord(@RequestParam String firstNameAndLastName ) {
+    public void deleteMedicalrecord(@RequestParam String firstNameAndLastName) {
 
         if (medicalrecordServiceInterface.deleteMedicalrecordList(firstNameAndLastName)) {
             log.info("deleteMedicalrecord DELETE request SUCCESS");
-        }else {
+        } else {
             log.error("deleteMedicalrecord DELETE request FAILED");
         }
     }

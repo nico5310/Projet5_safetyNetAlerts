@@ -11,7 +11,7 @@ import java.util.List;
 
 @Slf4j
 @Service
-public class FirestationService implements FirestationServiceInterface{
+public class FirestationService implements FirestationServiceInterface {
 
     @Autowired
     FirestationRepositoryInterface firestationRepositoryInterface;
@@ -21,7 +21,7 @@ public class FirestationService implements FirestationServiceInterface{
 
         try {
             return firestationRepositoryInterface.getFirestationAll();
-        }catch (Exception exception) {
+        } catch (Exception exception) {
             log.error("Error retrieving the Firestation List");
         }
         return null; //TODO: modify return
@@ -39,7 +39,7 @@ public class FirestationService implements FirestationServiceInterface{
             }
             saveFirestation.add(firestation);
             return saveFirestation;
-        }catch (Exception exception) {
+        } catch (Exception exception) {
             log.error("Error saving the Firestation to list");
         }
         return null; //TODO: modify return
@@ -57,7 +57,7 @@ public class FirestationService implements FirestationServiceInterface{
                 return null; // TODO: modify return
             }
             for (Firestation update : updateFirestation) {
-                if (update.getAddress().equals(firestation.getAddress()))  { ///
+                if (update.getAddress().equals(firestation.getAddress())) { ///
                     update.setStation(firestation.getStation());
                     return update;
                 }
@@ -73,10 +73,10 @@ public class FirestationService implements FirestationServiceInterface{
             List<Firestation> deleteFirestation = firestationRepositoryInterface.getFirestationAll();
             return deleteFirestation.removeIf(firestation -> firestation.getAddress().equals(address));
 
-        }catch (Exception exception) {
+        } catch (Exception exception) {
             log.error("Error for deleting the Firestation");
         }
-        return  false;
+        return false;
     }
 
     //Endpoints
@@ -92,7 +92,7 @@ public class FirestationService implements FirestationServiceInterface{
     }
 
     @Override
-    public  List<Firestation> findAddressByStation(int stationNumber) {
+    public List<Firestation> findAddressByStation(int stationNumber) {
 
         List<Firestation> listFirestation = new ArrayList<>();
         for (Firestation firestation : firestationRepositoryInterface.getFirestationAll()) {

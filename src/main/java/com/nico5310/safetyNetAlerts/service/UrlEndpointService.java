@@ -14,7 +14,6 @@ import com.nico5310.safetyNetAlerts.model.Medicalrecord;
 import com.nico5310.safetyNetAlerts.model.Person;
 
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.collections.list.PredicatedList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -34,9 +33,6 @@ public class UrlEndpointService {
     MedicalrecordServiceInterface medicalrecordServiceInterface;
 
 
-    /**
-     * Constructor UrlEndpointService
-     */
     public UrlEndpointService(PersonServiceInterface personServiceInterface, FirestationServiceInterface firestationServiceInterface, MedicalrecordServiceInterface medicalrecordServiceInterface) {
 
         this.personServiceInterface        = personServiceInterface;
@@ -47,7 +43,7 @@ public class UrlEndpointService {
     // URL 1 firestation
     public PersonsByStationDto allPersonsByStation(int stationNumber) throws ParseException {
 
-        Calculator   calculator  = new Calculator();
+        Calculator   calculator         = new Calculator();
         List<Person> listPersonsStation = new ArrayList<Person>();
         for (Firestation firestation1 : firestationServiceInterface.findAddressByStation(stationNumber)) {
             List<Person> listPerson1 = personServiceInterface.findByAddress(firestation1.getAddress());
@@ -77,8 +73,7 @@ public class UrlEndpointService {
             listMedicalrecords.add(medicalrecord);
             calculator.calculateAge(medicalrecord.getBirthdate());
 
-            PersonsWithAge personsWithAge = new PersonsWithAge(person.getFirstName(), person.getLastName(), calculator
-                    .getAge());
+            PersonsWithAge personsWithAge = new PersonsWithAge(person.getFirstName(), person.getLastName(), calculator.getAge());
             if (personsWithAge.getAge() < 18) {
                 childList.add(personsWithAge);
             } else {
@@ -109,17 +104,18 @@ public class UrlEndpointService {
     // URL 4 fire
     public PersonListByAddress allPersonsByAddress(String address) {
 
-        Firestation firestationNumber  = firestationServiceInterface.findById(address);
+        Firestation firestationNumber = firestationServiceInterface.findById(address);
 
-        List<Person> listPersons3 = personServiceInterface.findByAddress(firestationNumber.getAddress());
-        List<Person> listPersons  = new ArrayList<>(listPersons3);
-        List<PersonFireAddress> listPersonsByAddress= new ArrayList<>();
+        List<Person>            listPersons3         = personServiceInterface.findByAddress(firestationNumber.getAddress());
+        List<Person>            listPersons          = new ArrayList<>(listPersons3);
+        List<PersonFireAddress> listPersonsByAddress = new ArrayList<>();
 
         Calculator calculator = new Calculator();
         for (Person person : listPersons) {
             Medicalrecord medicalrecord = medicalrecordServiceInterface.findByFirstName(person.getFirstName());
             calculator.calculateAge(medicalrecord.getBirthdate());
-            listPersonsByAddress.add(new PersonFireAddress(person.getLastName(), person.getPhone(), calculator.getAge(),  medicalrecord.getMedications(), medicalrecord.getAllergies()));
+            listPersonsByAddress.add(new PersonFireAddress(person.getLastName(), person.getPhone(), calculator.getAge(), medicalrecord
+                    .getMedications(), medicalrecord.getAllergies()));
 
         }
         return new PersonListByAddress(firestationNumber, listPersonsByAddress);
@@ -155,15 +151,16 @@ public class UrlEndpointService {
     // URL 6 personinfo
     public List<PersonInfoDto> allPersonInfo(String firstName, String lastName) {
 
-        List<Person> listPersons2 = personServiceInterface.findByLastName(lastName);
-        List<Person> listPersons  = new ArrayList<>(listPersons2);
+        List<Person>        listPersons2      = personServiceInterface.findByLastName(lastName);
+        List<Person>        listPersons       = new ArrayList<>(listPersons2);
         List<PersonInfoDto> personInfoDtoList = new ArrayList<>();
 
         Calculator calculator = new Calculator();
         for (Person person : listPersons) {
             Medicalrecord medicalrecord = medicalrecordServiceInterface.findByFirstName(person.getFirstName());
             calculator.calculateAge(medicalrecord.getBirthdate());
-            personInfoDtoList.add(new PersonInfoDto(person.getLastName(), person.getAddress(), person.getAge(), person.getEmail(), medicalrecord.getMedications(), medicalrecord.getAllergies()));
+            personInfoDtoList.add(new PersonInfoDto(person.getLastName(), person.getAddress(), person.getAge(), person.getEmail(), medicalrecord
+                    .getMedications(), medicalrecord.getAllergies()));
         }
         return personInfoDtoList;
 
@@ -173,7 +170,7 @@ public class UrlEndpointService {
     public EmailListDto allEmailsByCity(String city) {
 
         List<Person> listPersons = new ArrayList<>();
-        List<String> listEmails   = new ArrayList<>();
+        List<String> listEmails  = new ArrayList<>();
         for (Person person : personServiceInterface.findEmailByCity(city)) {
             listPersons.add(person);
         }

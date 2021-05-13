@@ -14,32 +14,33 @@ import java.util.List;
 @Component
 public class Database {
 
-    private List<Person> persons;
+    private List<Person>        persons;
     private List<Medicalrecord> medicalrecords;
-    private List<Firestation> firestations;
+    private List<Firestation>   firestations;
 
     @PostConstruct
     public void initDatabase() throws IOException {
 
         Database database = new Database();
-        byte[] jsonData = Files.readAllBytes(Paths.get("src/main/resources/data.json"));
+        byte[]   jsonData = Files.readAllBytes(Paths.get("src/main/resources/data.json"));
 
         ObjectMapper objectMapper = new ObjectMapper();
         try {
             database = objectMapper.readValue(jsonData, Database.class);
-        }catch (IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
 
-        this.persons = database.getPersons();
+        this.persons        = database.getPersons();
         this.medicalrecords = database.getMedicalrecords();
-        this.firestations = database.getFirestations();
+        this.firestations   = database.getFirestations();
 
-//        System.out.println("Database Object\n" + database);
+        //        System.out.println("Database Object\n" + database);
     }
 
     @Override
-    public String toString(){
+    public String toString() {
+
         StringBuilder stringbuilder = new StringBuilder();
         stringbuilder.append("Person=" + "\n" + getPersons() + "\n");
         stringbuilder.append("Medicalrecord=" + "\n" + getMedicalrecords() + "\n");

@@ -10,13 +10,14 @@ import java.util.List;
 
 @Repository
 @Data
-public class FirestationRepository implements FirestationRepositoryInterface{
+public class FirestationRepository implements FirestationRepositoryInterface {
 
     @Autowired
     private Database database;
 
     @Override
     public List<Firestation> getFirestationAll() {
+
         return database.getFirestations();
     }
 

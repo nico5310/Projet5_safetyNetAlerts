@@ -10,13 +10,14 @@ import java.util.List;
 
 @Repository
 @Data
-public class MedicalrecordRepository implements MedicalrecordRepositoryInterface{
+public class MedicalrecordRepository implements MedicalrecordRepositoryInterface {
 
     @Autowired
     private Database database;
 
     @Override
-    public  List<Medicalrecord> getMedicalrecordAll () {
+    public List<Medicalrecord> getMedicalrecordAll() {
+
         return database.getMedicalrecords();
     }
 

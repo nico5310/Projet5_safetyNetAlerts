@@ -18,21 +18,15 @@ public class Person {
     @JsonIgnore
     private Medicalrecord medicalrecord;
     @JsonIgnore
-    private Firestation firestation;
+    private Firestation   firestation;
     @JsonIgnore
-    private String firstNameAndLastName;
+    private String        firstNameAndLastName;
 
-    /**
-     * Constructor Id
-     * @return ID firstName + lastName
-     */
     public String getFirstNameAndLastName() {
+
         return firstName + lastName;
     }
 
-    /**
-     * Constructor for Person
-     */
     public Person() {
 
     }
@@ -54,7 +48,8 @@ public class Person {
 
 
     @Override
-    public String toString(){
+    public String toString() {
+
         return getFirstName() + ", " + getLastName() + ", " + getAddress() + ", " + getCity() + ", " + getZip() + ", " + getPhone() + ", " + getEmail() + "\n";
     }
 }

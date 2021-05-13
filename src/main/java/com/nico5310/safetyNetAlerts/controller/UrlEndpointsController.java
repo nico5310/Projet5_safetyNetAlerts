@@ -3,7 +3,6 @@ package com.nico5310.safetyNetAlerts.controller;
 import com.nico5310.safetyNetAlerts.dto.url1firestation.PersonsByStationDto;
 import com.nico5310.safetyNetAlerts.dto.url2childAlert.ChildByAddressDto;
 import com.nico5310.safetyNetAlerts.dto.url3phoneAlert.PhoneAlertListDto;
-import com.nico5310.safetyNetAlerts.dto.url4fire.PersonFireAddress;
 import com.nico5310.safetyNetAlerts.dto.url4fire.PersonListByAddress;
 import com.nico5310.safetyNetAlerts.dto.url5flood.FamilyListByStation;
 import com.nico5310.safetyNetAlerts.dto.url6personInfo.PersonInfoDto;
@@ -29,43 +28,50 @@ public class UrlEndpointsController {
 
     //URL 1 firestation
     @GetMapping(value = "/firestation/{stationNumber}")
-    public PersonsByStationDto allPersonsByStation (@PathVariable int stationNumber) throws ParseException {
+    public PersonsByStationDto allPersonsByStation(@PathVariable int stationNumber) throws ParseException {
+
         return urlEndpointService.allPersonsByStation(stationNumber);
     }
 
     //URL 2 childAlerts
     @GetMapping(value = "/childAlert/{address}")
-    public ChildByAddressDto allChildByAddress (@PathVariable String address) throws ParseException{
-       return urlEndpointService.allChildByAddress(address);
+    public ChildByAddressDto allChildByAddress(@PathVariable String address) throws ParseException {
+
+        return urlEndpointService.allChildByAddress(address);
     }
 
     // URL 3 phoneAlert
     @GetMapping(value = "/phoneAlert/{firestationNumber}")
     public PhoneAlertListDto allPhoneByFirestation(@PathVariable int firestationNumber) {
-        return  urlEndpointService.allPhoneByFirestation(firestationNumber);
+
+        return urlEndpointService.allPhoneByFirestation(firestationNumber);
     }
 
     // URL 4 fire
     @GetMapping(value = "/fire/{address}")
-    public PersonListByAddress allPersonsByAddress(@PathVariable String address)  {
+    public PersonListByAddress allPersonsByAddress(@PathVariable String address) {
+
         return urlEndpointService.allPersonsByAddress(address);
     }
 
     // URL 5 flood
     @GetMapping(value = "/flood/stations/{stationNumber}")
     public List<FamilyListByStation> allFamilyByStation(@PathVariable List<Integer> stationNumber) throws ParseException {
+
         return urlEndpointService.allFamilyByStation(stationNumber);
     }
 
     // URL 6 personinfo
     @GetMapping(value = "/personInfo/{firstName}{lastName}")
-    public List<PersonInfoDto> allPersonInfo(@RequestParam(value = "firstname") String firstName, @RequestParam (value = "lastName") String lastName) throws ParseException, org.json.simple.parser.ParseException {
-        return  urlEndpointService.allPersonInfo(firstName, lastName);
+    public List<PersonInfoDto> allPersonInfo(@RequestParam(value = "firstname") String firstName, @RequestParam(value = "lastName") String lastName) throws ParseException, org.json.simple.parser.ParseException {
+
+        return urlEndpointService.allPersonInfo(firstName, lastName);
     }
 
     //URL 7 communityEmail
     @GetMapping(value = "/communityEmail/{city}")
-    public  EmailListDto allEmailsByCity(@PathVariable String city) {
+    public EmailListDto allEmailsByCity(@PathVariable String city) {
+
         return urlEndpointService.allEmailsByCity(city);
     }
 

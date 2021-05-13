@@ -28,15 +28,15 @@ public class PersonController {
     }
 
     @PostMapping("/person")
-    public List<Person> addPerson( @RequestBody Person person) {
+    public List<Person> addPerson(@RequestBody Person person) {
 
         List<Person> newPers = personServiceInterface.savePersonList(person);
         if (newPers != null) {
             log.info("addPerson POST request SUCCESS");
-        }else {
+        } else {
             log.error("addPerson POST request FAILED");
         }
-        return  newPers;
+        return newPers;
     }
 
     @PutMapping("/person")
@@ -45,7 +45,7 @@ public class PersonController {
         Person updatePers = personServiceInterface.updatePersonList(person);
         if (updatePers != null) {
             log.info("updatePerson PUT request SUCCESS");
-        }else {
+        } else {
             log.error("updatePerson PUT request FAILED ");
         }
         return updatePers;
@@ -56,9 +56,9 @@ public class PersonController {
 
         if (personServiceInterface.deletePersonList(firstNameAndLastName)) {
             log.info("deletePerson DELETE request SUCCESS");
-        }else {
+        } else {
             log.error("deletePerson DELETE request FAILED");
         }
     }
 
- }
+}

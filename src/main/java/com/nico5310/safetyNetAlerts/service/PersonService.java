@@ -20,6 +20,7 @@ public class PersonService implements PersonServiceInterface {
 
     @Override
     public List<Person> findPersonAll() {
+
         try {
             return personRepositoryInterface.getPersonAll();
         } catch (Exception exception) {
@@ -84,17 +85,7 @@ public class PersonService implements PersonServiceInterface {
         return false;
     }
 
-    // Endpoints
-    @Override
-    public Person findById(String firstNameAndLastName) {
-
-        for (Person person : personRepositoryInterface.getPersonAll()) {
-            if (person.getFirstNameAndLastName().equals(firstNameAndLastName)) {
-                return person;
-            }
-        }
-        return null;
-    }
+    // Urls Endpoints
 
     @Override
     public List<Person> findByAddress(String address) {
@@ -117,11 +108,11 @@ public class PersonService implements PersonServiceInterface {
                 listPerson.add(person);
             }
         }
-        return  listPerson;
+        return listPerson;
     }
 
     @Override
-    public  List<Person> findEmailByCity(String city) {
+    public List<Person> findEmailByCity(String city) {
 
         List<Person> listPerson = new ArrayList<>();
         for (Person person : personRepositoryInterface.getPersonAll()) {

@@ -11,31 +11,26 @@ import java.util.List;
 @Data
 public class Medicalrecord {
 
-    private String firstName;
-    private String lastName;
+    private String       firstName;
+    private String       lastName;
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "MM/dd/yyyy")
-    private String birthdate;
+    private String       birthdate;
     private List<String> medications;
     private List<String> allergies;
     @JsonIgnore
-    private int age;
+    private int          age;
     @JsonIgnore
-    private String firstNameAndLastName;
+    private String       firstNameAndLastName;
 
-    /**
-     * Constructor ID
-     * @return
-     */
     public String getFirstNameAndLastName() {
+
         return firstName + lastName;
     }
 
-    /**
-     * Constructor Medicalrecord
-     */
     public Medicalrecord() {
 
     }
+
     public Medicalrecord(String firstName, String lastName, String birthdate, List<String> medications, List<String> allergies, int age, String firstNameAndLastName) {
 
         this.firstName            = firstName;
@@ -49,6 +44,7 @@ public class Medicalrecord {
 
     @Override
     public String toString() {
+
         return getFirstName() + ", " + getLastName() + ", " + getBirthdate() + ", " + getMedications() + ", " + getAllergies() + "\n";
     }
 

@@ -8,14 +8,11 @@ import java.util.List;
 @Data
 public class Firestation {
 
-    private String address;
-    private int station;
+    private String       address;
+    private int          station;
     @JsonIgnore
     private List<Person> person;
 
-    /**
-     * Constructor firestation
-     */
     public Firestation() {
 
     }
@@ -28,7 +25,8 @@ public class Firestation {
     }
 
     @Override
-    public String toString(){
+    public String toString() {
+
         return getAddress() + ", " + getStation() + "\n";
     }
 
