@@ -9,21 +9,23 @@ import java.util.List;
 @Data
 public class FamilyListByStation {
 
-    private List<Person>        listPersons;
-    private List<Medicalrecord> listMedicalrecords;
-    private List<Integer>       listAges;
+    private String lastName;
+    private String phone;
+    private int age;
+    private List<String> medications;
+    private List<String> allergies;
 
+    public FamilyListByStation(String lastName, String phone, int age, List<String> medications, List<String> allergies) {
 
-    public FamilyListByStation(List<Person> listPersons, List<Medicalrecord> listMedicalrecords, List<Integer> listAges) {
-
-        this.listPersons        = listPersons;
-        this.listMedicalrecords = listMedicalrecords;
-        this.listAges           = listAges;
+        this.lastName    = lastName;
+        this.phone       = phone;
+        this.age         = age;
+        this.medications = medications;
+        this.allergies   = allergies;
     }
-
     @Override
     public String toString() {
-        return "Flood [" + getListPersons() + ", " + getListMedicalrecords() + ", " + getListAges() + "]";
+        return "Flood [" + getLastName() + ", " + getPhone() + ", " + getAge() + ", " + getMedications() + ", " + getAllergies() + "]";
     }
 
 }

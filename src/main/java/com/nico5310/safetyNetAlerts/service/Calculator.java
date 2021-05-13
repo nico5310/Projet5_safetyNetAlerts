@@ -15,29 +15,11 @@ public class Calculator {
 
     private long children = 0;
     private long adults = 0;
-    private       int           age              = 0;
+    private int age = 0;
     private final List<Integer> listAgeCalculate = new ArrayList<Integer>();
 
-
-
-    /**
-     * Constructor for calculator
-     */
-    public Calculator() {
-
-    }
-    public Calculator(long children, long adults, int age) {
-
-        this.children = children;
-        this.adults   = adults;
-        this.age      = age;
-    }
-
-
-    public void calculateAge(String birthDate) {
+      public void calculateAge(String birthDate) {
         DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
-
-        int age;
 
         age = Period.between(LocalDate.parse(birthDate, dateTimeFormatter), LocalDate.now()).getYears();
         listAgeCalculate.add(age);
@@ -50,7 +32,5 @@ public class Calculator {
 
 
     }
-
-
 
 }

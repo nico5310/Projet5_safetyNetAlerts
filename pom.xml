@@ -21,6 +21,12 @@
 	</properties>
 
 	<dependencies>
+		<!-- SPRING BOOT DEVTOOLS -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+			<optional>true</optional>
+		</dependency>
 		<!-- SPRING BOOT WEB -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -95,7 +101,8 @@
 			<artifactId>maven-assembly-plugin</artifactId>
 			<version>3.3.0</version>
 		</dependency>
-    </dependencies>
+
+	</dependencies>
 
 	<build>
 		<plugins>

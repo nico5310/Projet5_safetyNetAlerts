@@ -7,14 +7,17 @@ import java.util.List;
 @Data
 public class EmailListDto {
 
-    private String city;
     private List<String> listEmails;
+
+    public EmailListDto(List<String> listEmails) {
+
+        this.listEmails = listEmails;
+    }
 
     /**
      * Constructor
      */
 
-    public EmailListDto(List<String> emailList) {}
 
 
     @Override

@@ -123,8 +123,7 @@ public class PersonService implements PersonServiceInterface {
     @Override
     public  List<Person> findEmailByCity(String city) {
 
-        List<Person> listPerson = new ArrayList<Person>();
-
+        List<Person> listPerson = new ArrayList<>();
         for (Person person : personRepositoryInterface.getPersonAll()) {
             if (person.getCity().equals(city)) {
                 listPerson.add(person);
@@ -132,35 +131,5 @@ public class PersonService implements PersonServiceInterface {
         }
         return listPerson;
     }
-
-    // Dto conversion
-//        private PersonDto fromEntityToDto(Person person) {
-//
-//            PersonDto personDto = new PersonDto();
-//            personDto.setFirstName(person.getFirstName());
-//            personDto.setLastName(person.getLastName());
-//            personDto.setAddress(person.getAddress());
-//            personDto.setZip(person.getZip());
-//            personDto.setPhone(person.getPhone());
-//            personDto.setEmail(person.getEmail());
-//            personDto.setAge(person.getAge());
-//
-//            return personDto;
-//        }
-//
-//        private Person fromDtoToEntity(PersonDto personDto) {
-//
-//            Person person = new Person();
-//            person.setFirstName(personDto.getFirstName());
-//            person.setLastName(personDto.getLastName());
-//            person.setAddress(personDto.getAddress());
-//            person.setZip(personDto.getZip());
-//            person.setPhone(personDto.getPhone());
-//            person.setEmail(personDto.getEmail());
-//            person.setAge(personDto.getAge());
-//            return person;
-//        }
-
-
 
 }

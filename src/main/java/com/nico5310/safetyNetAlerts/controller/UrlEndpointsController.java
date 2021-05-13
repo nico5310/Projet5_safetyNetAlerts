@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.text.ParseException;
+import java.util.List;
 
 
 @RestController
@@ -27,20 +28,14 @@ public class UrlEndpointsController {
 
     //URL 1 firestation
     @GetMapping(value = "/firestation/{stationNumber}")
-    public PersonsByStationDto allPersonsByStation (@PathVariable int stationNumber) throws ParseException, org.json.simple.parser.ParseException {
+    public PersonsByStationDto allPersonsByStation (@PathVariable int stationNumber) throws ParseException {
         return urlEndpointService.allPersonsByStation(stationNumber);
     }
 
     //URL 2 childAlerts
     @GetMapping(value = "/childAlert/{address}")
-    public ChildByAddressDto allChildByAddress (@PathVariable String address) {
-        ChildByAddressDto childByAddressDto = urlEndpointService.allChildByAddress(address);
-        long children = ChildByAddressDto.getChildren();
-        if (children == 0) {
-            return null;
-        }else {
-            return  childByAddressDto;
-        }
+    public List<ChildByAddressDto> allChildByAddress (@PathVariable String address) throws ParseException{
+       return urlEndpointService.allChildByAddress(address);
     }
 
     // URL 3 phoneAlert
@@ -51,19 +46,19 @@ public class UrlEndpointsController {
 
     // URL 4 fire
     @GetMapping(value = "/fire/{address}")
-    public PersonListByAddress allPersonsByAddress(@PathVariable String address) throws ParseException {
+    public PersonListByAddress allPersonsByAddress(@PathVariable String address)  {
         return urlEndpointService.allPersonsByAddress(address);
     }
 
     // URL 5 flood
     @GetMapping(value = "/flood/stations/{stationNumber}")
-    public FamilyListByStation allFamilyByStation(@PathVariable int stationNumber) throws ParseException {
+    public List<FamilyListByStation> allFamilyByStation(@PathVariable List<Integer> stationNumber) throws ParseException {
         return urlEndpointService.allFamilyByStation(stationNumber);
     }
 
     // URL 6 personinfo
     @GetMapping(value = "/personInfo/{firstName}{lastName}")
-    public PersonInfoDto allPersonInfo(@RequestParam(value = "firstname") String firstName, @RequestParam (value = "lastName") String lastName) throws ParseException, org.json.simple.parser.ParseException {
+    public List<PersonInfoDto> allPersonInfo(@RequestParam(value = "firstname") String firstName, @RequestParam (value = "lastName") String lastName) throws ParseException, org.json.simple.parser.ParseException {
         return  urlEndpointService.allPersonInfo(firstName, lastName);
     }
 

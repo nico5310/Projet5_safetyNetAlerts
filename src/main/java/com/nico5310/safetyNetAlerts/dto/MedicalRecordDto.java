@@ -13,9 +13,9 @@ public class MedicalRecordDto {
     private String lastName;
     private List<String> medications;
     private List<String> allergies;
-    private int age;
+    private int          age;
     @JsonIgnore
-    private String firstNameAndLastName;
+    private String       firstNameAndLastName;
 
     /**
      * Constructor Id

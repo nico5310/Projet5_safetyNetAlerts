@@ -1,6 +1,5 @@
 package com.nico5310.safetyNetAlerts.service;
 
-import com.nico5310.safetyNetAlerts.dto.url1firestation.PersonsByFirestation;
 import com.nico5310.safetyNetAlerts.dto.url1firestation.PersonsByStationDto;
 import com.nico5310.safetyNetAlerts.dto.url2childAlert.ChildByAddressDto;
 import com.nico5310.safetyNetAlerts.dto.url3phoneAlert.PhoneAlertListDto;
@@ -13,10 +12,10 @@ import com.nico5310.safetyNetAlerts.model.Medicalrecord;
 import com.nico5310.safetyNetAlerts.model.Person;
 
 import lombok.extern.slf4j.Slf4j;
-import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -43,10 +42,10 @@ public class UrlEndpointService {
     }
 
     // URL 1 firestation
-    public PersonsByStationDto allPersonsByStation(int stationNumber)  {
+    public PersonsByStationDto allPersonsByStation(int stationNumber) throws ParseException {
 
-        Calculator calculator = new Calculator();
-        List<Person> listPersons   = new ArrayList<Person>();
+        Calculator   calculator  = new Calculator();
+        List<Person> listPersons = new ArrayList<Person>();
         for (Firestation firestation1 : firestationServiceInterface.findAddressByStation(stationNumber)) {
             List<Person> listPerson1 = personServiceInterface.findByAddress(firestation1.getAddress());
             listPersons.addAll(listPerson1);
@@ -60,31 +59,33 @@ public class UrlEndpointService {
 
     }
 
-
-
     // URL 2 childAlerts
-    public ChildByAddressDto allChildByAddress(String address) {
+    public List<ChildByAddressDto> allChildByAddress(String address) throws ParseException {
 
-        List<Person> listPerson2 = personServiceInterface.findByAddress(address);
-        List<Person> listPersons = new ArrayList<>(listPerson2);
+        List<ChildByAddressDto> childByAddressDtoList = new ArrayList<>();
+        List<Person> listPersonsByAddress           = personServiceInterface.findByAddress(address);
 
         Calculator          calculator         = new Calculator();
-        List<Medicalrecord> listMedicalrecords = new ArrayList<>();
-        for (Person person : listPerson2) {
-            Medicalrecord medicalrecord = medicalrecordServiceInterface.findByFirstName(person.getFirstName());
-            listMedicalrecords.add(medicalrecord);
-            calculator.calculateAge(medicalrecord.getBirthdate());
+        List<Medicalrecord> listMedicalrecords = new ArrayList<Medicalrecord>();
+        for (Person person : listPersonsByAddress) {
+                Medicalrecord medicalrecord = medicalrecordServiceInterface.findByFirstName(person.getFirstName());
+
+                    listMedicalrecords.add(medicalrecord);
+                    calculator.calculateAge(medicalrecord.getBirthdate());
+
+                    childByAddressDtoList.add(new ChildByAddressDto(person.getFirstName(), person.getLastName(), calculator.getAge()));
+
         }
-        return new ChildByAddressDto(listPersons, listMedicalrecords, calculator.getListAgeCalculate(), calculator.getChildren());
+        return childByAddressDtoList;
 
     }
 
     // URL 3 phoneAlert
-    public PhoneAlertListDto allPhoneByFirestation(int station) {
+    public PhoneAlertListDto allPhoneByFirestation(int firestation) {
 
         List<Person> listPersons = new ArrayList<>();
         List<String> listPhones  = new ArrayList<>();
-        for (Firestation firestation2 : firestationServiceInterface.findAddressByStation(station)) {
+        for (Firestation firestation2 : firestationServiceInterface.findAddressByStation(firestation)) {
             listPersons.addAll(personServiceInterface.findByAddress(firestation2.getAddress()));
         }
         for (Person person : listPersons) {
@@ -100,6 +101,7 @@ public class UrlEndpointService {
         Firestation  firestation  = firestationServiceInterface.findById(address);
         List<Person> listPersons3 = personServiceInterface.findByAddress(firestation.getAddress());
         List<Person> listPersons  = new ArrayList<>(listPersons3);
+        listPersons.addAll(listPersons3);
 
         Calculator          calculator        = new Calculator();
         List<Medicalrecord> listMedicalrecord = new ArrayList<>();
@@ -113,58 +115,63 @@ public class UrlEndpointService {
 
     }
 
-
     // URL 5 flood
-    public FamilyListByStation allFamilyByStation(int stationNumber) {
+    public List<FamilyListByStation> allFamilyByStation(List<Integer> stations) {
 
-       Calculator calculator = new Calculator();
-       List<Person> listPersons = new ArrayList<>();
-       for (Firestation firestation : firestationServiceInterface.findAddressByStation(stationNumber)) {
-           List<Person> listPersons2 = personServiceInterface.findByAddress(firestation.getAddress());
-           listPersons.addAll(listPersons2);
-       }
-       List<Medicalrecord> listMedicalrecord = new ArrayList<>();
-       for (Person person : listPersons) {
-           Medicalrecord medicalrecord = medicalrecordServiceInterface.findByFirstName(person.getFirstName());
-           listMedicalrecord.add(medicalrecord);
-           calculator.calculateAge(medicalrecord.getBirthdate());
-       }
-       return new FamilyListByStation(listPersons, listMedicalrecord, calculator.getListAgeCalculate());
+        List<FamilyListByStation> familyListByStationList = new ArrayList<>();
+        Calculator                calculator              = new Calculator();
+        List<Person>              listPersons             = new ArrayList<>();
 
+        for (Integer station : stations) {
 
+            for (Firestation firestation : firestationServiceInterface.findAddressByStation(station)) {
+                List<Person> listPersons2 = personServiceInterface.findByAddress(firestation.getAddress());
+                listPersons.addAll(listPersons2);
+            }
+
+            List<Medicalrecord> listMedical = new ArrayList<>();
+            for (Person person : listPersons) {
+                Medicalrecord medicalrecord = medicalrecordServiceInterface.findByFirstName(person.getFirstName());
+                listMedical.add(medicalrecord);
+                calculator.calculateAge(medicalrecord.getBirthdate());
+                familyListByStationList.add(new FamilyListByStation(person.getLastName(), person.getPhone(), calculator.getAge(), medicalrecord
+                        .getMedications(), medicalrecord.getAllergies()));
+            }
+        }
+        return familyListByStationList;
     }
 
     // URL 6 personinfo
-    public PersonInfoDto allPersonInfo (String firstName, String lastName) throws ParseException {
+    public List<PersonInfoDto> allPersonInfo(String firstName, String lastName) {
 
         List<Person> listPersons2 = personServiceInterface.findByLastName(lastName);
-        List<Person> listPersons = new ArrayList<>(listPersons2);
-
+        List<Person> listPersons  = new ArrayList<>(listPersons2);
+        List<PersonInfoDto> personInfoDtoList = new ArrayList<>();
 
         Calculator calculator = new Calculator();
-        List<Medicalrecord> listMedicalrecord = new ArrayList<>();
         for (Person person : listPersons) {
             Medicalrecord medicalrecord = medicalrecordServiceInterface.findByFirstName(person.getFirstName());
-            listMedicalrecord.add(medicalrecord);
             calculator.calculateAge(medicalrecord.getBirthdate());
+            personInfoDtoList.add(new PersonInfoDto(person.getLastName(), person.getAddress(), person.getAge(), person.getEmail(), medicalrecord.getMedications(), medicalrecord.getAllergies()));
         }
-        return new PersonInfoDto(listPersons, listMedicalrecord,calculator.getListAgeCalculate());
+        return personInfoDtoList;
 
     }
 
     //URL 7 communityEmail
     public EmailListDto allEmailsByCity(String city) {
 
-        List<Person> listPersons = personServiceInterface.findEmailByCity(city);
-        List<String> emailList = new ArrayList<>();
-        for (Person person : listPersons) {
-            emailList.add(person.getEmail());
+        List<Person> listPersons = new ArrayList<>();
+        List<String> listEmails   = new ArrayList<>();
+        for (Person person : personServiceInterface.findEmailByCity(city)) {
+            listPersons.add(person);
         }
-        return new EmailListDto(emailList);
+        for (Person person : listPersons) {
+            listEmails.add(person.getEmail());
+        }
+        return new EmailListDto(listEmails);
 
     }
-
-
 
 
 }

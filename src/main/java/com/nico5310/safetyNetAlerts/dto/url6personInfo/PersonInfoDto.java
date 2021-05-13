@@ -10,26 +10,27 @@ import java.util.List;
 @Data
 public class PersonInfoDto {
 
-    private List<Person>        listPersons;
-    private List<Medicalrecord> listMedicalrecords;
-    private List<Integer>       listAges;
+    private String lastName;
+    private String address;
+    private int age;
+    private String email;
+    private List<String> medications;
+    private List<String> allergies;
 
-    /**
-     * Constructor
-     * @param listPersons
-     * @param listMedicalrecords
-     * @param listAges
-     */
-    public PersonInfoDto(List<Person> listPersons, List<Medicalrecord> listMedicalrecords, List<Integer> listAges) {
 
-        this.listPersons          = listPersons;
-        this.listMedicalrecords = listMedicalrecords;
-        this.listAges           = listAges;
+    public PersonInfoDto(String lastName, String address, int age, String email, List<String> medications, List<String> allergies) {
+
+        this.lastName    = lastName;
+        this.address     = address;
+        this.age         = age;
+        this.email       = email;
+        this.medications = medications;
+        this.allergies   = allergies;
     }
 
     @Override
     public String toString() {
-        return "PersonInfo [" + getListPersons() + "]";
+        return "Flood [" + getLastName() + ", " + getAddress() + ", " + getAge() + ", " + getEmail() + ", " + getMedications() + ", " + getAllergies() +"]";
     }
 
 }
