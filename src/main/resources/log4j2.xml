@@ -23,7 +23,7 @@
         </RollingFile>
     </Appenders>
     <Loggers>
-        <Logger name="com.nico5310.safetyNetAlertst" level="debug" additivity="false">
+        <Logger name="com.nico5310.safetyNetAlert" level="debug" additivity="false">
             <AppenderRef ref="ConsoleAppender" />
         </Logger>
 

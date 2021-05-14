@@ -1,67 +1,19 @@
-[INFO ] 2021-05-14 13:24:37.407 [restartedMain] SafetyNetAlertsApplication (55)  - Starting SafetyNetAlertsApplication using Java 11.0.10 on PCNICO with PID 12600 (E:\OpenCLassRooms\Workspace\IntelliJ\Projet5_safetyNetAlerts\target\classes started by NICO in E:\OpenCLassRooms\Workspace\IntelliJ\Projet5_safetyNetAlerts)
-[INFO ] 2021-05-14 13:24:37.422 [restartedMain] SafetyNetAlertsApplication (675)  - No active profile set, falling back to default profiles: default
-[INFO ] 2021-05-14 13:24:37.924 [restartedMain] TomcatWebServer (108)  - Tomcat initialized with port(s): 8080 (http)
-[DEBUG] 2021-05-14 13:24:38.140 [restartedMain] RequestMappingHandlerAdapter (625)  - ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
-[DEBUG] 2021-05-14 13:24:38.187 [restartedMain] RequestMappingHandlerMapping (361)  - 21 mappings in 'requestMappingHandlerMapping'
-[DEBUG] 2021-05-14 13:24:38.193 [restartedMain] SimpleUrlHandlerMapping (188)  - Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
-[DEBUG] 2021-05-14 13:24:38.209 [restartedMain] ExceptionHandlerExceptionResolver (307)  - ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
-[INFO ] 2021-05-14 13:24:38.256 [restartedMain] TomcatWebServer (220)  - Tomcat started on port(s): 8080 (http) with context path ''
-[INFO ] 2021-05-14 13:24:38.272 [restartedMain] SafetyNetAlertsApplication (61)  - Started SafetyNetAlertsApplication in 1.07 seconds (JVM running for 2.195)
-[INFO ] 2021-05-14 13:24:48.359 [http-nio-8080-exec-2] DispatcherServlet (525)  - Initializing Servlet 'dispatcherServlet'
-[DEBUG] 2021-05-14 13:24:48.360 [http-nio-8080-exec-2] DispatcherServlet (519)  - Detected StandardServletMultipartResolver
-[DEBUG] 2021-05-14 13:24:48.360 [http-nio-8080-exec-2] DispatcherServlet (543)  - Detected AcceptHeaderLocaleResolver
-[DEBUG] 2021-05-14 13:24:48.360 [http-nio-8080-exec-2] DispatcherServlet (568)  - Detected FixedThemeResolver
-[DEBUG] 2021-05-14 13:24:48.361 [http-nio-8080-exec-2] DispatcherServlet (718)  - Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@3d36470
-[DEBUG] 2021-05-14 13:24:48.362 [http-nio-8080-exec-2] DispatcherServlet (782)  - Detected org.springframework.web.servlet.support.SessionFlashMapManager@7c36f75b
-[DEBUG] 2021-05-14 13:24:48.362 [http-nio-8080-exec-2] DispatcherServlet (542)  - enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
-[INFO ] 2021-05-14 13:24:48.362 [http-nio-8080-exec-2] DispatcherServlet (547)  - Completed initialization in 2 ms
-[DEBUG] 2021-05-14 13:24:48.367 [http-nio-8080-exec-2] DispatcherServlet (91)  - GET "/person", parameters={}
-[DEBUG] 2021-05-14 13:24:48.369 [http-nio-8080-exec-2] RequestMappingHandlerMapping (522)  - Mapped to com.nico5310.safetyNetAlerts.controller.PersonController#findPersonAll()
-[INFO ] 2021-05-14 13:24:48.373 [http-nio-8080-exec-2] PersonService (24)  - findPersonAll SUCCESS :
-[INFO ] 2021-05-14 13:24:48.374 [http-nio-8080-exec-2] PersonController (23)  - findPersonAll GET request SUCCESS
-[DEBUG] 2021-05-14 13:24:48.382 [http-nio-8080-exec-2] RequestResponseBodyMethodProcessor (268)  - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
-[DEBUG] 2021-05-14 13:24:48.390 [http-nio-8080-exec-2] RequestResponseBodyMethodProcessor (91)  - Writing [[John, Boyd, 1509 Culver St, Culver, 97451, 841-874-6512, jaboyd@email.com
-, Jacob, Boyd, 1509 Culve (truncated)...]
-[DEBUG] 2021-05-14 13:24:48.405 [http-nio-8080-exec-2] DispatcherServlet (1131)  - Completed 200 OK
-[DEBUG] 2021-05-14 13:24:52.212 [http-nio-8080-exec-3] DispatcherServlet (91)  - GET "/fire?address=892%20Downing%20Ct", parameters={masked}
-[DEBUG] 2021-05-14 13:24:52.213 [http-nio-8080-exec-3] RequestMappingHandlerMapping (522)  - Mapped to com.nico5310.safetyNetAlerts.controller.UrlEndpointsController#allPersonsByAddress(String)
-[INFO ] 2021-05-14 13:24:52.217 [http-nio-8080-exec-3] UrlEndpointsController (52)  - allPersonsByAddress
-[INFO ] 2021-05-14 13:24:52.218 [http-nio-8080-exec-3] FirestationService (94)  - findById SUCCESS :892 Downing Ct
-[INFO ] 2021-05-14 13:24:52.219 [http-nio-8080-exec-3] PersonService (105)  - findByAddress SUCCESS :892 Downing Ct
-[INFO ] 2021-05-14 13:24:52.220 [http-nio-8080-exec-3] MedicalrecordService (97)  - findByFirstName SUCCESS :Sophia
-[INFO ] 2021-05-14 13:24:52.225 [http-nio-8080-exec-3] MedicalrecordService (97)  - findByFirstName SUCCESS :Warren
-[INFO ] 2021-05-14 13:24:52.225 [http-nio-8080-exec-3] MedicalrecordService (97)  - findByFirstName SUCCESS :Zach
-[INFO ] 2021-05-14 13:24:52.226 [http-nio-8080-exec-3] UrlEndpointService (142)  - allPersonsByStation SUCCESS :892 Downing Ct
-[DEBUG] 2021-05-14 13:24:52.228 [http-nio-8080-exec-3] RequestResponseBodyMethodProcessor (268)  - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
-[DEBUG] 2021-05-14 13:24:52.237 [http-nio-8080-exec-3] RequestResponseBodyMethodProcessor (91)  - Writing [PersonFireAddress [firestation=892 Downing Ct, 2
-, personFireAddress=[PersonFireAddress [lastName=Ze (truncated)...]
-[DEBUG] 2021-05-14 13:24:52.240 [http-nio-8080-exec-3] DispatcherServlet (1131)  - Completed 200 OK
-[DEBUG] 2021-05-14 13:24:54.226 [http-nio-8080-exec-4] DispatcherServlet (91)  - GET "/fire?address=892%20Downing%20Ct", parameters={masked}
-[DEBUG] 2021-05-14 13:24:54.227 [http-nio-8080-exec-4] RequestMappingHandlerMapping (522)  - Mapped to com.nico5310.safetyNetAlerts.controller.UrlEndpointsController#allPersonsByAddress(String)
-[INFO ] 2021-05-14 13:24:54.227 [http-nio-8080-exec-4] UrlEndpointsController (52)  - allPersonsByAddress
-[INFO ] 2021-05-14 13:24:54.228 [http-nio-8080-exec-4] FirestationService (94)  - findById SUCCESS :892 Downing Ct
-[INFO ] 2021-05-14 13:24:54.228 [http-nio-8080-exec-4] PersonService (105)  - findByAddress SUCCESS :892 Downing Ct
-[INFO ] 2021-05-14 13:24:54.228 [http-nio-8080-exec-4] MedicalrecordService (97)  - findByFirstName SUCCESS :Sophia
-[INFO ] 2021-05-14 13:24:54.229 [http-nio-8080-exec-4] MedicalrecordService (97)  - findByFirstName SUCCESS :Warren
-[INFO ] 2021-05-14 13:24:54.229 [http-nio-8080-exec-4] MedicalrecordService (97)  - findByFirstName SUCCESS :Zach
-[INFO ] 2021-05-14 13:24:54.229 [http-nio-8080-exec-4] UrlEndpointService (142)  - allPersonsByStation SUCCESS :892 Downing Ct
-[DEBUG] 2021-05-14 13:24:54.230 [http-nio-8080-exec-4] RequestResponseBodyMethodProcessor (268)  - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
-[DEBUG] 2021-05-14 13:24:54.230 [http-nio-8080-exec-4] RequestResponseBodyMethodProcessor (91)  - Writing [PersonFireAddress [firestation=892 Downing Ct, 2
-, personFireAddress=[PersonFireAddress [lastName=Ze (truncated)...]
-[DEBUG] 2021-05-14 13:24:54.230 [http-nio-8080-exec-4] DispatcherServlet (1131)  - Completed 200 OK
-[DEBUG] 2021-05-14 13:24:57.016 [http-nio-8080-exec-5] DispatcherServlet (91)  - GET "/flood/stations?stationNumber=2", parameters={masked}
-[DEBUG] 2021-05-14 13:24:57.016 [http-nio-8080-exec-5] RequestMappingHandlerMapping (522)  - Mapped to com.nico5310.safetyNetAlerts.controller.UrlEndpointsController#allFamilyByStation(List)
-[INFO ] 2021-05-14 13:24:57.017 [http-nio-8080-exec-5] UrlEndpointsController (59)  - allFamilyByStation
-[INFO ] 2021-05-14 13:24:57.018 [http-nio-8080-exec-5] FirestationService (114)  - findAddressByStation SUCCESS :2
-[INFO ] 2021-05-14 13:24:57.018 [http-nio-8080-exec-5] PersonService (105)  - findByAddress SUCCESS :29 15th St
-[INFO ] 2021-05-14 13:24:57.018 [http-nio-8080-exec-5] PersonService (105)  - findByAddress SUCCESS :892 Downing Ct
-[INFO ] 2021-05-14 13:24:57.018 [http-nio-8080-exec-5] PersonService (105)  - findByAddress SUCCESS :951 LoneTree Rd
-[INFO ] 2021-05-14 13:24:57.019 [http-nio-8080-exec-5] MedicalrecordService (97)  - findByFirstName SUCCESS :Jonanathan
-[INFO ] 2021-05-14 13:24:57.019 [http-nio-8080-exec-5] MedicalrecordService (97)  - findByFirstName SUCCESS :Sophia
-[INFO ] 2021-05-14 13:24:57.020 [http-nio-8080-exec-5] MedicalrecordService (97)  - findByFirstName SUCCESS :Warren
-[INFO ] 2021-05-14 13:24:57.020 [http-nio-8080-exec-5] MedicalrecordService (97)  - findByFirstName SUCCESS :Zach
-[INFO ] 2021-05-14 13:24:57.020 [http-nio-8080-exec-5] MedicalrecordService (97)  - findByFirstName SUCCESS :Eric
-[INFO ] 2021-05-14 13:24:57.021 [http-nio-8080-exec-5] UrlEndpointService (175)  - allPersonsByStation SUCCESS :[2]
-[DEBUG] 2021-05-14 13:24:57.021 [http-nio-8080-exec-5] RequestResponseBodyMethodProcessor (268)  - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
-[DEBUG] 2021-05-14 13:24:57.022 [http-nio-8080-exec-5] RequestResponseBodyMethodProcessor (91)  - Writing [[Flood [Marrack, 841-874-6513, 32, [], []], Flood [Zemicks, 841-874-7878, 33, [aznol:60mg, hydraperm (truncated)...]
-[DEBUG] 2021-05-14 13:24:57.024 [http-nio-8080-exec-5] DispatcherServlet (1131)  - Completed 200 OK
+[INFO ] 2021-05-15 01:00:54.796 [main] WebMvcTestContextBootstrapper (305)  - Neither @ContextConfiguration nor @ContextHierarchy found for test class [com.nico5310.safetyNetAlerts.controller.FirestationControllerTest], using SpringBootContextLoader
+[INFO ] 2021-05-15 01:00:54.796 [main] AbstractContextLoader (264)  - Could not detect default resource locations for test class [com.nico5310.safetyNetAlerts.controller.FirestationControllerTest]: no resource found for suffixes {-context.xml, Context.groovy}.
+[INFO ] 2021-05-15 01:00:54.796 [main] AnnotationConfigContextLoaderUtils (83)  - Could not detect default configuration classes for test class [com.nico5310.safetyNetAlerts.controller.FirestationControllerTest]: FirestationControllerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+[INFO ] 2021-05-15 01:00:54.896 [main] SpringBootTestContextBootstrapper (238)  - Found @SpringBootConfiguration com.nico5310.safetyNetAlerts.SafetyNetAlertsApplication for test class com.nico5310.safetyNetAlerts.controller.FirestationControllerTest
+[INFO ] 2021-05-15 01:00:54.896 [main] WebMvcTestContextBootstrapper (245)  - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.event.ApplicationEventsTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
+[INFO ] 2021-05-15 01:00:54.896 [main] WebMvcTestContextBootstrapper (174)  - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@61e45f87, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@7c9b78e3, org.springframework.test.context.event.ApplicationEventsTestExecutionListener@3068b369, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@17ca8b92, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@5491f68b, org.springframework.test.context.support.DirtiesContextTestExecutionListener@736ac09a, org.springframework.test.context.event.EventPublishingTestExecutionListener@6ecd665, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@45394b31, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@1ec7d8b3, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@3b0ca5e1, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@5bb3131b, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@54dcbb9f, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@74fef3f7]
+[INFO ] 2021-05-15 01:00:55.182 [main] FirestationControllerTest (55)  - Starting FirestationControllerTest using Java 11.0.10 on PCNICO with PID 12028 (started by NICO in E:\OpenCLassRooms\Workspace\IntelliJ\Projet5_safetyNetAlerts)
+[INFO ] 2021-05-15 01:00:55.182 [main] FirestationControllerTest (675)  - No active profile set, falling back to default profiles: default
+[DEBUG] 2021-05-15 01:00:55.197 [main] GenericWebApplicationContext (629)  - Refreshing org.springframework.web.context.support.GenericWebApplicationContext@61d34b4
+[DEBUG] 2021-05-15 01:00:56.115 [main] RequestMappingHandlerAdapter (625)  - ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+[DEBUG] 2021-05-15 01:00:56.184 [main] RequestMappingHandlerMapping (361)  - 6 mappings in 'requestMappingHandlerMapping'
+[DEBUG] 2021-05-15 01:00:56.231 [main] SimpleUrlHandlerMapping (188)  - Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+[DEBUG] 2021-05-15 01:00:56.231 [main] ExceptionHandlerExceptionResolver (307)  - ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
+[INFO ] 2021-05-15 01:00:56.316 [main] FirestationControllerTest (61)  - Started FirestationControllerTest in 1.388 seconds (JVM running for 2.768)
+[DEBUG] 2021-05-15 01:00:56.378 [main] RequestMappingHandlerMapping (522)  - Mapped to com.nico5310.safetyNetAlerts.controller.FirestationController#deleteFirestation(String)
+[ERROR] 2021-05-15 01:00:56.385 [main] FirestationController (60)  - deleteFirestation DELETE request FAILED
+[DEBUG] 2021-05-15 01:00:56.401 [main] RequestResponseBodyMethodProcessor (268)  - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+[DEBUG] 2021-05-15 01:00:56.401 [main] RequestResponseBodyMethodProcessor (298)  - Nothing to write: null body
+[DEBUG] 2021-05-15 01:00:56.432 [SpringContextShutdownHook] GenericWebApplicationContext (1049)  - Closing org.springframework.web.context.support.GenericWebApplicationContext@61d34b4, started on Sat May 15 01:00:55 CEST 2021
