@@ -14,7 +14,7 @@ public interface MedicalrecordServiceInterface {
 
     boolean deleteMedicalrecordList(String firstNameAndLastName);
 
-    // Url Endpoint
+    // Urls Endpoint
 
     Medicalrecord findByFirstName(String firstName);
 

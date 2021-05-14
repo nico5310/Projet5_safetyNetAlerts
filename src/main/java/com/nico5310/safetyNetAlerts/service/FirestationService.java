@@ -20,9 +20,10 @@ public class FirestationService implements FirestationServiceInterface {
     public List<Firestation> findFirestationAll() {
 
         try {
+            log.info("findFirestationAll SUCCESS :");
             return firestationRepositoryInterface.getFirestationAll();
         } catch (Exception exception) {
-            log.error("Error retrieving the Firestation List");
+            log.error("findFirestationAll ERROR :" + exception.getMessage());
         }
         return null;
     }
@@ -34,13 +35,15 @@ public class FirestationService implements FirestationServiceInterface {
             List<Firestation> saveFirestation = firestationRepositoryInterface.getFirestationAll();
             for (Firestation saveFire : saveFirestation) {
                 if (saveFire.getAddress().equals(firestation.getAddress())) {
+                    log.error("ERROR Cannot create Firestation List, he already exists :" + firestation);
                     return null;
                 }
             }
             saveFirestation.add(firestation);
+            log.info("Firestation saved SUCCESS :" + firestation);
             return saveFirestation;
         } catch (Exception exception) {
-            log.error("Error saving the Firestation to list");
+            log.error("saveFirestationList ERROR :" + exception.getMessage());
         }
         return null;
     }
@@ -53,12 +56,13 @@ public class FirestationService implements FirestationServiceInterface {
             try {
                 updateFirestation = firestationRepositoryInterface.getFirestationAll();
             } catch (Exception exception) {
-                log.error("Error updating the People to list" + exception.getMessage());
+                log.error("updateFirestationList ERROR" + exception.getMessage());
                 return null;
             }
             for (Firestation update : updateFirestation) {
                 if (update.getAddress().equals(firestation.getAddress())) { ///
                     update.setStation(firestation.getStation());
+                    log.info("updateFirestationList SUCCESS" + firestation);
                     return update;
                 }
             }
@@ -74,19 +78,25 @@ public class FirestationService implements FirestationServiceInterface {
             return deleteFirestation.removeIf(firestation -> firestation.getAddress().equals(address));
 
         } catch (Exception exception) {
-            log.error("Error for deleting the Firestation");
+            log.error("deleteFirestationList ERROR :" + exception.getMessage());
         }
+        log.info("deleteFirestationList SUCCESS :" + address);
         return false;
     }
 
-    //Endpoints
+    //Urls Endpoints
     @Override
     public Firestation findById(String firestationAddress) {
 
-        for (Firestation address : firestationRepositoryInterface.getFirestationAll()) {
-            if (address.getAddress().equals(firestationAddress)) {
-                return address;
+        try {
+            for (Firestation address : firestationRepositoryInterface.getFirestationAll()) {
+                if (address.getAddress().equals(firestationAddress)) {
+                    log.info("findById SUCCESS :" + firestationAddress);
+                    return address;
+                }
             }
+        } catch (Exception exception) {
+            log.error("findById ERROR :" + exception.getMessage());
         }
         return null;
     }
@@ -94,13 +104,19 @@ public class FirestationService implements FirestationServiceInterface {
     @Override
     public List<Firestation> findAddressByStation(int stationNumber) {
 
-        List<Firestation> listFirestation = new ArrayList<>();
-        for (Firestation firestation : firestationRepositoryInterface.getFirestationAll()) {
-            if (firestation.getStation() == stationNumber) {
-                listFirestation.add(firestation);
+        try {
+            List<Firestation> listFirestation = new ArrayList<>();
+            for (Firestation firestation : firestationRepositoryInterface.getFirestationAll()) {
+                if (firestation.getStation() == stationNumber) {
+                    listFirestation.add(firestation);
+                }
             }
+            log.info("findAddressByStation SUCCESS :" + stationNumber);
+            return listFirestation;
+        } catch (Exception exception) {
+            log.error("findAddressByStation ERROR :" + exception.getMessage());
         }
-        return listFirestation;
+        return null;
     }
 
 

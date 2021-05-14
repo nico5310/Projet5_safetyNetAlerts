@@ -9,6 +9,7 @@ import com.nico5310.safetyNetAlerts.dto.url4fire.PersonListByAddress;
 import com.nico5310.safetyNetAlerts.dto.url5flood.FamilyListByStation;
 import com.nico5310.safetyNetAlerts.dto.url6personInfo.PersonInfoDto;
 import com.nico5310.safetyNetAlerts.dto.url7communityEmail.EmailListDto;
+import com.nico5310.safetyNetAlerts.exceptions.NoFoundException;
 import com.nico5310.safetyNetAlerts.model.Firestation;
 import com.nico5310.safetyNetAlerts.model.Medicalrecord;
 import com.nico5310.safetyNetAlerts.model.Person;
@@ -43,143 +44,185 @@ public class UrlEndpointService {
     // URL 1 firestation
     public PersonsByStationDto allPersonsByStation(int stationNumber) throws ParseException {
 
-        Calculator   calculator         = new Calculator();
-        List<Person> listPersonsStation = new ArrayList<Person>();
-        for (Firestation firestation1 : firestationServiceInterface.findAddressByStation(stationNumber)) {
-            List<Person> listPerson1 = personServiceInterface.findByAddress(firestation1.getAddress());
-            listPersonsStation.addAll(listPerson1);
+        try {
+            Calculator   calculator         = new Calculator();
+            List<Person> listPersonsStation = new ArrayList<Person>();
+            for (Firestation firestation1 : firestationServiceInterface.findAddressByStation(stationNumber)) {
+                List<Person> listPerson1 = personServiceInterface.findByAddress(firestation1.getAddress());
+                listPersonsStation.addAll(listPerson1);
 
-            for (Person person : listPerson1) {
-                Medicalrecord medicalrecord = medicalrecordServiceInterface.findByFirstName(person.getFirstName());
-                calculator.calculateAge(medicalrecord.getBirthdate());
+                for (Person person : listPerson1) {
+                    Medicalrecord medicalrecord = medicalrecordServiceInterface.findByFirstName(person.getFirstName());
+                    calculator.calculateAge(medicalrecord.getBirthdate());
+                }
             }
+            log.info("allPersonsByStation SUCCESS :" + stationNumber);
+            return new PersonsByStationDto(listPersonsStation, calculator.getAdults(), calculator.getChildren());
+        } catch (NoFoundException noFoundException) {
+            log.error("allPersonsByStation dont exist :" + stationNumber);
         }
-        return new PersonsByStationDto(listPersonsStation, calculator.getAdults(), calculator.getChildren());
-
+        return null;
     }
+
 
     // URL 2 childAlerts
     public ChildByAddressDto allChildByAddress(String address) throws ParseException {
 
-        ChildByAddressDto    childByAddressDto    = new ChildByAddressDto();
-        List<PersonsWithAge> childList            = new ArrayList<>();
-        List<PersonsWithAge> adultsList           = new ArrayList<>();
-        List<Person>         listPersonsByAddress = personServiceInterface.findByAddress(address);
+        try {
+            ChildByAddressDto    childByAddressDto = new ChildByAddressDto();
+            List<PersonsWithAge> childList         = new ArrayList<>();
+            List<PersonsWithAge> adultsList        = new ArrayList<>();
 
-        Calculator          calculator         = new Calculator();
-        List<Medicalrecord> listMedicalrecords = new ArrayList<Medicalrecord>();
-        for (Person person : listPersonsByAddress) {
-            Medicalrecord medicalrecord = medicalrecordServiceInterface.findByFirstName(person.getFirstName());
-            listMedicalrecords.add(medicalrecord);
-            calculator.calculateAge(medicalrecord.getBirthdate());
+            List<Person> listPersonsByAddress = personServiceInterface.findByAddress(address);
 
-            PersonsWithAge personsWithAge = new PersonsWithAge(person.getFirstName(), person.getLastName(), calculator.getAge());
-            if (personsWithAge.getAge() < 18) {
-                childList.add(personsWithAge);
-            } else {
-                adultsList.add(personsWithAge);
+            Calculator          calculator         = new Calculator();
+            List<Medicalrecord> listMedicalrecords = new ArrayList<Medicalrecord>();
+            for (Person person : listPersonsByAddress) {
+                Medicalrecord medicalrecord = medicalrecordServiceInterface.findByFirstName(person.getFirstName());
+                listMedicalrecords.add(medicalrecord);
+                calculator.calculateAge(medicalrecord.getBirthdate());
+
+                PersonsWithAge personsWithAge = new PersonsWithAge(person.getFirstName(), person.getLastName(), calculator
+                        .getAge());
+                if (personsWithAge.getAge() < 18) {
+                    childList.add(personsWithAge);
+                } else {
+                    adultsList.add(personsWithAge);
+                }
             }
+            childByAddressDto.setChildren(childList);
+            childByAddressDto.setAdults(adultsList);
+            log.info("allChildByAddress SUCCESS :" + address);
+            return childByAddressDto;
+        } catch (NoFoundException noFoundException) {
+            log.error("allChildByAddress dont exist :" + address);
         }
-        childByAddressDto.setChildren(childList);
-        childByAddressDto.setAdults(adultsList);
-        return childByAddressDto;
+        return null;
 
     }
 
     // URL 3 phoneAlert
     public PhoneAlertListDto allPhoneByFirestation(int firestation) {
 
-        List<Person> listPersons = new ArrayList<>();
-        List<String> listPhones  = new ArrayList<>();
-        for (Firestation firestation2 : firestationServiceInterface.findAddressByStation(firestation)) {
-            listPersons.addAll(personServiceInterface.findByAddress(firestation2.getAddress()));
+        try {
+            List<Person> listPersons = new ArrayList<>();
+            List<String> listPhones  = new ArrayList<>();
+            for (Firestation firestation2 : firestationServiceInterface.findAddressByStation(firestation)) {
+                listPersons.addAll(personServiceInterface.findByAddress(firestation2.getAddress()));
+            }
+            for (Person person : listPersons) {
+                listPhones.add(person.getPhone());
+            }
+            log.info("allPhoneByFirestation SUCCESS :" + firestation);
+            return new PhoneAlertListDto(listPhones);
+        } catch (NoFoundException noFoundException) {
+            log.error("allPhoneByFirestation dont exist :" + firestation);
         }
-        for (Person person : listPersons) {
-            listPhones.add(person.getPhone());
-        }
-        return new PhoneAlertListDto(listPhones);
-
+        return null;
     }
 
     // URL 4 fire
     public PersonListByAddress allPersonsByAddress(String address) {
 
-        Firestation firestationNumber = firestationServiceInterface.findById(address);
+        try {
+            Firestation firestationNumber = firestationServiceInterface.findById(address);
 
-        List<Person>            listPersons3         = personServiceInterface.findByAddress(firestationNumber.getAddress());
-        List<Person>            listPersons          = new ArrayList<>(listPersons3);
-        List<PersonFireAddress> listPersonsByAddress = new ArrayList<>();
+            List<Person>            listPersons3         = personServiceInterface.findByAddress(firestationNumber.getAddress());
+            List<Person>            listPersons          = new ArrayList<>(listPersons3);
+            List<PersonFireAddress> listPersonsByAddress = new ArrayList<>();
 
-        Calculator calculator = new Calculator();
-        for (Person person : listPersons) {
-            Medicalrecord medicalrecord = medicalrecordServiceInterface.findByFirstName(person.getFirstName());
-            calculator.calculateAge(medicalrecord.getBirthdate());
-            listPersonsByAddress.add(new PersonFireAddress(person.getLastName(), person.getPhone(), calculator.getAge(), medicalrecord
-                    .getMedications(), medicalrecord.getAllergies()));
+            Calculator calculator = new Calculator();
+            for (Person person : listPersons) {
+                Medicalrecord medicalrecord = medicalrecordServiceInterface.findByFirstName(person.getFirstName());
+                calculator.calculateAge(medicalrecord.getBirthdate());
+                listPersonsByAddress.add(new PersonFireAddress(person.getLastName(), person.getPhone(), calculator.getAge(), medicalrecord
+                        .getMedications(), medicalrecord.getAllergies()));
 
+            }
+            log.info("allPersonsByStation SUCCESS :" + address);
+            return new PersonListByAddress(firestationNumber, listPersonsByAddress);
+        } catch (NoFoundException noFoundException) {
+            log.error("allPersonsByAddress dont exist :" + address);
         }
-        return new PersonListByAddress(firestationNumber, listPersonsByAddress);
+        return null;
     }
 
     // URL 5 flood
     public List<FamilyListByStation> allFamilyByStation(List<Integer> stations) {
 
-        List<FamilyListByStation> familyListByStationList = new ArrayList<>();
-        Calculator                calculator              = new Calculator();
-        List<Person>              listPersons             = new ArrayList<>();
+        try {
+            List<FamilyListByStation> familyListByStationList = new ArrayList<>();
+            Calculator                calculator              = new Calculator();
+            List<Person>              listPersons             = new ArrayList<>();
 
-        for (Integer station : stations) {
+            for (Integer station : stations) {
 
-            for (Firestation firestation : firestationServiceInterface.findAddressByStation(station)) {
-                List<Person> listPersons2 = personServiceInterface.findByAddress(firestation.getAddress());
-                listPersons.addAll(listPersons2);
+                for (Firestation firestation : firestationServiceInterface.findAddressByStation(station)) {
+                    List<Person> listPersons2 = personServiceInterface.findByAddress(firestation.getAddress());
+                    listPersons.addAll(listPersons2);
+                }
+
+                List<Medicalrecord> listMedical = new ArrayList<>();
+                for (Person person : listPersons) {
+                    Medicalrecord medicalrecord = medicalrecordServiceInterface.findByFirstName(person.getFirstName());
+                    listMedical.add(medicalrecord);
+                    calculator.calculateAge(medicalrecord.getBirthdate());
+
+                    familyListByStationList.add(new FamilyListByStation(person.getLastName(), person.getPhone(), calculator
+                            .getAge(), medicalrecord.getMedications(), medicalrecord.getAllergies()));
+                }
             }
-
-            List<Medicalrecord> listMedical = new ArrayList<>();
-            for (Person person : listPersons) {
-                Medicalrecord medicalrecord = medicalrecordServiceInterface.findByFirstName(person.getFirstName());
-                listMedical.add(medicalrecord);
-                calculator.calculateAge(medicalrecord.getBirthdate());
-
-                familyListByStationList.add(new FamilyListByStation(person.getLastName(), person.getPhone(), calculator.getAge(), medicalrecord
-                        .getMedications(), medicalrecord.getAllergies()));
-            }
+            log.info("allPersonsByStation SUCCESS :" + stations);
+            return familyListByStationList;
+        } catch (NoFoundException noFoundException) {
+            log.error("allFamilyByStation dont exist :" + stations);
         }
-        return familyListByStationList;
+        return null;
     }
 
     // URL 6 personinfo
-    public List<PersonInfoDto> allPersonInfo(String firstName, String lastName) throws ParseException{
+    public List<PersonInfoDto> allPersonInfo(String firstName, String lastName) throws ParseException {
 
-        List<Person>        listPersons2      = personServiceInterface.findByFirstNameAndLastName(firstName, lastName);
-        List<Person>        listPersons       = new ArrayList<Person>(listPersons2);
-        List<PersonInfoDto> personInfoDtoList = new ArrayList<PersonInfoDto>();
+        try {
+            List<Person>        listPersons2      = personServiceInterface.findByFirstNameAndLastName(firstName, lastName);
+            List<Person>        listPersons       = new ArrayList<Person>(listPersons2);
+            List<PersonInfoDto> personInfoDtoList = new ArrayList<PersonInfoDto>();
 
-        Calculator calculator = new Calculator();
-        for (Person person : listPersons) {
-            Medicalrecord medicalrecord = medicalrecordServiceInterface.findByFirstName(person.getFirstName());
-            calculator.calculateAge(medicalrecord.getBirthdate());
-            personInfoDtoList.add(new PersonInfoDto(person.getLastName(), person.getAddress(), calculator.getAge(), person.getEmail(), medicalrecord
-                    .getMedications(), medicalrecord.getAllergies()));
+            Calculator calculator = new Calculator();
+            for (Person person : listPersons) {
+                Medicalrecord medicalrecord = medicalrecordServiceInterface.findByFirstName(person.getFirstName());
+                calculator.calculateAge(medicalrecord.getBirthdate());
+                personInfoDtoList.add(new PersonInfoDto(person.getLastName(), person.getAddress(), calculator.getAge(), person
+                        .getEmail(), medicalrecord.getMedications(), medicalrecord.getAllergies()));
+            }
+            log.info("allPersonInfo SUCCESS :" + (firstName + lastName));
+            return personInfoDtoList;
+        } catch (NoFoundException noFoundException) {
+            log.error("allPersonInfo dont exist :" + (firstName + lastName));
         }
-        return personInfoDtoList;
+        return null;
 
     }
 
     //URL 7 communityEmail
     public EmailListDto allEmailsByCity(String city) {
 
-        List<Person> listPersons = new ArrayList<>();
-        List<String> listEmails  = new ArrayList<>();
-        for (Person person : personServiceInterface.findEmailByCity(city)) {
-            listPersons.add(person);
+        try {
+            List<Person> listPersons = new ArrayList<>();
+            List<String> listEmails  = new ArrayList<>();
+            for (Person person : personServiceInterface.findEmailByCity(city)) {
+                listPersons.add(person);
+            }
+            for (Person person : listPersons) {
+                listEmails.add(person.getEmail());
+            }
+            log.info("allPersonsByStation SUCCESS :" + city);
+            return new EmailListDto(listEmails);
+        } catch (NoFoundException noFoundException) {
+            log.error("allEmailsByCity dont exist :" + city);
         }
-        for (Person person : listPersons) {
-            listEmails.add(person.getEmail());
-        }
-        return new EmailListDto(listEmails);
+        return null;
 
     }
-
 
 }

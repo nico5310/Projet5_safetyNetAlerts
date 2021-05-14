@@ -20,9 +20,10 @@ public class MedicalrecordService implements MedicalrecordServiceInterface {
     public List<Medicalrecord> findMedicalrecordAll() {
 
         try {
+            log.info("findMedicalrecordAll SUCCESS :");
             return medicalrecordRepositoryInterface.getMedicalrecordAll();
         } catch (Exception exception) {
-            log.error("Error retrieving the Medicalrecord list" + exception.getMessage());
+            log.error("Error retrieving the Medicalrecord list :" + exception.getMessage());
         }
         return null;
     }
@@ -34,13 +35,15 @@ public class MedicalrecordService implements MedicalrecordServiceInterface {
             List<Medicalrecord> saveMedical = medicalrecordRepositoryInterface.getMedicalrecordAll();
             for (Medicalrecord saveMedic : saveMedical) {
                 if (saveMedic.getFirstNameAndLastName().equals(medicalrecord.getFirstNameAndLastName())) {
+                    log.error("ERROR Cannot create Medicalrecord List, he already exits :" + medicalrecord);
                     return null;
                 }
             }
             saveMedical.add(medicalrecord);
+            log.info("saveMedicalrecordList SUCCESS" + medicalrecord);
             return saveMedical;
         } catch (Exception exception) {
-            log.error("Error saving the Medicalrecord to list" + exception.getMessage());
+            log.error("Error saving the Medicalrecord to list :" + exception.getMessage());
         }
         return null;
     }
@@ -51,9 +54,10 @@ public class MedicalrecordService implements MedicalrecordServiceInterface {
         if (medicalrecord != null) {
             List<Medicalrecord> updateMedical;
             try {
+
                 updateMedical = medicalrecordRepositoryInterface.getMedicalrecordAll();
             } catch (Exception exception) {
-                log.error("Error updating the Medicalrecord to list");
+                log.error("Error updating the Medicalrecord to list :");
                 return null;
             }
             for (Medicalrecord update : updateMedical) {
@@ -61,6 +65,7 @@ public class MedicalrecordService implements MedicalrecordServiceInterface {
                     update.setBirthdate(medicalrecord.getBirthdate());
                     update.setMedications(medicalrecord.getMedications());
                     update.setAllergies(medicalrecord.getAllergies());
+                    log.info("updateMedicalrecordList SUCCESS :" + medicalrecord);
                     return update;
                 }
             }
@@ -77,8 +82,9 @@ public class MedicalrecordService implements MedicalrecordServiceInterface {
                                                                         .equals(firstNameAndLastName));
 
         } catch (Exception exception) {
-            log.error("Error for deleting the Medicalrecord");
+            log.error("Error for deleting the Medicalrecord :");
         }
+        log.info("deleteMedicalrecordList SUCCESS :" + firstNameAndLastName);
         return false;
     }
 
@@ -86,10 +92,15 @@ public class MedicalrecordService implements MedicalrecordServiceInterface {
     @Override
     public Medicalrecord findByFirstName(String firstName) {
 
-        for (Medicalrecord medicalRecord : medicalrecordRepositoryInterface.getMedicalrecordAll()) {
-            if (medicalRecord.getFirstName().equals(firstName)) {
-                return medicalRecord;
+        try {
+            for (Medicalrecord medicalRecord : medicalrecordRepositoryInterface.getMedicalrecordAll()) {
+                if (medicalRecord.getFirstName().equals(firstName)) {
+                    log.info("findByFirstName SUCCESS :" + firstName);
+                    return medicalRecord;
+                }
             }
+        } catch (Exception exception) {
+            log.error("findByFirstName ERROR :" + exception.getMessage());
         }
         return null;
     }
@@ -97,10 +108,15 @@ public class MedicalrecordService implements MedicalrecordServiceInterface {
     @Override
     public Medicalrecord findByFirstNameAndLastName(String firstName, String lastName) {
 
-        for (Medicalrecord medicalRecord : medicalrecordRepositoryInterface.getMedicalrecordAll()) {
-            if (medicalRecord.getFirstName().equals(firstName) && (medicalRecord.getLastName().equals(lastName))) {
-                return medicalRecord;
+        try {
+            for (Medicalrecord medicalRecord : medicalrecordRepositoryInterface.getMedicalrecordAll()) {
+                if (medicalRecord.getFirstName().equals(firstName) && (medicalRecord.getLastName().equals(lastName))) {
+                    log.info("findByFirstNameAndLastName SUCCESS :" + (firstName + lastName));
+                    return medicalRecord;
+                }
             }
+        } catch (Exception exception) {
+            log.error("findByFirstNameAndLastName ERROR :" + exception.getMessage());
         }
         return null;
     }

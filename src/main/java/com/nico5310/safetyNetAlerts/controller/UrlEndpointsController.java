@@ -11,7 +11,6 @@ import com.nico5310.safetyNetAlerts.service.UrlEndpointService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -29,49 +28,49 @@ public class UrlEndpointsController {
     //URL 1 firestation
     @GetMapping(value = "/firestation")
     public PersonsByStationDto allPersonsByStation(@RequestParam (value = "stationNumber") int stationNumber) throws ParseException {
-
+        log.info("allPersonsByStation");
         return urlEndpointService.allPersonsByStation(stationNumber);
     }
 
     //URL 2 childAlerts
     @GetMapping(value = "/childAlert")
     public ChildByAddressDto allChildByAddress(@RequestParam (value = "address") String address) throws ParseException {
-
+        log.info("allChildByAddress");
         return urlEndpointService.allChildByAddress(address);
     }
 
     // URL 3 phoneAlert
     @GetMapping(value = "/phoneAlert")
     public PhoneAlertListDto allPhoneByFirestation(@RequestParam (value = "firestationNumber") int firestationNumber) {
-
+        log.info("allPhoneByFirestation");
         return urlEndpointService.allPhoneByFirestation(firestationNumber);
     }
 
     // URL 4 fire
     @GetMapping(value = "/fire")
     public PersonListByAddress allPersonsByAddress(@RequestParam (value = "address") String address) {
-
+        log.info("allPersonsByAddress");
         return urlEndpointService.allPersonsByAddress(address);
     }
 
     // URL 5 flood
     @GetMapping(value = "/flood/stations")
     public List<FamilyListByStation> allFamilyByStation(@RequestParam (value = "stationNumber") List<Integer> stationNumber) throws ParseException {
-
+        log.info("allFamilyByStation");
         return urlEndpointService.allFamilyByStation(stationNumber);
     }
 
     // URL 6 personinfo
     @GetMapping(value = "/personInfo")
     public List<PersonInfoDto> allPersonInfo(@RequestParam(value = "firstName") String firstName, @RequestParam(value = "lastName") String lastName) throws ParseException {
-
+        log.info("allPersonInfo");
         return urlEndpointService.allPersonInfo(firstName, lastName);
     }
 
     //URL 7 communityEmail
     @GetMapping(value = "/communityEmail")
     public EmailListDto allEmailsByCity(@RequestParam (value = "city") String city) {
-
+        log.info("allEmailsByCity");
         return urlEndpointService.allEmailsByCity(city);
     }
 
