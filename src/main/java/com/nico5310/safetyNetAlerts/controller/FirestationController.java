@@ -2,14 +2,14 @@ package com.nico5310.safetyNetAlerts.controller;
 
 import com.nico5310.safetyNetAlerts.model.Firestation;
 import com.nico5310.safetyNetAlerts.service.FirestationServiceInterface;
-import lombok.extern.slf4j.Slf4j;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@Slf4j
+@Log4j2
 public class FirestationController {
 
     @Autowired
