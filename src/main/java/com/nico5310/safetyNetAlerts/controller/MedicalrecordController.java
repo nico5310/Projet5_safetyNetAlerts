@@ -6,6 +6,7 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.text.ParseException;
 import java.util.List;
 
 @RestController
@@ -15,7 +16,7 @@ public class MedicalrecordController {
     @Autowired
     MedicalrecordServiceInterface medicalrecordServiceInterface;
 
-    @GetMapping("/medicalRecord")
+    @GetMapping( value = "/medicalRecord")
     public List<Medicalrecord> findMedicalrecordAll() {
 
         List<Medicalrecord> findMedicalrecord = medicalrecordServiceInterface.findMedicalrecordAll();
@@ -27,7 +28,7 @@ public class MedicalrecordController {
         return findMedicalrecord;
     }
 
-    @PostMapping("/medicalRecord")
+    @PostMapping(value = "/medicalRecord")
     public List<Medicalrecord> addMedicalrecord(@RequestBody Medicalrecord medicalrecord) {
 
         List<Medicalrecord> newMedical = medicalrecordServiceInterface.saveMedicalrecordList(medicalrecord);
@@ -39,10 +40,10 @@ public class MedicalrecordController {
         return newMedical;
     }
 
-    @PutMapping("/medicalRecord")
-    public Medicalrecord updateMedicalrecord(@RequestBody Medicalrecord medicalrecord) {
+    @PutMapping(value = "/medicalRecord/{firstNameAndLastName}")
+    public Medicalrecord updateMedicalrecord(@RequestBody Medicalrecord medicalrecord, @PathVariable String firstNameAndLastName) {
 
-        Medicalrecord updateMedical = medicalrecordServiceInterface.updateMedicalrecordList(medicalrecord);
+        Medicalrecord updateMedical = medicalrecordServiceInterface.updateMedicalrecordList(firstNameAndLastName, medicalrecord);
         if (updateMedical != null) {
             log.info("updateMedicalrecord PUT request SUCCESS");
         } else {

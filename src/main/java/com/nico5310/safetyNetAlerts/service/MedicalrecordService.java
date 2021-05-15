@@ -48,7 +48,7 @@ public class MedicalrecordService implements MedicalrecordServiceInterface {
     }
 
     @Override
-    public Medicalrecord updateMedicalrecordList(Medicalrecord medicalrecord) {
+    public Medicalrecord updateMedicalrecordList(String firstNameAndLastName, Medicalrecord medicalrecord) {
 
         if (medicalrecord != null) {
             List<Medicalrecord> updateMedical;
@@ -60,7 +60,7 @@ public class MedicalrecordService implements MedicalrecordServiceInterface {
                 return null;
             }
             for (Medicalrecord update : updateMedical) {
-                if (update.getFirstNameAndLastName().equals(medicalrecord.getFirstNameAndLastName())) {
+                if (update.getFirstNameAndLastName().equals(firstNameAndLastName)) {
                     update.setBirthdate(medicalrecord.getBirthdate());
                     update.setMedications(medicalrecord.getMedications());
                     update.setAllergies(medicalrecord.getAllergies());

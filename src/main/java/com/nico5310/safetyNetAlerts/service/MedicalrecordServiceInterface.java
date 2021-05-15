@@ -10,7 +10,7 @@ public interface MedicalrecordServiceInterface {
 
     List<Medicalrecord> saveMedicalrecordList(Medicalrecord medicalrecord);
 
-    Medicalrecord updateMedicalrecordList(Medicalrecord medicalrecord);
+    Medicalrecord updateMedicalrecordList(String firstNameAndLastName, Medicalrecord medicalrecord);
 
     boolean deleteMedicalrecordList(String firstNameAndLastName);
 

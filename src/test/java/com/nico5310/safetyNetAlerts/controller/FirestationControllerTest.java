@@ -1,26 +1,21 @@
 package com.nico5310.safetyNetAlerts.controller;
 
 import com.nico5310.safetyNetAlerts.model.Firestation;
-
 import com.nico5310.safetyNetAlerts.service.FirestationService;
-import com.nico5310.safetyNetAlerts.service.FirestationServiceInterface;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.MvcResult;
-
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
-import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 
@@ -34,6 +29,7 @@ public class FirestationControllerTest {
     private FirestationService firestationService;
 
     @Test
+    @DisplayName("Test return status for findFirestationALl request")
     public void findFirestationAll() throws Exception {
         //GIVEN
         Firestation firestation = new Firestation(); // create new object Firestation
@@ -53,6 +49,7 @@ public class FirestationControllerTest {
     }
 
     @Test
+    @DisplayName("Test return status for saveFirestationList request")
     public void saveFirestationList() throws Exception {
         //GIVEN
         Firestation firestation = new Firestation();
@@ -71,6 +68,7 @@ public class FirestationControllerTest {
     }
 
     @Test
+    @DisplayName("Test return status for updateFirestationList request")
     public void updateFirestationList() throws Exception {
         //GIVEN
         Firestation firestation = new Firestation();
@@ -87,6 +85,7 @@ public class FirestationControllerTest {
     }
 
     @Test
+    @DisplayName("Test return status for deleteFirestationList request")
     public void deleteFirestationList() throws Exception {
         //GIVEN
 
