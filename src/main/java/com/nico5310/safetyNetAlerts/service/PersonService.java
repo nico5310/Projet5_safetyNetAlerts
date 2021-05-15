@@ -50,7 +50,7 @@ public class PersonService implements PersonServiceInterface {
     }
 
     @Override
-    public Person updatePersonList(Person person) {
+    public Person updatePersonList(String firstNameAndLastName, Person person) {
 
         if (person != null) {
             List<Person> updatePerson;
@@ -62,7 +62,7 @@ public class PersonService implements PersonServiceInterface {
                 return null;
             }
             for (Person update : updatePerson) {
-                if (update.getFirstNameAndLastName().equals(person.getFirstNameAndLastName())) {
+                if (update.getFirstNameAndLastName().equals(firstNameAndLastName)) {
                     update.setAddress(person.getAddress());
                     update.setCity(person.getCity());
                     update.setZip(person.getZip());
@@ -77,17 +77,17 @@ public class PersonService implements PersonServiceInterface {
     }
 
     @Override
-    public boolean deletePersonList(String firstNameAndLastName) {
+    public List<Person> deletePersonList(String firstNameAndLastName) {
 
         try {
             List<Person> deletePerson = personRepositoryInterface.getPersonAll();
-            return deletePerson.removeIf(person -> person.getFirstNameAndLastName().equals(firstNameAndLastName));
-
+            deletePerson.removeIf(person -> person.getFirstNameAndLastName().equals(firstNameAndLastName));
+            log.info("deletePersonList SUCCESS :" + firstNameAndLastName);
         } catch (Exception exception) {
             log.error("deletePersonList ERROR :" + exception.getMessage());
         }
-        log.info("deletePersonList SUCCESS :" + firstNameAndLastName);
-        return false;
+        return null;
+
     }
 
     // Urls Endpoints

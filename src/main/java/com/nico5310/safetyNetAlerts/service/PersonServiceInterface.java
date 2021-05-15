@@ -10,9 +10,9 @@ public interface PersonServiceInterface {
 
     List<Person> savePersonList(Person person);
 
-    Person updatePersonList(Person person);
+    Person updatePersonList(String firstNameAndLastName, Person person);
 
-    boolean deletePersonList(String firstNameAndLastName);
+    List<Person> deletePersonList(String firstNameAndLastName);
 
     // Urls Endpoints
 

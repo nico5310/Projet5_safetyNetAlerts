@@ -41,9 +41,9 @@ public class FirestationControllerTest {
         //WHEN
 
         mockMvc.perform(get("/firestations")).andExpect(status().isOk()); // Execute request with Get"firestations" and wait for an answer 200 status
-//        int status = mvcResult.getResponse().getStatus();
+
         // THEN
-//        assertEquals(status, 200); // Verify when status return is equals 200 valid request
+
         verify(firestationService, times(1)).findFirestationAll(); // verify when service firestationService is called one more times
 
     }

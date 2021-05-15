@@ -15,7 +15,7 @@ public class PersonController {
     @Autowired
     PersonServiceInterface personServiceInterface;
 
-    @GetMapping("/person")
+    @GetMapping(value = "/person")
     public List<Person> findPersonAll() {
 
         List<Person> findPerson = personServiceInterface.findPersonAll();
@@ -27,7 +27,7 @@ public class PersonController {
         return findPerson;
     }
 
-    @PostMapping("/person")
+    @PostMapping(value = "/person")
     public List<Person> addPerson(@RequestBody Person person) {
 
         List<Person> newPers = personServiceInterface.savePersonList(person);
@@ -39,10 +39,10 @@ public class PersonController {
         return newPers;
     }
 
-    @PutMapping("/person")
-    public Person updatePerson(@RequestBody Person person) {
+    @PutMapping(value = "/person/{firstNameAndLastName}")
+    public Person updatePerson(@RequestBody Person person, @PathVariable String firstNameAndLastName) {
 
-        Person updatePers = personServiceInterface.updatePersonList(person);
+        Person updatePers = personServiceInterface.updatePersonList(firstNameAndLastName, person);
         if (updatePers != null) {
             log.info("updatePerson PUT request SUCCESS");
         } else {
@@ -51,14 +51,15 @@ public class PersonController {
         return updatePers;
     }
 
-    @DeleteMapping("/person")
-    public void deletePerson(@RequestParam String firstNameAndLastName) {
+    @DeleteMapping(value = "/person")
+    public List<Person> deletePerson(@RequestParam String firstNameAndLastName) {
 
-        if (personServiceInterface.deletePersonList(firstNameAndLastName)) {
-            log.info("deletePerson DELETE request SUCCESS");
-        } else {
-            log.error("deletePerson DELETE request FAILED");
-        }
+        return personServiceInterface.deletePersonList(firstNameAndLastName);
+//            return  personServiceInterface.
+//            log.info("deletePerson DELETE request SUCCESS");
+//        } else {
+//            log.error("deletePerson DELETE request FAILED");
+//        }
     }
 
 }
