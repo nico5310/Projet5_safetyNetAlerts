@@ -21,6 +21,7 @@ public class PersonsByStationDto {
       this.children           = children;
    }
 
+   public PersonsByStationDto(Person person, long adults, long children) {}
 
 
    @Override

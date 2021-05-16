@@ -17,6 +17,8 @@ public class PhoneAlertListDto {
         this.listPhonesCity = listPhonesCity;
     }
 
+    public PhoneAlertListDto() {}
+
 
     @Override
     public String toString() {

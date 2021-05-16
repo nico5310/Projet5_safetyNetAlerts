@@ -58,7 +58,7 @@ public class UrlEndpointService {
             }
             log.info("allPersonsByStation SUCCESS :" + stationNumber);
             return new PersonsByStationDto(listPersonsStation, calculator.getAdults(), calculator.getChildren());
-        } catch (NoFoundException noFoundException) {
+        } catch (NullPointerException nullPointerException) {
             log.error("allPersonsByStation dont exist :" + stationNumber);
         }
         return null;

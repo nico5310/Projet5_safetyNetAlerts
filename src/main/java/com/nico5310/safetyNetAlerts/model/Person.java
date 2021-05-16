@@ -22,6 +22,7 @@ public class Person {
     @JsonIgnore
     private String        firstNameAndLastName;
 
+
     public String getFirstNameAndLastName() {
 
         return firstName + lastName;
