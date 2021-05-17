@@ -3,26 +3,21 @@ package com.nico5310.safetyNetAlerts.controller;
 import com.nico5310.safetyNetAlerts.model.Medicalrecord;
 import com.nico5310.safetyNetAlerts.service.MedicalrecordService;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
-
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.*;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
-
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.http.MediaType;
+import org.springframework.test.web.servlet.MockMvc;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
-
-import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.http.MediaType;
-import org.springframework.test.web.servlet.MockMvc;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.*;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 
 @WebMvcTest(MedicalrecordController.class)
@@ -111,17 +106,17 @@ public class MedicalrecordControllerTest {
 
     }
 
-    //    @Test
-    //    @DisplayName("Test return status for deleteMedicalrecordList request")
-    //    public void deleteMedicalrecordList() throws Exception {
-    //        //GIVEN
-    //        Mockito.doNothing().when(medicalrecordService).deleteMedicalrecordList("firstNameAndLastName");
-    //
-    //        //WHEN
-    //       mockMvc.perform(delete("/medicalRecord/nicolasbiancucci")).andExpect(status().isOk());
-    //
-    //        //THEN
-    //        verify(medicalrecordService, times(1)).deleteMedicalrecordList(any(String.class));
-    //
-    //    }
+        @Test
+        @DisplayName("Test return status for deleteMedicalrecordList request")
+        public void deleteMedicalrecordList() throws Exception {
+            //GIVEN
+
+
+            //WHEN
+           mockMvc.perform(delete("/medicalRecord/JohnBoyd")).andExpect(status().isOk());
+
+            //THEN
+            verify(medicalrecordService, times(1)).deleteMedicalrecordList(any(String.class));
+
+        }
 }

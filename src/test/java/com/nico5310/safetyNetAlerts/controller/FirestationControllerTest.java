@@ -84,18 +84,18 @@ public class FirestationControllerTest {
 
     }
 
-    @Test
-    @DisplayName("Test return status for deleteFirestationList request")
-    public void deleteFirestationList() throws Exception {
-        //GIVEN
-
-        //WHEN
-        mockMvc.perform(delete("/firestation")).andExpect(status().isOk());
-
-        //THEN
-        verify(firestationService, times(1)).deleteFirestationList(any(String.class));
-
-    }
+//    @Test
+//    @DisplayName("Test return status for deleteFirestationList request")
+//    public void deleteFirestationList() throws Exception {
+//        //GIVEN
+//
+//        //WHEN
+//        mockMvc.perform(delete("/firestation")).andExpect(status().isOk());
+//
+//        //THEN
+//        verify(firestationService, times(1)).deleteFirestationList(any(String.class));
+//
+//    }
 
 
 

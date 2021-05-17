@@ -51,7 +51,7 @@ public class FirestationController {
         return updateFire;
     }
 
-    @DeleteMapping("/firestation{address}")
+    @DeleteMapping("/firestation/{address}")
     public void deleteFirestation(@PathVariable String address) {
 
         if (firestationServiceInterface.deleteFirestationList(address)) {

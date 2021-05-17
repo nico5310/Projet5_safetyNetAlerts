@@ -1,13 +1,6 @@
 package com.nico5310.safetyNetAlerts.controller;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
-import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.nico5310.safetyNetAlerts.model.Person;
 import com.nico5310.safetyNetAlerts.service.PersonService;
 import org.junit.Test;
@@ -19,10 +12,15 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.MvcResult;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.*;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
 
 @WebMvcTest(PersonController.class)
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -30,6 +28,9 @@ public class PersonControllerTest {
 
     @Autowired
     private MockMvc mockMvc;
+
+    @Autowired
+    ObjectMapper objectMapper;
 
     @MockBean
     @Autowired
@@ -104,21 +105,16 @@ public class PersonControllerTest {
         verify(personService, times(1)).updatePersonList(any(String.class),(any(Person.class)));
     }
 
-//    @Test
-//    @DisplayName("Test return status for deletePersonList request")
-//    public void deletePersonList() throws Exception {
-//        //GIVEN
-//
-//        //WHEN
-//        mockMvc.perform(delete("/person/person")).andExpect(status().isOk());
-//
-//        //THEN
-//        verify(personService, times(1)).deletePersonList(any(String.class));
-//
-//
-//    }
+    @Test
+    @DisplayName("Test return status for deletePersonList request")
+    public void deletePersonList() throws Exception {
+        //GIVEN
 
+        //WHEN
+        mockMvc.perform(delete("/person/JohnBoyd",1)).andExpect(status().isOk());
 
-
+        //THEN
+        verify(personService, times(1)).deletePersonList(any(String.class));
+    }
 
 }

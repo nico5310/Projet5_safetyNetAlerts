@@ -41,9 +41,9 @@ public class UrlEndpointsController {
 
     // URL 3 phoneAlert
     @GetMapping(value = "/phoneAlert")
-    public PhoneAlertListDto allPhoneByFirestation(@RequestParam (value = "firestationNumber") int firestationNumber) {
+    public PhoneAlertListDto allPhoneByFirestation(@RequestParam (value = "firestation") int firestation) {
         log.info("allPhoneByFirestation");
-        return urlEndpointService.allPhoneByFirestation(firestationNumber);
+        return urlEndpointService.allPhoneByFirestation(firestation);
     }
 
     // URL 4 fire
@@ -55,9 +55,9 @@ public class UrlEndpointsController {
 
     // URL 5 flood
     @GetMapping(value = "/flood/stations")
-    public List<FamilyListByStation> allFamilyByStation(@RequestParam (value = "stationNumber") List<Integer> stationNumber) throws ParseException {
+    public List<FamilyListByStation> allFamilyByStation(@RequestParam (value = "stations") List<Integer> stations) throws ParseException {
         log.info("allFamilyByStation");
-        return urlEndpointService.allFamilyByStation(stationNumber);
+        return urlEndpointService.allFamilyByStation(stations);
     }
 
     // URL 6 personinfo

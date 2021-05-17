@@ -1,8 +1,8 @@
 package com.nico5310.safetyNetAlerts.service;
 
 import com.nico5310.safetyNetAlerts.dto.url1firestation.PersonsByStationDto;
-import com.nico5310.safetyNetAlerts.dto.url2childAlert.PersonsWithAge;
 import com.nico5310.safetyNetAlerts.dto.url2childAlert.ChildByAddressDto;
+import com.nico5310.safetyNetAlerts.dto.url2childAlert.PersonsWithAge;
 import com.nico5310.safetyNetAlerts.dto.url3phoneAlert.PhoneAlertListDto;
 import com.nico5310.safetyNetAlerts.dto.url4fire.PersonFireAddress;
 import com.nico5310.safetyNetAlerts.dto.url4fire.PersonListByAddress;
@@ -13,7 +13,6 @@ import com.nico5310.safetyNetAlerts.exceptions.NoFoundException;
 import com.nico5310.safetyNetAlerts.model.Firestation;
 import com.nico5310.safetyNetAlerts.model.Medicalrecord;
 import com.nico5310.safetyNetAlerts.model.Person;
-
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -69,11 +68,10 @@ public class UrlEndpointService {
     public ChildByAddressDto allChildByAddress(String address) throws ParseException {
 
         try {
+            List<Person> listPersonsByAddress = personServiceInterface.findByAddress(address);
             ChildByAddressDto    childByAddressDto = new ChildByAddressDto();
             List<PersonsWithAge> childList         = new ArrayList<>();
             List<PersonsWithAge> adultsList        = new ArrayList<>();
-
-            List<Person> listPersonsByAddress = personServiceInterface.findByAddress(address);
 
             Calculator          calculator         = new Calculator();
             List<Medicalrecord> listMedicalrecords = new ArrayList<Medicalrecord>();
@@ -84,11 +82,16 @@ public class UrlEndpointService {
 
                 PersonsWithAge personsWithAge = new PersonsWithAge(person.getFirstName(), person.getLastName(), calculator
                         .getAge());
-                if (personsWithAge.getAge() < 18) {
-                    childList.add(personsWithAge);
+                if (calculator.getAge() == 0) {
+                    return null;
                 } else {
-                    adultsList.add(personsWithAge);
+                    if (personsWithAge.getAge() < 18) {
+                        childList.add(personsWithAge);
+                    } else {
+                        adultsList.add(personsWithAge);
+                    }
                 }
+
             }
             childByAddressDto.setChildren(childList);
             childByAddressDto.setAdults(adultsList);
@@ -115,7 +118,7 @@ public class UrlEndpointService {
             }
             log.info("allPhoneByFirestation SUCCESS :" + firestation);
             return new PhoneAlertListDto(listPhones);
-        } catch (NoFoundException noFoundException) {
+        } catch (Exception exception) {
             log.error("allPhoneByFirestation dont exist :" + firestation);
         }
         return null;
@@ -124,9 +127,9 @@ public class UrlEndpointService {
     // URL 4 fire
     public PersonListByAddress allPersonsByAddress(String address) {
 
-        try {
-            Firestation firestationNumber = firestationServiceInterface.findById(address);
+        Firestation firestationNumber = firestationServiceInterface.findById(address);
 
+        if (firestationNumber != null) {
             List<Person>            listPersons3         = personServiceInterface.findByAddress(firestationNumber.getAddress());
             List<Person>            listPersons          = new ArrayList<>(listPersons3);
             List<PersonFireAddress> listPersonsByAddress = new ArrayList<>();
@@ -141,10 +144,7 @@ public class UrlEndpointService {
             }
             log.info("allPersonsByStation SUCCESS :" + address);
             return new PersonListByAddress(firestationNumber, listPersonsByAddress);
-        } catch (NoFoundException noFoundException) {
-            log.error("allPersonsByAddress dont exist :" + address);
-        }
-        return null;
+        } else { throw new NoFoundException("allPersonsByAddress dont exist :" + address); }
     }
 
     // URL 5 flood
@@ -224,5 +224,6 @@ public class UrlEndpointService {
         return null;
 
     }
+
 
 }

@@ -12,6 +12,8 @@ import java.util.List;
 @Data
 public class PersonRepository implements PersonRepositoryInterface {
 
+    private List<Person> persons;
+
     @Autowired
     private Database database;
 

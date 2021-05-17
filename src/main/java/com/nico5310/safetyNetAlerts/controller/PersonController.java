@@ -51,15 +51,11 @@ public class PersonController {
         return updatePers;
     }
 
-    @DeleteMapping(value = "/person")
-    public List<Person> deletePerson(@RequestParam String firstNameAndLastName) {
+    @DeleteMapping(value = "/person/{firstNameAndLastName}")
+    public List<Person> deletePerson(@PathVariable String firstNameAndLastName) {
 
         return personServiceInterface.deletePersonList(firstNameAndLastName);
-//            return  personServiceInterface.
-//            log.info("deletePerson DELETE request SUCCESS");
-//        } else {
-//            log.error("deletePerson DELETE request FAILED");
-//        }
+
     }
 
 }

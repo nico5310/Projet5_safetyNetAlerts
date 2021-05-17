@@ -1,10 +1,6 @@
 package com.nico5310.safetyNetAlerts.dto.url2childAlert;
 
-import com.nico5310.safetyNetAlerts.model.Medicalrecord;
-import com.nico5310.safetyNetAlerts.model.Person;
 import lombok.Data;
-
-import java.util.List;
 
 @Data
 public class PersonsWithAge {
@@ -19,8 +15,6 @@ public class PersonsWithAge {
         this.lastName  = lastName;
         this.age       = age;
     }
-
-    public PersonsWithAge(List<Person> listPersons, List<Medicalrecord> listMedicalrecords, List<Integer> listAgeCalculate, long children) {}
 
     @Override
     public String toString(){

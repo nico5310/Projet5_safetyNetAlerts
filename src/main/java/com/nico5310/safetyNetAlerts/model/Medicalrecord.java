@@ -1,6 +1,5 @@
 package com.nico5310.safetyNetAlerts.model;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
@@ -11,7 +10,6 @@ public class Medicalrecord {
 
     private String       firstName;
     private String       lastName;
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "MM/dd/yyyy")
     private String       birthdate;
     private List<String> medications;
     private List<String> allergies;

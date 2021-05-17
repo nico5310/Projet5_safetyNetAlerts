@@ -16,6 +16,26 @@ public class Calculator {
     private       int           age              = 0;
     private final List<Integer> listAgeCalculate = new ArrayList<Integer>();
 
+    public int getAge() {
+
+        return age;
+    }
+
+    public long getChildren() {
+
+        return children;
+    }
+
+    public long getAdults() {
+
+        return adults;
+    }
+
+    public List<Integer> getListAgeCalculate() {
+
+        return listAgeCalculate;
+    }
+
     public void calculateAge(String birthDate) {
 
         DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
@@ -29,7 +49,10 @@ public class Calculator {
             adults++;
         }
 
-
     }
 
+
 }
+
+
+
