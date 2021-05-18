@@ -32,7 +32,6 @@ public class FirestationServiceTest {
     @DisplayName("Test findFirestationAll with new Address and number station")
     public void findFirestationAll() {
         //GIVEN
-
         Firestation firestation = new Firestation();
         firestation.setAddress("4 le village");
         firestation.setStation(7);
@@ -41,6 +40,7 @@ public class FirestationServiceTest {
 
         //WHEN
         when(firestationService.findFirestationAll()).thenReturn(firestationList);
+
         //THEN
         assertThat(firestationService.findFirestationAll().toString(),containsString("4 le village"));
     }
@@ -54,8 +54,10 @@ public class FirestationServiceTest {
         firestation.setStation(7);
         List<Firestation> firestationList = new ArrayList<Firestation>();
         firestationList.add(firestation);
+
         //WHEN
         when(firestationService.saveFirestationList(firestation)).thenReturn(firestationList);
+
         //THEN
         assertThat(firestationService.saveFirestationList(firestation).toString(), containsString("4 le village"));
     }
@@ -91,7 +93,40 @@ public class FirestationServiceTest {
         //THEN
         assertThat(firestationService.findFirestationAll().toString(), containsString(""));
 
+    }
+
+    @Test
+    @DisplayName("Test findById")
+    public void findById() {
+        //GIVEN
+        Firestation firestation = new Firestation();
+        firestation.setAddress("4 le village");
+        firestation.setStation(7);
+        firestationService.saveFirestationList(firestation);
+
+        //WHEN
+        when(firestationService.findById("4 le village")).thenReturn(firestation);
+
+        //THEN
+        assertThat(firestationService.findById("4 le village").toString(), containsString("4 le village"));
 
     }
 
+    @Test
+    @DisplayName("Test findAddressByStation")
+    public void findAddressByStation() {
+        //GIVEN
+        Firestation firestation = new Firestation();
+        firestation.setAddress("4 le village");
+        firestation.setStation(7);
+        List<Firestation> firestationList = new ArrayList<Firestation>();
+        firestationList.add(firestation);
+
+        //WHEN
+        when(firestationService.findAddressByStation(7)).thenReturn(firestationList);
+
+        //THEN
+        assertThat(firestationService.findAddressByStation(7).toString(), containsString("7"));
+
+    }
 }

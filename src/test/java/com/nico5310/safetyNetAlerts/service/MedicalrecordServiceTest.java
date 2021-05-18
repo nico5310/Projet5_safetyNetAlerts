@@ -64,7 +64,7 @@ public class MedicalrecordServiceTest {
         List<String>  medications   = new ArrayList<String>();
         medications.add("kestin");
         medications.add("doliprane");
-        List<String> allergies = new LinkedList<String>();
+        List<String> allergies = new ArrayList<String>();
         allergies.add("gramines");
         allergies.add("pollen");
         List<Medicalrecord> medicalrecordList = new ArrayList<Medicalrecord>();
@@ -91,7 +91,7 @@ public class MedicalrecordServiceTest {
         List<String>  medications   = new ArrayList<String>();
         medications.add("kestin");
         medications.add("doliprane");
-        List<String> allergies = new LinkedList<String>();
+        List<String> allergies = new ArrayList<String>();
         allergies.add("gramines");
         allergies.add("pollen");
         medicalrecord.setFirstName("nicolas");
@@ -117,7 +117,7 @@ public class MedicalrecordServiceTest {
         List<String>  medications   = new ArrayList<String>();
         medications.add("kestin");
         medications.add("doliprane");
-        List<String> allergies = new LinkedList<String>();
+        List<String> allergies = new ArrayList<String>();
         allergies.add("gramines");
         allergies.add("pollen");
         medicalrecord.setFirstName("nicolas");
@@ -132,6 +132,57 @@ public class MedicalrecordServiceTest {
 
         //THEN
         assertThat(medicalrecordService.findMedicalrecordAll().toString(), containsString(""));
+
+    }
+
+    @Test
+    @DisplayName("Test findByFirstName")
+    public void findByFirstName() {
+        //GIVEN
+        Medicalrecord medicalrecord = new Medicalrecord();
+        List<String>  medications   = new ArrayList<String>();
+        medications.add("kestin");
+        medications.add("doliprane");
+        List<String> allergies = new LinkedList<String>();
+        allergies.add("gramines");
+        allergies.add("pollen");
+        medicalrecord.setFirstName("nicolas");
+        medicalrecord.setLastName("biancucci");
+        medicalrecord.setBirthdate("10/07/1980");
+        medicalrecord.setMedications(medications);
+        medicalrecord.setAllergies(allergies);
+
+        //WHEN
+        when(medicalrecordService.findByFirstName("nicolas")).thenReturn(medicalrecord);
+
+        //THEN
+        assertThat(medicalrecordService.findByFirstName("nicolas").toString(), containsString("nicolas"));
+
+    }
+
+    @Test
+    @DisplayName("Test findByFirstNameAndLastName")
+    public void findByFirstNameAndLastName() {
+        //GIVEN
+        Medicalrecord medicalrecord = new Medicalrecord();
+        List<String>  medications   = new ArrayList<String>();
+        medications.add("kestin");
+        medications.add("doliprane");
+        List<String> allergies = new LinkedList<String>();
+        allergies.add("gramines");
+        allergies.add("pollen");
+        medicalrecord.setFirstName("nicolas");
+        medicalrecord.setLastName("biancucci");
+        medicalrecord.setBirthdate("10/07/1980");
+        medicalrecord.setMedications(medications);
+        medicalrecord.setAllergies(allergies);
+
+
+        //WHEN
+        when(medicalrecordService.findByFirstNameAndLastName("nicolas","biancucci")).thenReturn(medicalrecord);
+
+        //THEN
+        assertThat(medicalrecordService.findByFirstNameAndLastName("nicolas","biancucci").toString(), containsString("biancucci"));
 
     }
 
