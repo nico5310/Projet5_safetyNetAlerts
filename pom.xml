@@ -64,27 +64,18 @@
                 </exclusion>
             </exclusions>
         </dependency>
-        <!-- SPRINGBOOT FRAMEWORK     DELETE ??????????????????????-->
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-test</artifactId>
-            <version>5.3.6</version>
-            <scope>test</scope>
-        </dependency>
 
         <!--LOG4J2-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-log4j2</artifactId>
         </dependency>
-
         <!-- LOMBOK -->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <version>1.18.20</version>
         </dependency>
-
         <!-- JSON GOOGLE -->
         <dependency>
             <groupId>com.googlecode.json-simple</groupId>
@@ -123,18 +114,7 @@
             <version>0.8.6</version>
             <type>maven-plugin</type>
         </dependency>
-        <!--ASSEMBLY       DELETE ??????????????????????-->
-        <dependency>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-assembly-plugin</artifactId>
-            <version>3.3.0</version>
-        </dependency>
-        <!-- SLF4J API DELETE   ????????????????????????-->
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-            <version>1.7.30</version>
-        </dependency>
+
         <!-- JUNIT JUPITER -->
         <dependency>
             <groupId>org.junit.jupiter</groupId>
@@ -172,10 +152,7 @@
             <groupId>org.springframework</groupId>
             <artifactId>spring-webmvc</artifactId>
         </dependency>
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-        </dependency>
+
     </dependencies>
 
     <build>

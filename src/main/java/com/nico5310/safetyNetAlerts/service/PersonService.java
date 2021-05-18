@@ -20,58 +20,35 @@ public class PersonService implements PersonServiceInterface {
     @Override
     public List<Person> findPersonAll() {
 
-        try {
-            log.info("findPersonAll SUCCESS :");
-            return personRepositoryInterface.getPersonAll();
-        } catch (Exception exception) {
-            log.error("findPersonAll ERROR :" + exception.getMessage());
-        }
-        return null;
+        return personRepositoryInterface.getPersonAll();
     }
 
     @Override
     public List<Person> savePersonList(Person person) {
 
-        try {
-            List<Person> savePerson = personRepositoryInterface.getPersonAll();
-            for (Person savePers : savePerson) {
-                if (savePers.getFirstNameAndLastName().equals(person.getFirstNameAndLastName())) {
-                    log.info("ERROR Cannot create Person List, he already exists :" + person);
-                    return null;
-                }
-            }
-            savePerson.add(person);
-            log.info("Person saved SUCCESS :" + person);
-            return savePerson;
-        } catch (Exception exception) {
-            log.error("savePersonList ERROR :" + exception.getMessage());
-        }
-        return null;
+        List<Person> savePerson = personRepositoryInterface.getPersonAll();
+        savePerson.add(person);
+        log.info("Person saved SUCCESS :" + person);
+        return savePerson;
     }
 
     @Override
     public Person updatePersonList(String firstNameAndLastName, Person person) {
 
-        if (person != null) {
-            List<Person> updatePerson;
-            try {
+        List<Person> updatePerson;
 
-                updatePerson = personRepositoryInterface.getPersonAll();
-            } catch (Exception exception) {
-                log.error("updatePersonList ERROR :" + exception.getMessage());
-                return null;
+        updatePerson = personRepositoryInterface.getPersonAll();
+                for (Person update : updatePerson) {
+            if (update.getFirstNameAndLastName().equals(firstNameAndLastName)) {
+                update.setAddress(person.getAddress());
+                update.setCity(person.getCity());
+                update.setZip(person.getZip());
+                update.setPhone(person.getPhone());
+                update.setEmail(person.getEmail());
+                log.info("updatePersonList SUCCESS :" + person);
+                return update;
             }
-            for (Person update : updatePerson) {
-                if (update.getFirstNameAndLastName().equals(firstNameAndLastName)) {
-                    update.setAddress(person.getAddress());
-                    update.setCity(person.getCity());
-                    update.setZip(person.getZip());
-                    update.setPhone(person.getPhone());
-                    update.setEmail(person.getEmail());
-                    log.info("updatePersonList SUCCESS :" + person);
-                    return update;
-                }
-            }
+
         }
         return null;
     }
@@ -79,14 +56,11 @@ public class PersonService implements PersonServiceInterface {
     @Override
     public List<Person> deletePersonList(String firstNameAndLastName) {
 
-        try {
-            List<Person> deletePerson = personRepositoryInterface.getPersonAll();
-            deletePerson.removeIf(person -> person.getFirstNameAndLastName().equals(firstNameAndLastName));
-            log.info("deletePersonList SUCCESS :" + firstNameAndLastName);
-        } catch (Exception exception) {
-            log.error("deletePersonList ERROR :" + exception.getMessage());
-        }
-        return null;
+
+        List<Person> deletePerson = personRepositoryInterface.getPersonAll();
+        deletePerson.removeIf(person -> person.getFirstNameAndLastName().equals(firstNameAndLastName));
+        log.info("deletePersonList SUCCESS :" + firstNameAndLastName);
+        return personRepositoryInterface.getPersonAll();
 
     }
 
@@ -139,14 +113,14 @@ public class PersonService implements PersonServiceInterface {
                     listPerson.add(person);
                 }
             }
-            log.info("findByFirstNameAndLastName SUCCESS :" + (firstName+lastName));
+            log.info("findByFirstNameAndLastName SUCCESS :" + (firstName + lastName));
             return listPerson;
         } catch (Exception exception) {
             log.error(" findByFirstNameAndLastName ERROR :" + exception.getMessage());
-    }
+        }
 
-    return null;
-}
+        return null;
+    }
 
     @Override
     public List<Person> findEmailByCity(String city) {
@@ -158,7 +132,7 @@ public class PersonService implements PersonServiceInterface {
                     listPerson.add(person);
                 }
             }
-            log.info("findByEmailCity SUCCESS :" + city );
+            log.info("findByEmailCity SUCCESS :" + city);
             return listPerson;
         } catch (Exception exception) {
             log.error("findByEmailCity ERROR :" + exception.getMessage());

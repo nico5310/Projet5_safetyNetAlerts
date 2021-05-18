@@ -24,24 +24,6 @@ public class UrlControllerTest {
     @Autowired
     UrlEndpointService urlEndpointService;
 
- //    @Test
-//    @DisplayName("Test return status for allPersonsByStation request")
-//    public void allPersonsByStation() throws Exception {
-//
-//        //GIVEN
-//        List<Person> listPersonsList = new ArrayList<>(); // Create new list of Person of object PersonsByStationDto
-//        long children = 0; // initialize parameters children = 0
-//        long adults = 0; // initialize parameters adults = 0
-//        PersonsByStationDto personsByStationDto = new PersonsByStationDto(listPersonsList, children, adults); // Initialize new Object personsByStationDto with parameters
-//        when(urlEndpointService.allPersonsByStation(any(int.class))).thenReturn(personsByStationDto);// when the service is called, return new List
-//
-//        //WHEN
-//        this.mockMvc.perform(get("/firestation?stationNumber=0")).andExpect(status().isOk()); //Execute request with Get"person" and wait for an answer 200 status with "key" stationNumber and "value" 7
-//
-//        //THEN
-//        verify(urlEndpointService, times(1)).allPersonsByStation(any(int.class));
-//    }
-
 
     // URL 1 Test
     @Test

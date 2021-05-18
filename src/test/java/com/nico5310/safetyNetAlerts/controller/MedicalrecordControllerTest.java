@@ -54,7 +54,6 @@ public class MedicalrecordControllerTest {
                .andExpect(status().isOk()); // Execute request with Get"medicalrecord" and wait for an answer 200 status
 
         // THEN
-        //        assertEquals(status, 200); // Verify when status return is equals 200 valid request
         verify(medicalrecordService, times(1)).findMedicalrecordAll(); // verify when service firestationService is called one more times
 
     }
@@ -92,8 +91,8 @@ public class MedicalrecordControllerTest {
         medicalrecord.setFirstName("nicolas");
         medicalrecord.setLastName("biancucci");
         medicalrecord.setBirthdate("10/07/1980");
-        medicalrecord.setAllergies(allergies);
         medicalrecord.setMedications(medications);
+        medicalrecord.setAllergies(allergies);
         when(medicalrecordService.updateMedicalrecordList(any(String.class), (any(Medicalrecord.class)))).thenReturn(medicalrecord);
 
         //WHEN
@@ -106,17 +105,17 @@ public class MedicalrecordControllerTest {
 
     }
 
-        @Test
-        @DisplayName("Test return status for deleteMedicalrecordList request")
-        public void deleteMedicalrecordList() throws Exception {
-            //GIVEN
+    @Test
+    @DisplayName("Test return status for deleteMedicalrecordList request")
+    public void deleteMedicalrecordList() throws Exception {
+        //GIVEN
 
 
-            //WHEN
-           mockMvc.perform(delete("/medicalRecord/JohnBoyd")).andExpect(status().isOk());
+        //WHEN
+        mockMvc.perform(delete("/medicalRecord/JohnBoyd")).andExpect(status().isOk());
 
-            //THEN
-            verify(medicalrecordService, times(1)).deleteMedicalrecordList(any(String.class));
+        //THEN
+        verify(medicalrecordService, times(1)).deleteMedicalrecordList(any(String.class));
 
-        }
+    }
 }

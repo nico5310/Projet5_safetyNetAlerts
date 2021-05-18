@@ -61,13 +61,13 @@ public class PersonControllerTest {
     }
 
     @Test
-    @DisplayName("Test return status for addPerson request")
-    public void addPerson() throws Exception {
+    @DisplayName("Test return status for savePerson request")
+    public void savePerson() throws Exception {
         //GIVEN
         Person person = new Person();
         person.setFirstName("nicolas");
         person.setLastName("biancucci");
-        person.setAddress("4 le village");
+        person.setAddress("le village");
         person.setCity("thurigneux");
         person.setZip("01390");
         person.setPhone("0611111111");
@@ -90,7 +90,7 @@ public class PersonControllerTest {
         Person person = new Person();
         person.setFirstName("nicolas");
         person.setLastName("biancucci");
-        person.setAddress("4 le village");
+        person.setAddress("le village");
         person.setCity("thurigneux");
         person.setZip("01390");
         person.setPhone("0611111111");
