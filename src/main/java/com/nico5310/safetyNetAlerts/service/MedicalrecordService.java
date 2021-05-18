@@ -18,88 +18,60 @@ public class MedicalrecordService implements MedicalrecordServiceInterface {
     @Override
     public List<Medicalrecord> findMedicalrecordAll() {
 
-        try {
-            log.info("findMedicalrecordAll SUCCESS :");
-            return medicalrecordRepositoryInterface.getMedicalrecordAll();
-        } catch (Exception exception) {
-            log.error("Error retrieving the Medicalrecord list :" + exception.getMessage());
-        }
-        return null;
+        log.info("findMedicalrecordAll SUCCESS :");
+        return medicalrecordRepositoryInterface.getMedicalrecordAll();
+
     }
 
     @Override
     public List<Medicalrecord> saveMedicalrecordList(Medicalrecord medicalrecord) {
 
-        try {
-            List<Medicalrecord> saveMedical = medicalrecordRepositoryInterface.getMedicalrecordAll();
-            for (Medicalrecord saveMedic : saveMedical) {
-                if (saveMedic.getFirstNameAndLastName().equals(medicalrecord.getFirstNameAndLastName())) {
-                    log.error("ERROR Cannot create Medicalrecord List, he already exits :" + medicalrecord);
-                    return null;
-                }
+        List<Medicalrecord> saveMedical = medicalrecordRepositoryInterface.getMedicalrecordAll();
+        for (Medicalrecord saveMedic : saveMedical) {
+            if (saveMedic.getFirstNameAndLastName().equals(medicalrecord.getFirstNameAndLastName())) {
+                log.error("ERROR Cannot create Medicalrecord List, he already exits :" + medicalrecord);
+                return null;
             }
-            saveMedical.add(medicalrecord);
-            log.info("saveMedicalrecordList SUCCESS" + medicalrecord);
-            return saveMedical;
-        } catch (Exception exception) {
-            log.error("Error saving the Medicalrecord to list :" + exception.getMessage());
         }
-        return null;
+        saveMedical.add(medicalrecord);
+        log.info("saveMedicalrecordList SUCCESS" + medicalrecord);
+        return saveMedical;
+
     }
 
     @Override
     public Medicalrecord updateMedicalrecordList(String firstNameAndLastName, Medicalrecord medicalrecord) {
 
-        if (medicalrecord != null) {
-            List<Medicalrecord> updateMedical;
-            try {
-
-                updateMedical = medicalrecordRepositoryInterface.getMedicalrecordAll();
-            } catch (Exception exception) {
-                log.error("Error updating the Medicalrecord to list :");
-                return null;
-            }
-            for (Medicalrecord update : updateMedical) {
-                if (update.getFirstNameAndLastName().equals(firstNameAndLastName)) {
-                    update.setBirthdate(medicalrecord.getBirthdate());
-                    update.setMedications(medicalrecord.getMedications());
-                    update.setAllergies(medicalrecord.getAllergies());
-                    log.info("updateMedicalrecordList SUCCESS :" + medicalrecord);
-                    return update;
-                }
+        List<Medicalrecord> updateMedical = medicalrecordRepositoryInterface.getMedicalrecordAll();
+        for (Medicalrecord update : updateMedical) {
+            if (update.getFirstNameAndLastName().equals(firstNameAndLastName)) {
+                update.setBirthdate(medicalrecord.getBirthdate());
+                update.setMedications(medicalrecord.getMedications());
+                update.setAllergies(medicalrecord.getAllergies());
+                log.info("updateMedicalrecordList SUCCESS :" + medicalrecord);
+                return update;
             }
         }
         return null;
     }
 
     @Override
-    public boolean deleteMedicalrecordList(String firstNameAndLastName) {
+    public void deleteMedicalrecordList(String firstNameAndLastName) {
 
-        try {
-            List<Medicalrecord> deleteMedical = medicalrecordRepositoryInterface.getMedicalrecordAll();
-            return deleteMedical.removeIf(medicalrecord -> medicalrecord.getFirstNameAndLastName()
-                                                                        .equals(firstNameAndLastName));
+        List<Medicalrecord> deleteMedical = medicalrecordRepositoryInterface.getMedicalrecordAll();
+        deleteMedical.removeIf(medicalrecord -> medicalrecord.getFirstNameAndLastName().equals(firstNameAndLastName));
 
-        } catch (Exception exception) {
-            log.error("Error for deleting the Medicalrecord :");
-        }
-        log.info("deleteMedicalrecordList SUCCESS :" + firstNameAndLastName);
-        return false;
     }
 
     //Urls Endpoints
     @Override
     public Medicalrecord findByFirstName(String firstName) {
 
-        try {
-            for (Medicalrecord medicalRecord : medicalrecordRepositoryInterface.getMedicalrecordAll()) {
-                if (medicalRecord.getFirstName().equals(firstName)) {
-                    log.info("findByFirstName SUCCESS :" + firstName);
-                    return medicalRecord;
-                }
+        for (Medicalrecord medicalRecord : medicalrecordRepositoryInterface.getMedicalrecordAll()) {
+            if (medicalRecord.getFirstName().equals(firstName)) {
+                log.info("findByFirstName SUCCESS :" + firstName);
+                return medicalRecord;
             }
-        } catch (Exception exception) {
-            log.error("findByFirstName ERROR :" + exception.getMessage());
         }
         return null;
     }
@@ -107,16 +79,13 @@ public class MedicalrecordService implements MedicalrecordServiceInterface {
     @Override
     public Medicalrecord findByFirstNameAndLastName(String firstName, String lastName) {
 
-        try {
-            for (Medicalrecord medicalRecord : medicalrecordRepositoryInterface.getMedicalrecordAll()) {
-                if (medicalRecord.getFirstName().equals(firstName) && (medicalRecord.getLastName().equals(lastName))) {
-                    log.info("findByFirstNameAndLastName SUCCESS :" + (firstName + lastName));
-                    return medicalRecord;
-                }
+        for (Medicalrecord medicalRecord : medicalrecordRepositoryInterface.getMedicalrecordAll()) {
+            if (medicalRecord.getFirstName().equals(firstName) && (medicalRecord.getLastName().equals(lastName))) {
+                log.info("findByFirstNameAndLastName SUCCESS :" + (firstName + lastName));
+                return medicalRecord;
             }
-        } catch (Exception exception) {
-            log.error("findByFirstNameAndLastName ERROR :" + exception.getMessage());
         }
+
         return null;
     }
 

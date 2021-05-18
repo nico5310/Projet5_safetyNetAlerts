@@ -12,7 +12,7 @@ public interface MedicalrecordServiceInterface {
 
     Medicalrecord updateMedicalrecordList(String firstNameAndLastName, Medicalrecord medicalrecord);
 
-    boolean deleteMedicalrecordList(String firstNameAndLastName);
+    void deleteMedicalrecordList(String firstNameAndLastName);
 
     // Urls Endpoint
 

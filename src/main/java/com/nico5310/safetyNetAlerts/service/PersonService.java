@@ -38,7 +38,7 @@ public class PersonService implements PersonServiceInterface {
         List<Person> updatePerson;
 
         updatePerson = personRepositoryInterface.getPersonAll();
-                for (Person update : updatePerson) {
+        for (Person update : updatePerson) {
             if (update.getFirstNameAndLastName().equals(firstNameAndLastName)) {
                 update.setAddress(person.getAddress());
                 update.setCity(person.getCity());
@@ -48,14 +48,12 @@ public class PersonService implements PersonServiceInterface {
                 log.info("updatePersonList SUCCESS :" + person);
                 return update;
             }
-
         }
         return null;
     }
 
     @Override
     public List<Person> deletePersonList(String firstNameAndLastName) {
-
 
         List<Person> deletePerson = personRepositoryInterface.getPersonAll();
         deletePerson.removeIf(person -> person.getFirstNameAndLastName().equals(firstNameAndLastName));
@@ -69,75 +67,56 @@ public class PersonService implements PersonServiceInterface {
     @Override
     public List<Person> findByAddress(String address) {
 
-        try {
-            List<Person> listPerson = new ArrayList<Person>();
-            for (Person person : personRepositoryInterface.getPersonAll()) {
-                if (person.getAddress().equals(address)) {
-                    listPerson.add(person);
-                }
+        List<Person> listPerson = new ArrayList<Person>();
+        for (Person person : personRepositoryInterface.getPersonAll()) {
+            if (person.getAddress().equals(address)) {
+                listPerson.add(person);
             }
-            log.info("findByAddress SUCCESS :" + address);
-            return listPerson;
-        } catch (Exception exception) {
-            log.error("findByAddress ERROR :" + exception.getMessage());
         }
-        return null;
+        log.info("findByAddress SUCCESS :" + address);
+        return listPerson;
     }
 
     @Override
     public List<Person> findByLastName(String lastName) {
 
-        try {
-            List<Person> listPerson = new ArrayList<Person>();
-            for (Person person : personRepositoryInterface.getPersonAll()) {
-                if (person.getLastName().equals(lastName)) {
-                    listPerson.add(person);
-                }
+        List<Person> listPerson = new ArrayList<Person>();
+        for (Person person : personRepositoryInterface.getPersonAll()) {
+            if (person.getLastName().equals(lastName)) {
+                listPerson.add(person);
             }
-            log.info("findByAddress SUCCESS :" + lastName);
-            return listPerson;
-        } catch (Exception exception) {
-            log.error("findByAddress ERROR :" + exception.getMessage());
         }
-        return null;
+        log.info("findByAddress SUCCESS :" + lastName);
+        return listPerson;
+
     }
 
 
     @Override
     public List<Person> findByFirstNameAndLastName(String firstName, String lastName) {
 
-        try {
-            List<Person> listPerson = new ArrayList<Person>();
-            for (Person person : personRepositoryInterface.getPersonAll()) {
-                if (person.getFirstName().equals(firstName) && (person.getLastName().equals(lastName))) {
-                    listPerson.add(person);
-                }
+        List<Person> listPerson = new ArrayList<Person>();
+        for (Person person : personRepositoryInterface.getPersonAll()) {
+            if (person.getFirstName().equals(firstName) && (person.getLastName().equals(lastName))) {
+                listPerson.add(person);
             }
-            log.info("findByFirstNameAndLastName SUCCESS :" + (firstName + lastName));
-            return listPerson;
-        } catch (Exception exception) {
-            log.error(" findByFirstNameAndLastName ERROR :" + exception.getMessage());
         }
+        log.info("findByFirstNameAndLastName SUCCESS :" + (firstName + lastName));
+        return listPerson;
 
-        return null;
     }
 
     @Override
     public List<Person> findEmailByCity(String city) {
 
-        try {
-            List<Person> listPerson = new ArrayList<>();
-            for (Person person : personRepositoryInterface.getPersonAll()) {
-                if (person.getCity().equals(city)) {
-                    listPerson.add(person);
-                }
+        List<Person> listPerson = new ArrayList<>();
+        for (Person person : personRepositoryInterface.getPersonAll()) {
+            if (person.getCity().equals(city)) {
+                listPerson.add(person);
             }
-            log.info("findByEmailCity SUCCESS :" + city);
-            return listPerson;
-        } catch (Exception exception) {
-            log.error("findByEmailCity ERROR :" + exception.getMessage());
         }
-        return null;
+        log.info("findByEmailCity SUCCESS :" + city);
+        return listPerson;
     }
 
 }
