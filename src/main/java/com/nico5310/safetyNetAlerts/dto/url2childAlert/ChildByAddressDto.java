@@ -1,10 +1,9 @@
 package com.nico5310.safetyNetAlerts.dto.url2childAlert;
 
-import lombok.Data;
 
 import java.util.List;
 
-@Data
+
 public class ChildByAddressDto {
 
     private List<PersonsWithAge> children;

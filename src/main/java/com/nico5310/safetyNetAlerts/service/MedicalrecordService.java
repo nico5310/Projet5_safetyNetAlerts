@@ -6,6 +6,7 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.text.ParseException;
 import java.util.List;
 
 @Log4j2
@@ -13,53 +14,39 @@ import java.util.List;
 public class MedicalrecordService implements MedicalrecordServiceInterface {
 
     @Autowired
-    MedicalrecordRepositoryInterface medicalrecordRepositoryInterface;
+    private MedicalrecordRepositoryInterface medicalrecordRepositoryInterface;
+
+    @Autowired
+    public MedicalrecordService(MedicalrecordRepositoryInterface medicalrecordRepositoryInterface) {this.medicalrecordRepositoryInterface = medicalrecordRepositoryInterface;}
+
 
     @Override
     public List<Medicalrecord> findMedicalrecordAll() {
 
         log.info("findMedicalrecordAll SUCCESS :");
-        return medicalrecordRepositoryInterface.getMedicalrecordAll();
-
+        return medicalrecordRepositoryInterface.findMedicalrecordAll();
     }
 
     @Override
     public List<Medicalrecord> saveMedicalrecordList(Medicalrecord medicalrecord) {
 
-        List<Medicalrecord> saveMedical = medicalrecordRepositoryInterface.getMedicalrecordAll();
-        for (Medicalrecord saveMedic : saveMedical) {
-            if (saveMedic.getFirstNameAndLastName().equals(medicalrecord.getFirstNameAndLastName())) {
-                log.error("ERROR Cannot create Medicalrecord List, he already exits :" + medicalrecord);
-                return null;
-            }
-        }
-        saveMedical.add(medicalrecord);
         log.info("saveMedicalrecordList SUCCESS" + medicalrecord);
-        return saveMedical;
-
+        medicalrecordRepositoryInterface.saveMedicalrecordList(medicalrecord);
+        return medicalrecordRepositoryInterface.saveMedicalrecordList(medicalrecord);
     }
 
     @Override
-    public Medicalrecord updateMedicalrecordList(String firstNameAndLastName, Medicalrecord medicalrecord) {
+    public Medicalrecord updateMedicalrecordList(String firstNameAndLastName, Medicalrecord medicalrecord) throws ParseException {
 
-        List<Medicalrecord> updateMedical = medicalrecordRepositoryInterface.getMedicalrecordAll();
-        for (Medicalrecord update : updateMedical) {
-            if (update.getFirstNameAndLastName().equals(firstNameAndLastName)) {
-                update.setBirthdate(medicalrecord.getBirthdate());
-                update.setMedications(medicalrecord.getMedications());
-                update.setAllergies(medicalrecord.getAllergies());
-                log.info("updateMedicalrecordList SUCCESS :" + medicalrecord);
-                return update;
-            }
-        }
-        return null;
+        log.info("updateMedicalrecordList SUCCESS :" + medicalrecord);
+        return medicalrecordRepositoryInterface.updateMedicalrecordList(firstNameAndLastName, medicalrecord);
     }
+
 
     @Override
     public void deleteMedicalrecordList(String firstNameAndLastName) {
-
-        List<Medicalrecord> deleteMedical = medicalrecordRepositoryInterface.getMedicalrecordAll();
-        deleteMedical.removeIf(medicalrecord -> medicalrecord.getFirstNameAndLastName().equals(firstNameAndLastName));
+        log.info("deleteMedicalrecordList SUCCESS :" + firstNameAndLastName);
+        medicalrecordRepositoryInterface.deleteMedicalrecordList(firstNameAndLastName);
 
     }
 
@@ -67,7 +54,7 @@ public class MedicalrecordService implements MedicalrecordServiceInterface {
     @Override
     public Medicalrecord findByFirstName(String firstName) {
 
-        for (Medicalrecord medicalRecord : medicalrecordRepositoryInterface.getMedicalrecordAll()) {
+        for (Medicalrecord medicalRecord : medicalrecordRepositoryInterface.findMedicalrecordAll()) {
             if (medicalRecord.getFirstName().equals(firstName)) {
                 log.info("findByFirstName SUCCESS :" + firstName);
                 return medicalRecord;
@@ -79,7 +66,7 @@ public class MedicalrecordService implements MedicalrecordServiceInterface {
     @Override
     public Medicalrecord findByFirstNameAndLastName(String firstName, String lastName) {
 
-        for (Medicalrecord medicalRecord : medicalrecordRepositoryInterface.getMedicalrecordAll()) {
+        for (Medicalrecord medicalRecord : medicalrecordRepositoryInterface.findMedicalrecordAll()) {
             if (medicalRecord.getFirstName().equals(firstName) && (medicalRecord.getLastName().equals(lastName))) {
                 log.info("findByFirstNameAndLastName SUCCESS :" + (firstName + lastName));
                 return medicalRecord;

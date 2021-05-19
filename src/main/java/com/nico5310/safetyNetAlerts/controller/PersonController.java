@@ -54,6 +54,7 @@ public class PersonController {
     @DeleteMapping(value = "/person/{firstNameAndLastName}")
     public List<Person> deletePerson(@PathVariable String firstNameAndLastName) {
 
+        log.info("deletePerson DELETE request SUCCESS");
         return personServiceInterface.deletePersonList(firstNameAndLastName);
 
     }

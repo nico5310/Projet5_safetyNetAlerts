@@ -6,6 +6,7 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.text.ParseException;
 import java.util.List;
 
 @RestController
@@ -40,7 +41,7 @@ public class MedicalrecordController {
     }
 
     @PutMapping(value = "/medicalRecord/{firstNameAndLastName}")
-    public Medicalrecord updateMedicalrecord(@RequestBody Medicalrecord medicalrecord, @PathVariable String firstNameAndLastName) {
+    public Medicalrecord updateMedicalrecord(@RequestBody Medicalrecord medicalrecord, @PathVariable String firstNameAndLastName) throws ParseException {
 
         Medicalrecord updateMedical = medicalrecordServiceInterface.updateMedicalrecordList(firstNameAndLastName, medicalrecord);
         if (updateMedical != null) {
@@ -54,11 +55,9 @@ public class MedicalrecordController {
     @DeleteMapping("/medicalRecord/{firstNameAndLastName}")
     public void deleteMedicalrecord(@PathVariable String firstNameAndLastName) {
 
-        if (medicalrecordServiceInterface.deleteMedicalrecordList(firstNameAndLastName)) {
-            log.info("deleteMedicalrecord DELETE request SUCCESS");
-        } else {
-            log.error("deleteMedicalrecord DELETE request FAILED");
-        }
+        log.info("deleteMedicalrecord DELETE request SUCCESS");
+        medicalrecordServiceInterface.deleteMedicalrecordList(firstNameAndLastName);
+
     }
 
 }

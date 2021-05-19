@@ -1,12 +1,9 @@
 package com.nico5310.safetyNetAlerts.dto.url5flood;
 
-import com.nico5310.safetyNetAlerts.model.Medicalrecord;
-import com.nico5310.safetyNetAlerts.model.Person;
-import lombok.Data;
 
 import java.util.List;
 
-@Data
+
 public class FamilyListByStation {
 
     private String lastName;
@@ -23,6 +20,48 @@ public class FamilyListByStation {
         this.medications = medications;
         this.allergies   = allergies;
     }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public List<String> getMedications() {
+        return medications;
+    }
+
+    public void setMedications(List<String> medications) {
+        this.medications = medications;
+    }
+
+    public List<String> getAllergies() {
+        return allergies;
+    }
+
+    public void setAllergies(List<String> allergies) {
+        this.allergies = allergies;
+    }
+
+
     @Override
     public String toString() {
         return "Flood [" + getLastName() + ", " + getPhone() + ", " + getAge() + ", " + getMedications() + ", " + getAllergies() + "]";

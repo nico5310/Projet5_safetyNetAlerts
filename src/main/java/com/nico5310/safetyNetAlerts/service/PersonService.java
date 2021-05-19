@@ -20,45 +20,31 @@ public class PersonService implements PersonServiceInterface {
     @Override
     public List<Person> findPersonAll() {
 
-        return personRepositoryInterface.getPersonAll();
+        return personRepositoryInterface.findPersonAll();
     }
 
     @Override
     public List<Person> savePersonList(Person person) {
 
-        List<Person> savePerson = personRepositoryInterface.getPersonAll();
-        savePerson.add(person);
         log.info("Person saved SUCCESS :" + person);
-        return savePerson;
+        personRepositoryInterface.savePersonList(person);
+        return personRepositoryInterface.findPersonAll();
     }
 
     @Override
     public Person updatePersonList(String firstNameAndLastName, Person person) {
 
-        List<Person> updatePerson;
-
-        updatePerson = personRepositoryInterface.getPersonAll();
-        for (Person update : updatePerson) {
-            if (update.getFirstNameAndLastName().equals(firstNameAndLastName)) {
-                update.setAddress(person.getAddress());
-                update.setCity(person.getCity());
-                update.setZip(person.getZip());
-                update.setPhone(person.getPhone());
-                update.setEmail(person.getEmail());
                 log.info("updatePersonList SUCCESS :" + person);
-                return update;
-            }
-        }
-        return null;
+                return personRepositoryInterface.updatePersonList(firstNameAndLastName, person);
     }
 
     @Override
     public List<Person> deletePersonList(String firstNameAndLastName) {
 
-        List<Person> deletePerson = personRepositoryInterface.getPersonAll();
-        deletePerson.removeIf(person -> person.getFirstNameAndLastName().equals(firstNameAndLastName));
+
         log.info("deletePersonList SUCCESS :" + firstNameAndLastName);
-        return personRepositoryInterface.getPersonAll();
+        personRepositoryInterface.deletePersonList(firstNameAndLastName);
+        return personRepositoryInterface.findPersonAll();
 
     }
 
@@ -67,56 +53,30 @@ public class PersonService implements PersonServiceInterface {
     @Override
     public List<Person> findByAddress(String address) {
 
-        List<Person> listPerson = new ArrayList<Person>();
-        for (Person person : personRepositoryInterface.getPersonAll()) {
-            if (person.getAddress().equals(address)) {
-                listPerson.add(person);
-            }
-        }
         log.info("findByAddress SUCCESS :" + address);
-        return listPerson;
+        return personRepositoryInterface.findByAddress(address);
     }
 
     @Override
     public List<Person> findByLastName(String lastName) {
 
-        List<Person> listPerson = new ArrayList<Person>();
-        for (Person person : personRepositoryInterface.getPersonAll()) {
-            if (person.getLastName().equals(lastName)) {
-                listPerson.add(person);
-            }
-        }
         log.info("findByAddress SUCCESS :" + lastName);
-        return listPerson;
-
+        return personRepositoryInterface.findByLastName(lastName);
     }
 
 
     @Override
     public List<Person> findByFirstNameAndLastName(String firstName, String lastName) {
 
-        List<Person> listPerson = new ArrayList<Person>();
-        for (Person person : personRepositoryInterface.getPersonAll()) {
-            if (person.getFirstName().equals(firstName) && (person.getLastName().equals(lastName))) {
-                listPerson.add(person);
-            }
-        }
         log.info("findByFirstNameAndLastName SUCCESS :" + (firstName + lastName));
-        return listPerson;
-
+        return personRepositoryInterface.findByFirstNameAndLastName(firstName, lastName);
     }
 
     @Override
     public List<Person> findEmailByCity(String city) {
 
-        List<Person> listPerson = new ArrayList<>();
-        for (Person person : personRepositoryInterface.getPersonAll()) {
-            if (person.getCity().equals(city)) {
-                listPerson.add(person);
-            }
-        }
         log.info("findByEmailCity SUCCESS :" + city);
-        return listPerson;
+        return personRepositoryInterface.findEmailByCity(city);
     }
 
 }

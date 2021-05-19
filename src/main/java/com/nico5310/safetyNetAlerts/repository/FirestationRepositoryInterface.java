@@ -6,5 +6,17 @@ import java.util.List;
 
 public interface FirestationRepositoryInterface {
 
-    List<Firestation> getFirestationAll();
+    List<Firestation> findFirestationAll();
+
+
+    List<Firestation> saveFirestationList(Firestation firestation);
+
+    Firestation updateFirestationList(Firestation firestation);
+
+    void deleteFirestationList(String address);
+
+    //Urls Endpoints
+    Firestation findById(String firestationAddress);
+
+    List<Firestation> findAddressByStation(int stationNumber);
 }

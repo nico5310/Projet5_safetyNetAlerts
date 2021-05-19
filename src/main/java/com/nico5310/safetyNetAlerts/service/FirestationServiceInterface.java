@@ -12,7 +12,7 @@ public interface FirestationServiceInterface {
 
     Firestation updateFirestationList(Firestation firestation);
 
-    boolean deleteFirestationList(String address);
+    List<Firestation> deleteFirestationList(String address);
 
     // Urls Endpoints
 

@@ -1,10 +1,7 @@
 package com.nico5310.safetyNetAlerts.dto.url7communityEmail;
 
-import lombok.Data;
-
 import java.util.List;
 
-@Data
 public class EmailListDto {
 
     private List<String> listEmails;
@@ -14,11 +11,13 @@ public class EmailListDto {
         this.listEmails = listEmails;
     }
 
-    /**
-     * Constructor
-     */
+    public List<String> getListEmails() {
+        return listEmails;
+    }
 
-
+    public void setListEmails(List<String> listEmails) {
+        this.listEmails = listEmails;
+    }
 
     @Override
     public String toString(){

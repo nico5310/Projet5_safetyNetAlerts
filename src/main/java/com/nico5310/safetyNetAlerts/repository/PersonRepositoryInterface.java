@@ -6,6 +6,20 @@ import java.util.List;
 
 public interface PersonRepositoryInterface {
 
-    List<Person> getPersonAll();
 
+    List<Person> findPersonAll();
+
+    List<Person> savePersonList(Person person);
+
+    Person updatePersonList(String firstNameAndLastName, Person person);
+
+    void deletePersonList(String firstNameAndLastName);
+
+    List<Person> findByAddress(String address);
+
+    List<Person> findByLastName(String lastName);
+
+    List<Person> findByFirstNameAndLastName(String firstName, String lastName);
+
+    List<Person> findEmailByCity(String city);
 }

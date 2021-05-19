@@ -20,45 +20,33 @@ public class FirestationService implements FirestationServiceInterface {
     public List<Firestation> findFirestationAll() {
 
         log.info("findFirestationAll SUCCESS :");
-        return firestationRepositoryInterface.getFirestationAll();
+        return firestationRepositoryInterface.findFirestationAll();
 
     }
 
     @Override
     public List<Firestation> saveFirestationList(Firestation firestation) {
 
-        List<Firestation> saveFirestation = firestationRepositoryInterface.getFirestationAll();
-        for (Firestation saveFire : saveFirestation) {
-            if (saveFire.getAddress().equals(firestation.getAddress())) {
-                log.error("ERROR Cannot create Firestation List, he already exists :" + firestation);
-                return null;
-            }
-        }
-        saveFirestation.add(firestation);
+
         log.info("Firestation saved SUCCESS :" + firestation);
-        return saveFirestation;
+        firestationRepositoryInterface.saveFirestationList(firestation);
+        return firestationRepositoryInterface.saveFirestationList(firestation);
 
     }
 
     @Override
     public Firestation updateFirestationList(Firestation firestation) {
 
-        List<Firestation> updateFirestation = firestationRepositoryInterface.getFirestationAll();
-        for (Firestation update : updateFirestation) {
-            if (update.getAddress().equals(firestation.getAddress())) { ///
-                update.setStation(firestation.getStation());
-                log.info("updateFirestationList SUCCESS" + firestation);
-                return update;
-            }
-        }
-        return null;
+        log.info("updateFirestationList SUCCESS" + firestation);
+        return firestationRepositoryInterface.updateFirestationList(firestation);
     }
 
     @Override
-    public boolean deleteFirestationList(String address) {
+    public List<Firestation> deleteFirestationList(String address) {
 
-        List<Firestation> deleteFirestation = firestationRepositoryInterface.getFirestationAll();
-        return deleteFirestation.removeIf(firestation -> firestation.getAddress().equals(address));
+        log.info("findById SUCCESS :" + address);
+        firestationRepositoryInterface.deleteFirestationList(address);
+        return firestationRepositoryInterface.findFirestationAll();
 
     }
 
@@ -66,26 +54,16 @@ public class FirestationService implements FirestationServiceInterface {
     @Override
     public Firestation findById(String firestationAddress) {
 
-        for (Firestation address : firestationRepositoryInterface.getFirestationAll()) {
-            if (address.getAddress().equals(firestationAddress)) {
-                log.info("findById SUCCESS :" + firestationAddress);
-                return address;
-            }
-        }
-        return null;
+        log.info("findById SUCCESS :" + firestationAddress);
+        return firestationRepositoryInterface.findById(firestationAddress);
+
     }
 
     @Override
     public List<Firestation> findAddressByStation(int stationNumber) {
 
-        List<Firestation> listFirestation = new ArrayList<>();
-        for (Firestation firestation : firestationRepositoryInterface.getFirestationAll()) {
-            if (firestation.getStation() == stationNumber) {
-                listFirestation.add(firestation);
-            }
-        }
         log.info("findAddressByStation SUCCESS :" + stationNumber);
-        return listFirestation;
+        return firestationRepositoryInterface.findAddressByStation(stationNumber);
     }
 
 

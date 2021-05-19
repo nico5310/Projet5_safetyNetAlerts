@@ -1,10 +1,5 @@
 package com.nico5310.safetyNetAlerts.dto.url1firestation;
 
-import lombok.Data;
-
-
-
-@Data
 public class PersonsByFirestation  {
 
     private String firstName;
@@ -21,26 +16,34 @@ public class PersonsByFirestation  {
     }
 
     public String getFirstName() {
-
         return firstName;
     }
 
-    public String getLastName() {
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
 
+    public String getLastName() {
         return lastName;
     }
 
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
 
     public String getAddress() {
-
         return address;
     }
 
+    public void setAddress(String address) {
+        this.address = address;
+    }
 
     public String getPhone() {
-
         return phone;
     }
 
-
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
 }

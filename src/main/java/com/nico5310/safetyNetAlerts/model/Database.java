@@ -1,7 +1,6 @@
 package com.nico5310.safetyNetAlerts.model;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import lombok.Data;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
@@ -10,7 +9,6 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
 
-@Data
 @Component
 public class Database {
 
@@ -37,6 +35,19 @@ public class Database {
 
         //        System.out.println("Database Object\n" + database);
     }
+
+    public List<Person> getPersons() {
+        return persons;
+    }
+
+    public List<Medicalrecord> getMedicalrecords() {
+        return medicalrecords;
+    }
+
+    public List<Firestation> getFirestations() {
+        return firestations;
+    }
+
 
     @Override
     public String toString() {
