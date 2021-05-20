@@ -10,9 +10,9 @@ public class ChildByAddressDto {
     private List<PersonsWithAge> adults;
 
 
-    public String getChildren() {
+    public List<PersonsWithAge> getChildren() {
 
-        return String.valueOf(children);
+        return children;
     }
 
     public void setChildren(List<PersonsWithAge> children) {

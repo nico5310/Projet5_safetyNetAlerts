@@ -14,20 +14,10 @@ import java.util.List;
 public class PersonRepository implements PersonRepositoryInterface {
 
     private List<Person> persons;
+    public PersonRepository() {}
 
     @Autowired
     private Database database;
-
-
-    public List<Person> getPersons() {
-
-        return persons;
-    }
-
-    public Database getDatabase() {
-
-        return database;
-    }
 
 
     @Override

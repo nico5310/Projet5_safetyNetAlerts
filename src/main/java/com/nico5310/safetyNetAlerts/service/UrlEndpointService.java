@@ -14,6 +14,9 @@ import com.nico5310.safetyNetAlerts.exceptions.NoFoundException;
 import com.nico5310.safetyNetAlerts.model.Firestation;
 import com.nico5310.safetyNetAlerts.model.Medicalrecord;
 import com.nico5310.safetyNetAlerts.model.Person;
+import com.nico5310.safetyNetAlerts.repository.FirestationRepositoryInterface;
+import com.nico5310.safetyNetAlerts.repository.MedicalrecordRepositoryInterface;
+import com.nico5310.safetyNetAlerts.repository.PersonRepositoryInterface;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -27,18 +30,18 @@ import java.util.List;
 public class UrlEndpointService {
 
     @Autowired
-    PersonServiceInterface        personServiceInterface;
+    PersonRepositoryInterface        personRepositoryInterface;
     @Autowired
-    FirestationServiceInterface   firestationServiceInterface;
+    FirestationRepositoryInterface   firestationRepositoryInterface;
     @Autowired
-    MedicalrecordServiceInterface medicalrecordServiceInterface;
+    MedicalrecordRepositoryInterface medicalrecordRepositoryInterface;
 
 
-    public UrlEndpointService(PersonServiceInterface personServiceInterface, FirestationServiceInterface firestationServiceInterface, MedicalrecordServiceInterface medicalrecordServiceInterface) {
+    public UrlEndpointService(PersonRepositoryInterface personRepositoryInterface, FirestationRepositoryInterface firestationRepositoryInterface, MedicalrecordRepositoryInterface medicalrecordRepositoryInterface) {
 
-        this.personServiceInterface        = personServiceInterface;
-        this.firestationServiceInterface   = firestationServiceInterface;
-        this.medicalrecordServiceInterface = medicalrecordServiceInterface;
+        this.personRepositoryInterface      = personRepositoryInterface;
+        this.firestationRepositoryInterface = firestationRepositoryInterface;
+        this.medicalrecordRepositoryInterface  = medicalrecordRepositoryInterface;
     }
 
 
@@ -47,12 +50,12 @@ public class UrlEndpointService {
 
         Calculator   calculator         = new Calculator();
         List<Person> listPersonsStation = new ArrayList<Person>();
-        for (Firestation firestation1 : firestationServiceInterface.findAddressByStation(stationNumber)) {
-            List<Person> listPerson1 = personServiceInterface.findByAddress(firestation1.getAddress());
+        for (Firestation firestation1 : firestationRepositoryInterface.findAddressByStation(stationNumber)) {
+            List<Person> listPerson1 = personRepositoryInterface.findByAddress(firestation1.getAddress());
             listPersonsStation.addAll(listPerson1);
 
             for (Person person : listPerson1) {
-                Medicalrecord medicalrecord = medicalrecordServiceInterface.findByFirstName(person.getFirstName());
+                Medicalrecord medicalrecord = medicalrecordRepositoryInterface.findByFirstName(person.getFirstName());
                 calculator.calculateAge(medicalrecord.getBirthdate());
             }
         }
@@ -64,7 +67,7 @@ public class UrlEndpointService {
     // URL 2 childAlerts
     public ChildByAddressDto allChildByAddress(String address) throws ParseException {
 
-        List<Person>         listPersonsByAddress = personServiceInterface.findByAddress(address);
+        List<Person>         listPersonsByAddress = personRepositoryInterface.findByAddress(address);
         ChildByAddressDto    childByAddressDto    = new ChildByAddressDto();
         List<PersonsWithAge> childList            = new ArrayList<>();
         List<PersonsWithAge> adultsList           = new ArrayList<>();
@@ -72,7 +75,7 @@ public class UrlEndpointService {
         Calculator          calculator         = new Calculator();
         List<Medicalrecord> listMedicalrecords = new ArrayList<Medicalrecord>();
         for (Person person : listPersonsByAddress) {
-            Medicalrecord medicalrecord = medicalrecordServiceInterface.findByFirstName(person.getFirstName());
+            Medicalrecord medicalrecord = medicalrecordRepositoryInterface.findByFirstName(person.getFirstName());
             listMedicalrecords.add(medicalrecord);
             calculator.calculateAge(medicalrecord.getBirthdate());
 
@@ -99,8 +102,8 @@ public class UrlEndpointService {
 
         List<Person> listPersons = new ArrayList<>();
         List<String> listPhones  = new ArrayList<>();
-        for (Firestation firestation2 : firestationServiceInterface.findAddressByStation(firestation)) {
-            listPersons.addAll(personServiceInterface.findByAddress(firestation2.getAddress()));
+        for (Firestation firestation2 : firestationRepositoryInterface.findAddressByStation(firestation)) {
+            listPersons.addAll(personRepositoryInterface.findByAddress(firestation2.getAddress()));
         }
         for (Person person : listPersons) {
             listPhones.add(person.getPhone());
@@ -112,16 +115,16 @@ public class UrlEndpointService {
     // URL 4 fire
     public PersonListByAddress allPersonsByAddress(String address) {
 
-        Firestation firestationNumber = firestationServiceInterface.findById(address);
+        Firestation firestationNumber = firestationRepositoryInterface.findById(address);
 
         if (firestationNumber != null) {
-            List<Person>            listPersons3         = personServiceInterface.findByAddress(firestationNumber.getAddress());
+            List<Person>            listPersons3         = personRepositoryInterface.findByAddress(firestationNumber.getAddress());
             List<Person>            listPersons          = new ArrayList<>(listPersons3);
             List<PersonFireAddress> listPersonsByAddress = new ArrayList<>();
 
             Calculator calculator = new Calculator();
             for (Person person : listPersons) {
-                Medicalrecord medicalrecord = medicalrecordServiceInterface.findByFirstName(person.getFirstName());
+                Medicalrecord medicalrecord = medicalrecordRepositoryInterface.findByFirstName(person.getFirstName());
                 calculator.calculateAge(medicalrecord.getBirthdate());
                 listPersonsByAddress.add(new PersonFireAddress(person.getLastName(), person.getPhone(), calculator.getAge(), medicalrecord
                         .getMedications(), medicalrecord.getAllergies()));
@@ -141,14 +144,14 @@ public class UrlEndpointService {
 
         for (Integer station : stations) {
 
-            for (Firestation firestation : firestationServiceInterface.findAddressByStation(station)) {
-                List<Person> listPersons2 = personServiceInterface.findByAddress(firestation.getAddress());
+            for (Firestation firestation : firestationRepositoryInterface.findAddressByStation(station)) {
+                List<Person> listPersons2 = personRepositoryInterface.findByAddress(firestation.getAddress());
                 listPersons.addAll(listPersons2);
             }
 
             List<Medicalrecord> listMedical = new ArrayList<>();
             for (Person person : listPersons) {
-                Medicalrecord medicalrecord = medicalrecordServiceInterface.findByFirstName(person.getFirstName());
+                Medicalrecord medicalrecord = medicalrecordRepositoryInterface.findByFirstName(person.getFirstName());
                 listMedical.add(medicalrecord);
                 calculator.calculateAge(medicalrecord.getBirthdate());
 
@@ -163,13 +166,13 @@ public class UrlEndpointService {
     // URL 6 personinfo
     public List<PersonInfoDto> allPersonInfo(String firstName, String lastName) throws ParseException {
 
-        List<Person>        listPersons2      = personServiceInterface.findByFirstNameAndLastName(firstName, lastName);
+        List<Person>        listPersons2      = personRepositoryInterface.findByFirstNameAndLastName(firstName, lastName);
         List<Person>        listPersons       = new ArrayList<Person>(listPersons2);
         List<PersonInfoDto> personInfoDtoList = new ArrayList<PersonInfoDto>();
 
         Calculator calculator = new Calculator();
         for (Person person : listPersons) {
-            Medicalrecord medicalrecord = medicalrecordServiceInterface.findByFirstName(person.getFirstName());
+            Medicalrecord medicalrecord = medicalrecordRepositoryInterface.findByFirstName(person.getFirstName());
             calculator.calculateAge(medicalrecord.getBirthdate());
             personInfoDtoList.add(new PersonInfoDto(person.getLastName(), person.getAddress(), calculator.getAge(), person
                     .getEmail(), medicalrecord.getMedications(), medicalrecord.getAllergies()));
@@ -183,7 +186,7 @@ public class UrlEndpointService {
 
         List<Person> listPersons = new ArrayList<>();
         List<String> listEmails  = new ArrayList<>();
-        for (Person person : personServiceInterface.findEmailByCity(city)) {
+        for (Person person : personRepositoryInterface.findEmailByCity(city)) {
             listPersons.add(person);
         }
         for (Person person : listPersons) {

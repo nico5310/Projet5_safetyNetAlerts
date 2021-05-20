@@ -5,6 +5,8 @@ import com.nico5310.safetyNetAlerts.dto.url1firestation.PersonsByFirestation;
 import com.nico5310.safetyNetAlerts.dto.url2childAlert.ChildByAddressDto;
 import com.nico5310.safetyNetAlerts.dto.url2childAlert.PersonsWithAge;
 import com.nico5310.safetyNetAlerts.dto.url3phoneAlert.PhoneAlertListDto;
+import com.nico5310.safetyNetAlerts.dto.url4fire.PersonFireAddress;
+import com.nico5310.safetyNetAlerts.dto.url4fire.PersonListByAddress;
 import com.nico5310.safetyNetAlerts.dto.url5flood.FamilyListByStation;
 import com.nico5310.safetyNetAlerts.dto.url6personInfo.PersonInfoDto;
 import com.nico5310.safetyNetAlerts.model.Database;
@@ -12,6 +14,9 @@ import com.nico5310.safetyNetAlerts.model.Firestation;
 import com.nico5310.safetyNetAlerts.model.Medicalrecord;
 import com.nico5310.safetyNetAlerts.model.Person;
 
+import com.nico5310.safetyNetAlerts.repository.FirestationRepositoryInterface;
+import com.nico5310.safetyNetAlerts.repository.MedicalrecordRepositoryInterface;
+import com.nico5310.safetyNetAlerts.repository.PersonRepositoryInterface;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.jupiter.api.BeforeAll;
@@ -39,20 +44,20 @@ import static org.mockito.ArgumentMatchers.contains;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
-@RunWith(MockitoJUnitRunner.class)
-@SpringBootTest
+//@RunWith(MockitoJUnitRunner.Silent.class)
+//@RunWith(MockitoJUnitRunner.class)
 public class UrlEndpointServiceTest {
 
     private UrlEndpointService urlEndpointService;
 
     @Mock
-    private PersonServiceInterface personServiceInterface;
+    private PersonRepositoryInterface personRepositoryInterface;
 
     @Mock
-    private FirestationServiceInterface firestationServiceInterface;
+    private FirestationRepositoryInterface firestationRepositoryInterface;
 
     @Mock
-    private MedicalrecordServiceInterface medicalrecordServiceInterface;
+    private MedicalrecordRepositoryInterface medicalrecordRepositoryInterface;
 
     @Mock
     private Calculator calculator = new Calculator();
@@ -62,7 +67,7 @@ public class UrlEndpointServiceTest {
     @Before
     public void setUp() {
 
-        urlEndpointService = new UrlEndpointService(personServiceInterface, firestationServiceInterface, medicalrecordServiceInterface);
+        urlEndpointService = new UrlEndpointService(personRepositoryInterface, firestationRepositoryInterface, medicalrecordRepositoryInterface);
     }
 
     //URL 1
@@ -100,9 +105,10 @@ public class UrlEndpointServiceTest {
         medicalrecord.setAllergies(allergies);
 
         //WHEN
-        when(firestationServiceInterface.findAddressByStation(any(int.class))).thenReturn(firestationList);
-        when(medicalrecordServiceInterface.findByFirstName(person.getFirstName())).thenReturn(medicalrecord);
-        when(personServiceInterface.findByAddress("4 le village")).thenReturn(listPersons);
+        when(personRepositoryInterface.findByAddress("4 le village")).thenReturn(listPersons);
+        when(firestationRepositoryInterface.findAddressByStation(any(int.class))).thenReturn(firestationList);
+        when(medicalrecordRepositoryInterface.findByFirstName(person.getFirstName())).thenReturn(medicalrecord);
+
         assertNotNull(urlEndpointService.allPersonsByStation(2));
 
         //THEN
@@ -111,10 +117,52 @@ public class UrlEndpointServiceTest {
         }
     }
 
-    //    //URL 2
+//    //URL 2
+//    @Test
+//    @DisplayName("Test allChildByAddressChildrenUrlTest for Children Type url endpoints")
+//    public void allChildByAddressChildrenUrlTest() throws ParseException {
+//        //GIVEN
+//        listPersons = new ArrayList<>();
+//        Person person = new Person();
+//        person.setFirstName("nicolas");
+//        person.setLastName("biancucci");
+//        person.setAddress("4 le village");
+//        person.setCity("thurigneux");
+//        person.setZip("01390");
+//        person.setPhone("061111111");
+//        person.setEmail("nico@gmail.com");
+//        listPersons.add(person);
+//
+//        Medicalrecord medicalrecord = new Medicalrecord();
+//        List<String>  medications   = new ArrayList<>();
+//        medications.add("kestin");
+//        medications.add("doliprane");
+//        List<String> allergies = new ArrayList<>();
+//        allergies.add("gramines");
+//        allergies.add("pollen");
+//        medicalrecord.setFirstName("nicolas");
+//        medicalrecord.setLastName("biancucci");
+//        medicalrecord.setBirthdate("10/07/2014");
+//        medicalrecord.setMedications(medications);
+//        medicalrecord.setAllergies(allergies);
+//
+//        when(personRepositoryInterface.findByAddress(any(String.class))).thenReturn(listPersons);
+//        when(medicalrecordRepositoryInterface.findByFirstName(any(String.class))).thenReturn(medicalrecord);
+//
+//        //THEN
+//        for (PersonsWithAge childByAddressDto : urlEndpointService.allChildByAddress("4 le village").getChildren()) {
+//            assertThat(childByAddressDto.getFirstName(), containsString("nicolas"));
+//            assertThat(childByAddressDto.getLastName(), containsString("biancucci"));
+//
+//        }
+//    }
+
+
+    //        //WHEN
+    //    //URL 2 bis
     //    @Test
-    //    @DisplayName("Test allChildByAddressUrlTest url endpoints")
-    //    public void allChildByAddressUrlTest() throws ParseException {
+    //    @DisplayName("Test allChildByAddressAdultsUrlTest for Adults Type url endpoints")
+    //    public void allChildByAddressAdultsUrlTest() throws ParseException {
     //        //GIVEN
     //        listPersons = new ArrayList<>();
     //        Person person = new Person();
@@ -136,7 +184,7 @@ public class UrlEndpointServiceTest {
     //        allergies.add("pollen");
     //        medicalrecord.setFirstName("nicolas");
     //        medicalrecord.setLastName("biancucci");
-    //        medicalrecord.setBirthdate("10/07/2014");
+    //        medicalrecord.setBirthdate("10/07/1980");
     //        medicalrecord.setMedications(medications);
     //        medicalrecord.setAllergies(allergies);
     //
@@ -144,8 +192,7 @@ public class UrlEndpointServiceTest {
     //        when(personServiceInterface.findByAddress(any(String.class))).thenReturn(listPersons);
     //        when(medicalrecordServiceInterface.findByFirstName(any(String.class))).thenReturn(medicalrecord);
     //
-    //        //THEN
-    //        assertNull(urlEndpointService.allChildByAddress("4 le village"));
+    //
     //    }
 
 
@@ -171,63 +218,61 @@ public class UrlEndpointServiceTest {
         firestationList.add(firestation);
 
         //WHEN
-        when(firestationServiceInterface.findAddressByStation(7)).thenReturn(firestationList);
-        when(personServiceInterface.findByAddress("4 le village")).thenReturn(listPersons);
+        when(personRepositoryInterface.findByAddress("4 le village")).thenReturn(listPersons);
+        when(firestationRepositoryInterface.findAddressByStation(7)).thenReturn(firestationList);
+
 
         //THEN
         assertThat(urlEndpointService.allPhoneByFirestation(7)
                                      .getListPhonesCity()
                                      .toString(), containsString("061111111"));
     }
-    //
-    //    // URL 4
-    //    @Test
-    //    @DisplayName("Test allPersonsByAddressUrlTest url endpoint")
-    //    public void allPersonsByAddressUrlTest() throws ParseException {
-    //        //GIVEN
-    //        listPersons = new ArrayList<>();
-    //        Person person = new Person();
-    //        person.setFirstName("nicolas");
-    //        person.setLastName("biancucci");
-    //        person.setAddress("le village");
-    //        person.setCity("thurigneux");
-    //        person.setZip("01390");
-    //        person.setPhone("061111111");
-    //        person.setEmail("nico@gmail.com");
-    //        listPersons.add(person);
-    //
-    //        Firestation firestation = new Firestation();
-    //        firestation.setAddress("4 le village");
-    //        firestation.setStation(7);
-    //
-    //        Medicalrecord medicalrecord = new Medicalrecord();
-    //        List<String>  medications   = new ArrayList<String>();
-    //        medications.add("kestin");
-    //        medications.add("doliprane");
-    //        List<String> allergies = new ArrayList<String>();
-    //        allergies.add("gramines");
-    //        allergies.add("pollen");
-    //        medicalrecord.setFirstName("nicolas");
-    //        medicalrecord.setLastName("biancucci");
-    //        medicalrecord.setBirthdate("10/07/1980");
-    //        medicalrecord.setMedications(medications);
-    //        medicalrecord.setAllergies(allergies);
-    //
-    //        //WHEN
-    //        when(personServiceInterface.findByAddress("4 le village")).thenReturn(listPersons);
-    //        when(medicalrecordServiceInterface.findByFirstName("nicolas")).thenReturn(medicalrecord);
-    //        when(firestationServiceInterface.findById("4 le village")).thenReturn(firestation);
-    //
-    //        //THEN
-    //        List<PersonsByFirestation> personsByFirestationList = urlEndpointService.allPersonsByAddress("4 le village");
-    //        for (PersonsByFirestation personsByFirestation : personsByFirestationList) throws ParseException {
-    //            assertThat(personsByFirestation.getFirstName(), containsString("ghazi"));
-    //        }
-    //
-    //        //THEN
-    //        assertThat(urlEndpointService.allPersonsByAddress("4 le village")
-    //                                     .getFirestationNumber().getAddress(),.toString(), containsString("061111111"));
-    //    }
+
+    // URL 4
+    @Test
+    @DisplayName("Test allPersonsByAddressUrlTest url endpoint")
+    public void allPersonsByAddressUrlTest() throws ParseException {
+        //GIVEN
+        listPersons = new ArrayList<>();
+        Person person = new Person();
+        person.setFirstName("nicolas");
+        person.setLastName("biancucci");
+        person.setAddress("le village");
+        person.setCity("thurigneux");
+        person.setZip("01390");
+        person.setPhone("061111111");
+        person.setEmail("nico@gmail.com");
+        listPersons.add(person);
+
+        Firestation firestation = new Firestation();
+        firestation.setAddress("4 le village");
+        firestation.setStation(7);
+
+        Medicalrecord medicalrecord = new Medicalrecord();
+        List<String>  medications   = new ArrayList<String>();
+        medications.add("kestin");
+        medications.add("doliprane");
+        List<String> allergies = new ArrayList<String>();
+        allergies.add("gramines");
+        allergies.add("pollen");
+        medicalrecord.setFirstName("nicolas");
+        medicalrecord.setLastName("biancucci");
+        medicalrecord.setBirthdate("10/07/1980");
+        medicalrecord.setMedications(medications);
+        medicalrecord.setAllergies(allergies);
+
+        //WHEN
+        when(personRepositoryInterface.findByAddress("4 le village")).thenReturn(listPersons);
+        when(medicalrecordRepositoryInterface.findByFirstName("nicolas")).thenReturn(medicalrecord);
+        when(firestationRepositoryInterface.findById("4 le village")).thenReturn(firestation);
+
+        //THEN
+        for (PersonFireAddress personListByAddress : urlEndpointService.allPersonsByAddress("4 le village")
+                                                                       .getListPersonsByAddress()) {
+            assertThat(personListByAddress.getLastName().toString(), containsString("biancucci"));
+        }
+
+    }
 
     //URL 5
     @Test
@@ -269,9 +314,9 @@ public class UrlEndpointServiceTest {
         stations.add(2);
 
         //WHEN
-        when(personServiceInterface.findByAddress("4 le village")).thenReturn(listPersons);
-        when(medicalrecordServiceInterface.findByFirstName(person.getFirstName())).thenReturn(medicalrecord);
-        when(firestationServiceInterface.findAddressByStation(any(int.class))).thenReturn(firestationList);
+        when(personRepositoryInterface.findByAddress("4 le village")).thenReturn(listPersons);
+        when(medicalrecordRepositoryInterface.findByFirstName(person.getFirstName())).thenReturn(medicalrecord);
+        when(firestationRepositoryInterface.findAddressByStation(any(int.class))).thenReturn(firestationList);
 
         //THEN
         List<FamilyListByStation> familyListByStationList = urlEndpointService.allFamilyByStation(stations);
@@ -316,8 +361,8 @@ public class UrlEndpointServiceTest {
         medicalrecord.setAllergies(allergies);
 
         //WHEN
-        when(personServiceInterface.findByLastName("biancucci")).thenReturn(listPersons);
-        when(medicalrecordServiceInterface.findByFirstName(person.getFirstName())).thenReturn(medicalrecord);
+        when(personRepositoryInterface.findByLastName("biancucci")).thenReturn(listPersons);
+        when(medicalrecordRepositoryInterface.findByFirstName(person.getFirstName())).thenReturn(medicalrecord);
 
         //THEN
 
@@ -349,7 +394,7 @@ public class UrlEndpointServiceTest {
         listPersons.add(person);
 
         //WHEN
-        when(personServiceInterface.findEmailByCity("thurigneux")).thenReturn(listPersons);
+        when(personRepositoryInterface.findEmailByCity("thurigneux")).thenReturn(listPersons);
 
         //THEN
         assertThat(urlEndpointService.allEmailsByCity("thurigneux")

@@ -1,1 +1,42 @@
-[INFO ] 2021-05-20 10:50:18.233 [main] UrlEndpointService (177)  - allPersonInfo SUCCESS :nicolasbiancucci
+[INFO ] 2021-05-20 13:04:16.237 [restartedMain] SafetyNetAlertsApplication (55)  - Starting SafetyNetAlertsApplication using Java 11.0.10 on PCNICO with PID 4800 (E:\OpenCLassRooms\Workspace\IntelliJ\Projet5_safetyNetAlerts\target\classes started by NICO in E:\OpenCLassRooms\Workspace\IntelliJ\Projet5_safetyNetAlerts)
+[INFO ] 2021-05-20 13:04:16.237 [restartedMain] SafetyNetAlertsApplication (675)  - No active profile set, falling back to default profiles: default
+[INFO ] 2021-05-20 13:04:16.268 [restartedMain] DevToolsPropertyDefaultsPostProcessor (255)  - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+[INFO ] 2021-05-20 13:04:16.268 [restartedMain] DevToolsPropertyDefaultsPostProcessor (255)  - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+[INFO ] 2021-05-20 13:04:16.722 [restartedMain] TomcatWebServer (108)  - Tomcat initialized with port(s): 8080 (http)
+[INFO ] 2021-05-20 13:04:16.738 [restartedMain] Http11NioProtocol (173)  - Initializing ProtocolHandler ["http-nio-8080"]
+[INFO ] 2021-05-20 13:04:16.738 [restartedMain] StandardService (173)  - Starting service [Tomcat]
+[INFO ] 2021-05-20 13:04:16.738 [restartedMain] StandardEngine (173)  - Starting Servlet engine: [Apache Tomcat/9.0.45]
+[INFO ] 2021-05-20 13:04:16.785 [restartedMain] [/] (173)  - Initializing Spring embedded WebApplicationContext
+[INFO ] 2021-05-20 13:04:16.785 [restartedMain] ServletWebServerApplicationContext (289)  - Root WebApplicationContext: initialization completed in 517 ms
+[INFO ] 2021-05-20 13:04:16.923 [restartedMain] ThreadPoolTaskExecutor (181)  - Initializing ExecutorService 'applicationTaskExecutor'
+[DEBUG] 2021-05-20 13:04:16.939 [restartedMain] RequestMappingHandlerAdapter (625)  - ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+[DEBUG] 2021-05-20 13:04:16.970 [restartedMain] RequestMappingHandlerMapping (361)  - 21 mappings in 'requestMappingHandlerMapping'
+[DEBUG] 2021-05-20 13:04:16.986 [restartedMain] SimpleUrlHandlerMapping (188)  - Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+[DEBUG] 2021-05-20 13:04:16.986 [restartedMain] ExceptionHandlerExceptionResolver (307)  - ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
+[INFO ] 2021-05-20 13:04:17.008 [restartedMain] OptionalLiveReloadServer (58)  - LiveReload server is running on port 35729
+[INFO ] 2021-05-20 13:04:17.023 [restartedMain] Http11NioProtocol (173)  - Starting ProtocolHandler ["http-nio-8080"]
+[INFO ] 2021-05-20 13:04:17.039 [restartedMain] TomcatWebServer (220)  - Tomcat started on port(s): 8080 (http) with context path ''
+[INFO ] 2021-05-20 13:04:17.039 [restartedMain] SafetyNetAlertsApplication (61)  - Started SafetyNetAlertsApplication in 1.012 seconds (JVM running for 2.085)
+[INFO ] 2021-05-20 13:04:19.928 [http-nio-8080-exec-1] [/] (173)  - Initializing Spring DispatcherServlet 'dispatcherServlet'
+[INFO ] 2021-05-20 13:04:19.928 [http-nio-8080-exec-1] DispatcherServlet (525)  - Initializing Servlet 'dispatcherServlet'
+[DEBUG] 2021-05-20 13:04:19.929 [http-nio-8080-exec-1] DispatcherServlet (519)  - Detected StandardServletMultipartResolver
+[DEBUG] 2021-05-20 13:04:19.929 [http-nio-8080-exec-1] DispatcherServlet (543)  - Detected AcceptHeaderLocaleResolver
+[DEBUG] 2021-05-20 13:04:19.929 [http-nio-8080-exec-1] DispatcherServlet (568)  - Detected FixedThemeResolver
+[DEBUG] 2021-05-20 13:04:19.929 [http-nio-8080-exec-1] DispatcherServlet (718)  - Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@56c53715
+[DEBUG] 2021-05-20 13:04:19.930 [http-nio-8080-exec-1] DispatcherServlet (782)  - Detected org.springframework.web.servlet.support.SessionFlashMapManager@4dc793ef
+[DEBUG] 2021-05-20 13:04:19.930 [http-nio-8080-exec-1] DispatcherServlet (542)  - enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+[INFO ] 2021-05-20 13:04:19.930 [http-nio-8080-exec-1] DispatcherServlet (547)  - Completed initialization in 2 ms
+[DEBUG] 2021-05-20 13:04:19.935 [http-nio-8080-exec-1] DispatcherServlet (91)  - GET "/childAlert?address=1509%20Culver%20St", parameters={masked}
+[DEBUG] 2021-05-20 13:04:19.937 [http-nio-8080-exec-1] RequestMappingHandlerMapping (522)  - Mapped to com.nico5310.safetyNetAlerts.controller.UrlEndpointsController#allChildByAddress(String)
+[INFO ] 2021-05-20 13:04:19.945 [http-nio-8080-exec-1] UrlEndpointsController (39)  - allChildByAddress
+[INFO ] 2021-05-20 13:04:19.952 [http-nio-8080-exec-1] UrlEndpointService (96)  - allChildByAddress SUCCESS :1509 Culver St
+[DEBUG] 2021-05-20 13:04:19.962 [http-nio-8080-exec-1] RequestResponseBodyMethodProcessor (268)  - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+[DEBUG] 2021-05-20 13:04:19.969 [http-nio-8080-exec-1] RequestResponseBodyMethodProcessor (91)  - Writing [ChildByAddressDto [children=[ChildByAddressDto [firstName=Tenley, lastName=Boyd, age= 9], ChildByAdd (truncated)...]
+[DEBUG] 2021-05-20 13:04:19.980 [http-nio-8080-exec-1] DispatcherServlet (1131)  - Completed 200 OK
+[DEBUG] 2021-05-20 13:04:21.626 [http-nio-8080-exec-5] DispatcherServlet (91)  - GET "/firestation?stationNumber=2", parameters={masked}
+[DEBUG] 2021-05-20 13:04:21.626 [http-nio-8080-exec-5] RequestMappingHandlerMapping (522)  - Mapped to com.nico5310.safetyNetAlerts.controller.UrlEndpointsController#allPersonsByStation(int)
+[INFO ] 2021-05-20 13:04:21.627 [http-nio-8080-exec-5] UrlEndpointsController (32)  - allPersonsByStation
+[INFO ] 2021-05-20 13:04:21.628 [http-nio-8080-exec-5] UrlEndpointService (62)  - allPersonsByStation SUCCESS :2
+[DEBUG] 2021-05-20 13:04:21.630 [http-nio-8080-exec-5] RequestResponseBodyMethodProcessor (268)  - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+[DEBUG] 2021-05-20 13:04:21.642 [http-nio-8080-exec-5] RequestResponseBodyMethodProcessor (91)  - Writing [ [ PersonsByFirestation=[Jonanathan, Marrack, 29 15th St, Culver, 97451, 841-874-6513, drk@email.com (truncated)...]
+[DEBUG] 2021-05-20 13:04:21.644 [http-nio-8080-exec-5] DispatcherServlet (1131)  - Completed 200 OK
