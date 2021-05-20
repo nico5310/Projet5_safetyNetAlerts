@@ -1,12 +1,16 @@
 package com.nico5310.safetyNetAlerts.dto.url1firestation;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.nico5310.safetyNetAlerts.model.Medicalrecord;
+
+import java.util.List;
+
 public class PersonsByFirestation  {
 
     private String firstName;
     private String lastName;
     private String address;
     private String phone;
-
 
     public PersonsByFirestation(String firstName, String lastName, String address, String phone) {
         this.firstName = firstName;
@@ -46,4 +50,5 @@ public class PersonsByFirestation  {
     public void setPhone(String phone) {
         this.phone = phone;
     }
+
 }

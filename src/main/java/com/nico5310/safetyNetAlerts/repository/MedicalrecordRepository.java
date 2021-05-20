@@ -20,10 +20,6 @@ public class MedicalrecordRepository implements MedicalrecordRepositoryInterface
     @Autowired
     public MedicalrecordRepository(Database database) {this.database = database;}
 
-    public Database getDatabase() {
-
-        return database;
-    }
 
     @Override
     public List<Medicalrecord> findMedicalrecordAll() {
@@ -64,7 +60,6 @@ public class MedicalrecordRepository implements MedicalrecordRepositoryInterface
 
         for (Medicalrecord medicalRecord : database.getMedicalrecords()) {
             if (medicalRecord.getFirstName().equals(firstName)) {
-                log.info("findByFirstName SUCCESS :" + firstName);
                 return medicalRecord;
             }
         }
@@ -76,8 +71,7 @@ public class MedicalrecordRepository implements MedicalrecordRepositoryInterface
 
         for (Medicalrecord medicalRecord : database.getMedicalrecords()) {
             if (medicalRecord.getFirstName().equals(firstName) && (medicalRecord.getLastName().equals(lastName))) {
-                log.info("findByFirstNameAndLastName SUCCESS :" + (firstName + lastName));
-                return medicalRecord;
+               return medicalRecord;
             }
         }
         return null;

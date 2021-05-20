@@ -132,4 +132,5 @@ public class Person {
 
         return getFirstName() + ", " + getLastName() + ", " + getAddress() + ", " + getCity() + ", " + getZip() + ", " + getPhone() + ", " + getEmail() + "\n";
     }
+
 }

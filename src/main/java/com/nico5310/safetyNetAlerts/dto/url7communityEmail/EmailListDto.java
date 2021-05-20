@@ -15,9 +15,6 @@ public class EmailListDto {
         return listEmails;
     }
 
-    public void setListEmails(List<String> listEmails) {
-        this.listEmails = listEmails;
-    }
 
     @Override
     public String toString(){

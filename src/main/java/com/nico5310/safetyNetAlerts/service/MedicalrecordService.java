@@ -14,25 +14,28 @@ import java.util.List;
 public class MedicalrecordService implements MedicalrecordServiceInterface {
 
     @Autowired
-    private MedicalrecordRepositoryInterface medicalrecordRepositoryInterface;
+    MedicalrecordRepositoryInterface medicalrecordRepositoryInterface;
 
     @Autowired
-    public MedicalrecordService(MedicalrecordRepositoryInterface medicalrecordRepositoryInterface) {this.medicalrecordRepositoryInterface = medicalrecordRepositoryInterface;}
+    public MedicalrecordService(MedicalrecordRepositoryInterface medicalrecordRepositoryInterface) {
 
+        this.medicalrecordRepositoryInterface = medicalrecordRepositoryInterface;
+    }
 
     @Override
     public List<Medicalrecord> findMedicalrecordAll() {
 
         log.info("findMedicalrecordAll SUCCESS :");
         return medicalrecordRepositoryInterface.findMedicalrecordAll();
+
     }
 
     @Override
     public List<Medicalrecord> saveMedicalrecordList(Medicalrecord medicalrecord) {
 
         log.info("saveMedicalrecordList SUCCESS" + medicalrecord);
-        medicalrecordRepositoryInterface.saveMedicalrecordList(medicalrecord);
         return medicalrecordRepositoryInterface.saveMedicalrecordList(medicalrecord);
+
     }
 
     @Override
@@ -45,8 +48,9 @@ public class MedicalrecordService implements MedicalrecordServiceInterface {
 
     @Override
     public void deleteMedicalrecordList(String firstNameAndLastName) {
-        log.info("deleteMedicalrecordList SUCCESS :" + firstNameAndLastName);
-        medicalrecordRepositoryInterface.deleteMedicalrecordList(firstNameAndLastName);
+
+        List<Medicalrecord> deleteMedical = medicalrecordRepositoryInterface.findMedicalrecordAll();
+        deleteMedical.removeIf(medicalrecord -> medicalrecord.getFirstNameAndLastName().equals(firstNameAndLastName));
 
     }
 
@@ -54,26 +58,17 @@ public class MedicalrecordService implements MedicalrecordServiceInterface {
     @Override
     public Medicalrecord findByFirstName(String firstName) {
 
-        for (Medicalrecord medicalRecord : medicalrecordRepositoryInterface.findMedicalrecordAll()) {
-            if (medicalRecord.getFirstName().equals(firstName)) {
-                log.info("findByFirstName SUCCESS :" + firstName);
-                return medicalRecord;
-            }
-        }
-        return null;
+        log.info("findByLastName SUCCESS :" + firstName);
+        return medicalrecordRepositoryInterface.findByFirstName(firstName);
+
     }
 
     @Override
     public Medicalrecord findByFirstNameAndLastName(String firstName, String lastName) {
 
-        for (Medicalrecord medicalRecord : medicalrecordRepositoryInterface.findMedicalrecordAll()) {
-            if (medicalRecord.getFirstName().equals(firstName) && (medicalRecord.getLastName().equals(lastName))) {
-                log.info("findByFirstNameAndLastName SUCCESS :" + (firstName + lastName));
-                return medicalRecord;
-            }
-        }
+        log.info("findByFirstNameAndLastName SUCCESS :" + (firstName + lastName));
+        return medicalrecordRepositoryInterface.findByFirstNameAndLastName(firstName, lastName);
 
-        return null;
     }
 
 }

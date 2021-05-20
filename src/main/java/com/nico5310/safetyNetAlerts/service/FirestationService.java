@@ -16,6 +16,11 @@ public class FirestationService implements FirestationServiceInterface {
     @Autowired
     FirestationRepositoryInterface firestationRepositoryInterface;
 
+    @Autowired
+    public FirestationService(FirestationRepositoryInterface firestationRepositoryInterface) {
+        this.firestationRepositoryInterface = firestationRepositoryInterface;
+    }
+
     @Override
     public List<Firestation> findFirestationAll() {
 

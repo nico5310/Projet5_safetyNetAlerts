@@ -18,6 +18,11 @@ public class PersonsByStationDto {
       this.children           = children;
    }
 
+   public PersonsByStationDto() {
+
+
+   }
+
    public List<Person> getListPersonsStation() {
       return listPersonsStation;
    }

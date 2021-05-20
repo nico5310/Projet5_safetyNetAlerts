@@ -19,5 +19,6 @@ public interface MedicalrecordServiceInterface {
 
     Medicalrecord findByFirstName(String firstName);
 
+
     Medicalrecord findByFirstNameAndLastName(String firstName, String lastName);
 }

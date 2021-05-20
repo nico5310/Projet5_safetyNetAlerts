@@ -16,6 +16,11 @@ public class PersonService implements PersonServiceInterface {
     @Autowired
     PersonRepositoryInterface personRepositoryInterface;
 
+    public PersonService(PersonRepositoryInterface personRepositoryInterface) {
+
+        this.personRepositoryInterface = personRepositoryInterface;
+    }
+
 
     @Override
     public List<Person> findPersonAll() {

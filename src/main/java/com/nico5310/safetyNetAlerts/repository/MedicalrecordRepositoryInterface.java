@@ -9,7 +9,6 @@ public interface MedicalrecordRepositoryInterface {
 
     List<Medicalrecord> findMedicalrecordAll();
 
-
     List<Medicalrecord> saveMedicalrecordList(Medicalrecord medicalrecord);
 
     Medicalrecord updateMedicalrecordList(String firstNameAndLastName, Medicalrecord medicalrecord) throws ParseException;

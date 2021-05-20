@@ -1,6 +1,7 @@
 package com.nico5310.safetyNetAlerts.dto;
 
 import com.nico5310.safetyNetAlerts.dto.url3phoneAlert.PhoneAlertListDto;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.jupiter.api.DisplayName;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -13,21 +14,27 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 @SpringBootTest
 public class PhoneAlertListDtoTest {
 
-    PhoneAlertListDto phoneAlertListDto = new PhoneAlertListDto();
-
-    @Test
-    @DisplayName("Test get list of phone")
-    public void getListPhoneTest(){
-        //GIVEN
-        List<String> listPhonesCity = new ArrayList<String>();
-
-        //WHEN
-        phoneAlertListDto.setListPhonesCity(listPhonesCity);
-
-        //THEN
-        assertEquals(listPhonesCity, phoneAlertListDto.getListPhonesCity());
-
-    }
+//    PhoneAlertListDto phoneAlertListDto;
+//
+//    @Before
+//    public void setUp() throws Exception {
+//
+//        phoneAlertListDto = new PhoneAlertListDto();
+//    }
+//
+//    @Test
+//    @DisplayName("Test get list of phone")
+//    public void getListPhoneTest(){
+//        //GIVEN
+//        List<String> listPhonesCity = new ArrayList<String>();
+//
+//        //WHEN
+//        phoneAlertListDto.setListPhonesCity(listPhonesCity);
+//
+//        //THEN
+//        assertEquals(listPhonesCity, phoneAlertListDto.getListPhonesCity());
+//
+//    }
 
 
 }

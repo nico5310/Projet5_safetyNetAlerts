@@ -1,5 +1,6 @@
 package com.nico5310.safetyNetAlerts.controller;
 
+import com.nico5310.safetyNetAlerts.dto.url1firestation.PersonsByFirestation;
 import com.nico5310.safetyNetAlerts.dto.url1firestation.PersonsByStationDto;
 import com.nico5310.safetyNetAlerts.dto.url2childAlert.ChildByAddressDto;
 import com.nico5310.safetyNetAlerts.dto.url3phoneAlert.PhoneAlertListDto;
@@ -48,7 +49,7 @@ public class UrlEndpointsController {
 
     // URL 4 fire
     @GetMapping(value = "/fire")
-    public PersonListByAddress allPersonsByAddress(@RequestParam (value = "address") String address) {
+    public PersonListByAddress allPersonsByAddress(@RequestParam (value = "address") String address) throws ParseException {
         log.info("allPersonsByAddress");
         return urlEndpointService.allPersonsByAddress(address);
     }

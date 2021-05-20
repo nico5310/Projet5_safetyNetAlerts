@@ -1,15 +1,15 @@
 package com.nico5310.safetyNetAlerts.service;
 
 import com.nico5310.safetyNetAlerts.model.Person;
-import com.nico5310.safetyNetAlerts.repository.PersonRepository;
+import com.nico5310.safetyNetAlerts.repository.PersonRepositoryInterface;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.runner.RunWith;
-import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.junit.MockitoJUnitRunner;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,14 +19,19 @@ import static org.hamcrest.Matchers.containsString;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
-@RunWith(SpringJUnit4ClassRunner.class)
+@RunWith(MockitoJUnitRunner.class)
 public class PersonServiceTest {
 
-    @Mock
+
     private PersonService personService;
 
-    @InjectMocks
-    private PersonRepository personRepository;
+    @Mock
+    private PersonRepositoryInterface personRepositoryInterface;
+
+    @Before
+    public void setUp() throws Exception {
+        personService = new PersonService(personRepositoryInterface);
+    }
 
 
     @Test
@@ -45,7 +50,7 @@ public class PersonServiceTest {
         listPersons.add(person);
 
         //WHEN
-        when(personService.findPersonAll()).thenReturn(listPersons);
+        when(personRepositoryInterface.findPersonAll()).thenReturn(listPersons);
 
         //THEN
         assertThat(personService.findPersonAll().toString(), containsString("nicolas"));
@@ -67,7 +72,7 @@ public class PersonServiceTest {
         listPerson.add(person);
 
         //WHEN
-        when(personService.savePersonList(person)).thenReturn(listPerson);
+        when(personRepositoryInterface.findPersonAll()).thenReturn(listPerson);
         personService.savePersonList(person);
 
         //THEN
@@ -89,7 +94,7 @@ public class PersonServiceTest {
         person.setEmail("nicolas@gmail.com");
 
         //WHEN
-        when(personService.updatePersonList("nicolasbiancucci", person)).thenReturn(person);
+        when(personRepositoryInterface.updatePersonList("nicolasbiancucci", person)).thenReturn(person);
 
              //THEN
         assertThat(personService.updatePersonList("nicolasbiancucci", person).toString(), containsString("nicolas"));
@@ -132,7 +137,7 @@ public class PersonServiceTest {
         List<Person> listPerson = new ArrayList<Person>();
         listPerson.add(person);
         //WHEN
-        when(personService.findByAddress("4 le village")).thenReturn(listPerson);
+        when(personRepositoryInterface.findByAddress("4 le village")).thenReturn(listPerson);
 
         //THEN
         assertThat(personService.findByAddress("4 le village").toString(), containsString("nicolas"));
@@ -154,7 +159,7 @@ public class PersonServiceTest {
         listPerson.add(person);
 
         //WHEN
-        when(personService.findByLastName("biancucci")).thenReturn(listPerson);
+        when(personRepositoryInterface.findByLastName("biancucci")).thenReturn(listPerson);
 
         //THEN
         assertThat(personService.findByLastName("biancucci").toString(), containsString("biancucci"));
@@ -176,7 +181,7 @@ public class PersonServiceTest {
         List<Person> listPerson = new ArrayList<Person>();
         listPerson.add(person);
         //WHEN
-        when(personService.findByFirstNameAndLastName("nicolas","biancucci")).thenReturn(listPerson);
+        when(personRepositoryInterface.findByFirstNameAndLastName("nicolas","biancucci")).thenReturn(listPerson);
 
         //THEN
         assertThat(personService.findByFirstNameAndLastName("nicolas","biancucci").toString(), containsString("biancucci"));

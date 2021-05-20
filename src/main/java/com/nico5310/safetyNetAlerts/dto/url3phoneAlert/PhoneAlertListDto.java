@@ -4,28 +4,25 @@ import java.util.List;
 
 public class PhoneAlertListDto {
 
-    private List<String> listPhonesCity;
+    private final List<String> listPhonesCity;
 
 
     public PhoneAlertListDto(List<String> listPhonesCity) {
+
         this.listPhonesCity = listPhonesCity;
     }
 
-    public PhoneAlertListDto() {}
 
     public List<String> getListPhonesCity() {
 
         return listPhonesCity;
     }
 
-    public void setListPhonesCity(List<String> listPhonesCity) {
 
-        this.listPhonesCity = listPhonesCity;
-    }
 
-    @Override
-    public String toString() {
-        return "PhoneAlert [" + getListPhonesCity() + "]";
-    }
+//    @Override
+//    public String toString() {
+//        return "PhoneAlert " + getListPhonesCity() ;
+//    }
 
 }

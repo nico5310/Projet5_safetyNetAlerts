@@ -1,5 +1,6 @@
 package com.nico5310.safetyNetAlerts.service;
 
+import com.nico5310.safetyNetAlerts.dto.url1firestation.PersonsByFirestation;
 import com.nico5310.safetyNetAlerts.dto.url1firestation.PersonsByStationDto;
 import com.nico5310.safetyNetAlerts.dto.url2childAlert.ChildByAddressDto;
 import com.nico5310.safetyNetAlerts.dto.url2childAlert.PersonsWithAge;
@@ -39,6 +40,7 @@ public class UrlEndpointService {
         this.firestationServiceInterface   = firestationServiceInterface;
         this.medicalrecordServiceInterface = medicalrecordServiceInterface;
     }
+
 
     // URL 1 firestation
     public PersonsByStationDto allPersonsByStation(int stationNumber) throws ParseException {
