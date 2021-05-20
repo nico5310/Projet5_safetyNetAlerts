@@ -2,7 +2,6 @@ package com.nico5310.safetyNetAlerts.repository;
 
 import com.nico5310.safetyNetAlerts.model.Database;
 import com.nico5310.safetyNetAlerts.model.Medicalrecord;
-import lombok.Data;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -23,6 +22,7 @@ public class MedicalrecordRepository implements MedicalrecordRepositoryInterface
 
     @Override
     public List<Medicalrecord> findMedicalrecordAll() {
+
         return database.getMedicalrecords();
     }
 
@@ -31,7 +31,7 @@ public class MedicalrecordRepository implements MedicalrecordRepositoryInterface
 
         List<Medicalrecord> saveMedical = database.getMedicalrecords();
         saveMedical.add(medicalrecord);
-       return saveMedical;
+        return saveMedical;
     }
 
     @Override
@@ -50,13 +50,15 @@ public class MedicalrecordRepository implements MedicalrecordRepositoryInterface
 
     @Override
     public void deleteMedicalrecordList(String firstNameAndLastName) {
-        database.getMedicalrecords().removeIf(medicalrecord -> medicalrecord.getFirstNameAndLastName().equals(firstNameAndLastName));
+
+        database.getMedicalrecords()
+                .removeIf(medicalrecord -> medicalrecord.getFirstNameAndLastName().equals(firstNameAndLastName));
 
     }
 
     //URLS ENDPOINTS
     @Override
-    public  Medicalrecord  findByFirstName(String firstName) {
+    public Medicalrecord findByFirstName(String firstName) {
 
         for (Medicalrecord medicalRecord : database.getMedicalrecords()) {
             if (medicalRecord.getFirstName().equals(firstName)) {
@@ -71,7 +73,7 @@ public class MedicalrecordRepository implements MedicalrecordRepositoryInterface
 
         for (Medicalrecord medicalRecord : database.getMedicalrecords()) {
             if (medicalRecord.getFirstName().equals(firstName) && (medicalRecord.getLastName().equals(lastName))) {
-               return medicalRecord;
+                return medicalRecord;
             }
         }
         return null;

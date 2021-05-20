@@ -6,11 +6,11 @@ import java.util.List;
 
 public class FamilyListByStation {
 
-    private String       lastName;
-    private String       phone;
-    private int          age;
-    private List<String> medications;
-    private List<String> allergies;
+    private       String lastName;
+    private final String phone;
+    private       int    age;
+    private final List<String> medications;
+    private final List<String> allergies;
 
     public FamilyListByStation(String lastName, String phone, int age, List<String> medications, List<String> allergies) {
 

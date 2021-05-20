@@ -17,6 +17,7 @@ public class FirestationRepository implements FirestationRepositoryInterface {
     private Database database;
 
     public Database getDatabase() {
+
         return database;
     }
 
@@ -62,7 +63,7 @@ public class FirestationRepository implements FirestationRepositoryInterface {
 
         for (Firestation address : database.getFirestations()) {
             if (address.getAddress().equals(firestationAddress)) {
-               return address;
+                return address;
             }
         }
         return null;

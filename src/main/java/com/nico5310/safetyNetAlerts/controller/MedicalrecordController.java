@@ -16,7 +16,7 @@ public class MedicalrecordController {
     @Autowired
     MedicalrecordServiceInterface medicalrecordServiceInterface;
 
-    @GetMapping( value = "/medicalRecord")
+    @GetMapping(value = "/medicalRecord")
     public List<Medicalrecord> findMedicalrecordAll() {
 
         List<Medicalrecord> findMedicalrecord = medicalrecordServiceInterface.findMedicalrecordAll();

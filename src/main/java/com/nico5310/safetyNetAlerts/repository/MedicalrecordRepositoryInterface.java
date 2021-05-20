@@ -16,7 +16,7 @@ public interface MedicalrecordRepositoryInterface {
     void deleteMedicalrecordList(String firstNameAndLastName);
 
     //URLS ENDPOINTS
-    Medicalrecord  findByFirstName(String firstName);
+    Medicalrecord findByFirstName(String firstName);
 
     Medicalrecord findByFirstNameAndLastName(String firstName, String lastName);
 }

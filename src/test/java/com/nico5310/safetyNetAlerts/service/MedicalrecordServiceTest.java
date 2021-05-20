@@ -18,7 +18,8 @@ import java.util.List;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsString;
-import static org.mockito.Mockito.when;
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
+import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 @RunWith(MockitoJUnitRunner.class)
@@ -111,7 +112,8 @@ public class MedicalrecordServiceTest {
         medicalrecordRepositoryInterface.deleteMedicalrecordList("nicolasbiancucci");
 
         //THEN
-        assertThat(medicalrecordService.findMedicalrecordAll().toString(), containsString(""));
+        assertDoesNotThrow(()->medicalrecordService.deleteMedicalrecordList("nicolasbiancucci"));
+        verify(medicalrecordRepositoryInterface, times(1)).findMedicalrecordAll();
 
     }
 

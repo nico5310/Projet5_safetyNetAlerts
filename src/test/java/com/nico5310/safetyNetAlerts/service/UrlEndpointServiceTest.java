@@ -1,71 +1,59 @@
 package com.nico5310.safetyNetAlerts.service;
 
-
-import com.nico5310.safetyNetAlerts.dto.url1firestation.PersonsByFirestation;
-import com.nico5310.safetyNetAlerts.dto.url2childAlert.ChildByAddressDto;
 import com.nico5310.safetyNetAlerts.dto.url2childAlert.PersonsWithAge;
-import com.nico5310.safetyNetAlerts.dto.url3phoneAlert.PhoneAlertListDto;
 import com.nico5310.safetyNetAlerts.dto.url4fire.PersonFireAddress;
-import com.nico5310.safetyNetAlerts.dto.url4fire.PersonListByAddress;
 import com.nico5310.safetyNetAlerts.dto.url5flood.FamilyListByStation;
 import com.nico5310.safetyNetAlerts.dto.url6personInfo.PersonInfoDto;
-import com.nico5310.safetyNetAlerts.model.Database;
 import com.nico5310.safetyNetAlerts.model.Firestation;
 import com.nico5310.safetyNetAlerts.model.Medicalrecord;
 import com.nico5310.safetyNetAlerts.model.Person;
-
 import com.nico5310.safetyNetAlerts.repository.FirestationRepositoryInterface;
 import com.nico5310.safetyNetAlerts.repository.MedicalrecordRepositoryInterface;
 import com.nico5310.safetyNetAlerts.repository.PersonRepositoryInterface;
-import org.junit.Before;
-import org.junit.Test;
+
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
+
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.junit.runner.RunWith;
+
+import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.junit.MockitoJUnitRunner;
+
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
 
 import java.text.ParseException;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsString;
 import static org.junit.Assert.*;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.ArgumentMatchers.contains;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
-//@RunWith(MockitoJUnitRunner.Silent.class)
-//@RunWith(MockitoJUnitRunner.class)
 public class UrlEndpointServiceTest {
 
-    private UrlEndpointService urlEndpointService;
+    @Mock
+    private static PersonRepositoryInterface personRepositoryInterface;
 
     @Mock
-    private PersonRepositoryInterface personRepositoryInterface;
+    private static FirestationRepositoryInterface firestationRepositoryInterface;
 
     @Mock
-    private FirestationRepositoryInterface firestationRepositoryInterface;
-
-    @Mock
-    private MedicalrecordRepositoryInterface medicalrecordRepositoryInterface;
+    private static MedicalrecordRepositoryInterface medicalrecordRepositoryInterface;
 
     @Mock
     private Calculator calculator = new Calculator();
 
+    @InjectMocks
+    private static UrlEndpointService urlEndpointService;
+
     List<Person> listPersons;
 
-    @Before
-    public void setUp() {
+    @BeforeAll
+    static void setUp() {
 
         urlEndpointService = new UrlEndpointService(personRepositoryInterface, firestationRepositoryInterface, medicalrecordRepositoryInterface);
     }
@@ -117,83 +105,45 @@ public class UrlEndpointServiceTest {
         }
     }
 
-//    //URL 2
-//    @Test
-//    @DisplayName("Test allChildByAddressChildrenUrlTest for Children Type url endpoints")
-//    public void allChildByAddressChildrenUrlTest() throws ParseException {
-//        //GIVEN
-//        listPersons = new ArrayList<>();
-//        Person person = new Person();
-//        person.setFirstName("nicolas");
-//        person.setLastName("biancucci");
-//        person.setAddress("4 le village");
-//        person.setCity("thurigneux");
-//        person.setZip("01390");
-//        person.setPhone("061111111");
-//        person.setEmail("nico@gmail.com");
-//        listPersons.add(person);
-//
-//        Medicalrecord medicalrecord = new Medicalrecord();
-//        List<String>  medications   = new ArrayList<>();
-//        medications.add("kestin");
-//        medications.add("doliprane");
-//        List<String> allergies = new ArrayList<>();
-//        allergies.add("gramines");
-//        allergies.add("pollen");
-//        medicalrecord.setFirstName("nicolas");
-//        medicalrecord.setLastName("biancucci");
-//        medicalrecord.setBirthdate("10/07/2014");
-//        medicalrecord.setMedications(medications);
-//        medicalrecord.setAllergies(allergies);
-//
-//        when(personRepositoryInterface.findByAddress(any(String.class))).thenReturn(listPersons);
-//        when(medicalrecordRepositoryInterface.findByFirstName(any(String.class))).thenReturn(medicalrecord);
-//
-//        //THEN
-//        for (PersonsWithAge childByAddressDto : urlEndpointService.allChildByAddress("4 le village").getChildren()) {
-//            assertThat(childByAddressDto.getFirstName(), containsString("nicolas"));
-//            assertThat(childByAddressDto.getLastName(), containsString("biancucci"));
-//
-//        }
-//    }
+    //URL 2
+    @Test
+    @DisplayName("Test allChildByAddressChildrenUrlTest for Children Type url endpoints")
+    public void allChildByAddressChildrenUrlTest() throws ParseException {
+        //GIVEN
+        listPersons = new ArrayList<>();
+        Person person = new Person();
+        person.setFirstName("nicolas");
+        person.setLastName("biancucci");
+        person.setAddress("4 le village");
+        person.setCity("thurigneux");
+        person.setZip("01390");
+        person.setPhone("061111111");
+        person.setEmail("nico@gmail.com");
+        listPersons.add(person);
 
+        Medicalrecord medicalrecord = new Medicalrecord();
+        List<String>  medications   = new ArrayList<>();
+        medications.add("kestin");
+        medications.add("doliprane");
+        List<String> allergies = new ArrayList<>();
+        allergies.add("gramines");
+        allergies.add("pollen");
+        medicalrecord.setFirstName("nicolas");
+        medicalrecord.setLastName("biancucci");
+        medicalrecord.setBirthdate("10/07/2014");
+        medicalrecord.setMedications(medications);
+        medicalrecord.setAllergies(allergies);
 
-    //        //WHEN
-    //    //URL 2 bis
-    //    @Test
-    //    @DisplayName("Test allChildByAddressAdultsUrlTest for Adults Type url endpoints")
-    //    public void allChildByAddressAdultsUrlTest() throws ParseException {
-    //        //GIVEN
-    //        listPersons = new ArrayList<>();
-    //        Person person = new Person();
-    //        person.setFirstName("nicolas");
-    //        person.setLastName("biancucci");
-    //        person.setAddress("4 le village");
-    //        person.setCity("thurigneux");
-    //        person.setZip("01390");
-    //        person.setPhone("061111111");
-    //        person.setEmail("nico@gmail.com");
-    //        listPersons.add(person);
-    //
-    //        Medicalrecord medicalrecord = new Medicalrecord();
-    //        List<String>  medications   = new ArrayList<>();
-    //        medications.add("kestin");
-    //        medications.add("doliprane");
-    //        List<String> allergies = new ArrayList<>();
-    //        allergies.add("gramines");
-    //        allergies.add("pollen");
-    //        medicalrecord.setFirstName("nicolas");
-    //        medicalrecord.setLastName("biancucci");
-    //        medicalrecord.setBirthdate("10/07/1980");
-    //        medicalrecord.setMedications(medications);
-    //        medicalrecord.setAllergies(allergies);
-    //
-    //        //WHEN
-    //        when(personServiceInterface.findByAddress(any(String.class))).thenReturn(listPersons);
-    //        when(medicalrecordServiceInterface.findByFirstName(any(String.class))).thenReturn(medicalrecord);
-    //
-    //
-    //    }
+        when(personRepositoryInterface.findByAddress(any(String.class))).thenReturn(listPersons);
+        when(medicalrecordRepositoryInterface.findByFirstName(any(String.class))).thenReturn(medicalrecord);
+
+        //THEN
+        for (PersonsWithAge childByAddressDto : urlEndpointService.allChildByAddress("4 le village").getChildren()) {
+            assertThat(childByAddressDto.getFirstName(), containsString("nicolas"));
+            assertThat(childByAddressDto.getLastName(), containsString("biancucci"));
+
+        }
+    }
 
 
     // URL 3
@@ -334,18 +284,12 @@ public class UrlEndpointServiceTest {
         Person person = new Person();
         person.setFirstName("nicolas");
         person.setLastName("biancucci");
-        person.setAddress("le village");
+        person.setAddress("4 le village");
         person.setCity("thurigneux");
         person.setZip("01390");
         person.setPhone("061111111");
         person.setEmail("nico@gmail.com");
         listPersons.add(person);
-
-        List<Firestation> firestationList = new ArrayList<Firestation>();
-        Firestation       firestation     = new Firestation();
-        firestation.setAddress("4 le village");
-        firestation.setStation(7);
-        firestationList.add(firestation);
 
         Medicalrecord medicalrecord = new Medicalrecord();
         List<String>  medications   = new ArrayList<String>();
@@ -361,15 +305,15 @@ public class UrlEndpointServiceTest {
         medicalrecord.setAllergies(allergies);
 
         //WHEN
-        when(personRepositoryInterface.findByLastName("biancucci")).thenReturn(listPersons);
+        when(personRepositoryInterface.findByFirstNameAndLastName("nicolas", "biancucci")).thenReturn(listPersons);
         when(medicalrecordRepositoryInterface.findByFirstName(person.getFirstName())).thenReturn(medicalrecord);
 
         //THEN
 
         for (PersonInfoDto personInfo : urlEndpointService.allPersonInfo("nicolas", "biancucci")) {
             assertThat(personInfo.getLastName(), containsString("biancucci"));
-            assertThat(personInfo.getAddress(), containsString("4 le village"));
             assertThat(personInfo.getEmail(), containsString("nico@gmail.com"));
+
             assertThat(personInfo.getMedications().toString(), containsString(medications.toString()));
             assertThat(personInfo.getAllergies().toString(), containsString(allergies.toString()));
 

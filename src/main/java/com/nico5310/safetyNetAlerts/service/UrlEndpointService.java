@@ -1,6 +1,5 @@
 package com.nico5310.safetyNetAlerts.service;
 
-import com.nico5310.safetyNetAlerts.dto.url1firestation.PersonsByFirestation;
 import com.nico5310.safetyNetAlerts.dto.url1firestation.PersonsByStationDto;
 import com.nico5310.safetyNetAlerts.dto.url2childAlert.ChildByAddressDto;
 import com.nico5310.safetyNetAlerts.dto.url2childAlert.PersonsWithAge;
@@ -39,9 +38,9 @@ public class UrlEndpointService {
 
     public UrlEndpointService(PersonRepositoryInterface personRepositoryInterface, FirestationRepositoryInterface firestationRepositoryInterface, MedicalrecordRepositoryInterface medicalrecordRepositoryInterface) {
 
-        this.personRepositoryInterface      = personRepositoryInterface;
-        this.firestationRepositoryInterface = firestationRepositoryInterface;
-        this.medicalrecordRepositoryInterface  = medicalrecordRepositoryInterface;
+        this.personRepositoryInterface        = personRepositoryInterface;
+        this.firestationRepositoryInterface   = firestationRepositoryInterface;
+        this.medicalrecordRepositoryInterface = medicalrecordRepositoryInterface;
     }
 
 
@@ -113,7 +112,7 @@ public class UrlEndpointService {
     }
 
     // URL 4 fire
-    public PersonListByAddress allPersonsByAddress(String address) {
+    public PersonListByAddress allPersonsByAddress(String address) throws ParseException {
 
         Firestation firestationNumber = firestationRepositoryInterface.findById(address);
 
@@ -136,7 +135,7 @@ public class UrlEndpointService {
     }
 
     // URL 5 flood
-    public List<FamilyListByStation> allFamilyByStation(List<Integer> stations) {
+    public List<FamilyListByStation> allFamilyByStation(List<Integer> stations) throws ParseException {
 
         List<FamilyListByStation> familyListByStationList = new ArrayList<>();
         Calculator                calculator              = new Calculator();

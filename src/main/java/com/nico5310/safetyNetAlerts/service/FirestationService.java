@@ -6,7 +6,6 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Log4j2
@@ -18,6 +17,7 @@ public class FirestationService implements FirestationServiceInterface {
 
     @Autowired
     public FirestationService(FirestationRepositoryInterface firestationRepositoryInterface) {
+
         this.firestationRepositoryInterface = firestationRepositoryInterface;
     }
 
@@ -31,7 +31,6 @@ public class FirestationService implements FirestationServiceInterface {
 
     @Override
     public List<Firestation> saveFirestationList(Firestation firestation) {
-
 
         log.info("Firestation saved SUCCESS :" + firestation);
         firestationRepositoryInterface.saveFirestationList(firestation);

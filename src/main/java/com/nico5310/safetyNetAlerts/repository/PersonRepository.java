@@ -14,11 +14,10 @@ import java.util.List;
 public class PersonRepository implements PersonRepositoryInterface {
 
     private List<Person> persons;
-    public PersonRepository() {}
-
     @Autowired
     private Database database;
 
+    public PersonRepository() {}
 
     @Override
     public List<Person> findPersonAll() {

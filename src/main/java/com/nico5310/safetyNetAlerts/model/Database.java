@@ -37,14 +37,17 @@ public class Database {
     }
 
     public List<Person> getPersons() {
+
         return persons;
     }
 
     public List<Medicalrecord> getMedicalrecords() {
+
         return medicalrecords;
     }
 
     public List<Firestation> getFirestations() {
+
         return firestations;
     }
 

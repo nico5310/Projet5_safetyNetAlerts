@@ -6,7 +6,6 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Log4j2
@@ -39,13 +38,12 @@ public class PersonService implements PersonServiceInterface {
     @Override
     public Person updatePersonList(String firstNameAndLastName, Person person) {
 
-                log.info("updatePersonList SUCCESS :" + person);
-                return personRepositoryInterface.updatePersonList(firstNameAndLastName, person);
+        log.info("updatePersonList SUCCESS :" + person);
+        return personRepositoryInterface.updatePersonList(firstNameAndLastName, person);
     }
 
     @Override
     public List<Person> deletePersonList(String firstNameAndLastName) {
-
 
         log.info("deletePersonList SUCCESS :" + firstNameAndLastName);
         personRepositoryInterface.deletePersonList(firstNameAndLastName);

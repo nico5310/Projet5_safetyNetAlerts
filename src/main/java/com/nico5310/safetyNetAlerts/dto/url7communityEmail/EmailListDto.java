@@ -4,7 +4,7 @@ import java.util.List;
 
 public class EmailListDto {
 
-    private List<String> listEmails;
+    private final List<String> listEmails;
 
     public EmailListDto(List<String> listEmails) {
 
@@ -12,12 +12,14 @@ public class EmailListDto {
     }
 
     public List<String> getListEmails() {
+
         return listEmails;
     }
 
 
     @Override
-    public String toString(){
+    public String toString() {
+
         return "EmailList [" + getListEmails() + "]";
     }
 

@@ -19,10 +19,9 @@ public class PhoneAlertListDto {
     }
 
 
-
-//    @Override
-//    public String toString() {
-//        return "PhoneAlert " + getListPhonesCity() ;
-//    }
+    //    @Override
+    //    public String toString() {
+    //        return "PhoneAlert " + getListPhonesCity() ;
+    //    }
 
 }
