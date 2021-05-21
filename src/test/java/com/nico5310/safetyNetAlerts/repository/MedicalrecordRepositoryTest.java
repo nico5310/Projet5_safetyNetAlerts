@@ -1,4 +1,4 @@
-package com.nico5310.safetyNetAlerts.controller;
+package com.nico5310.safetyNetAlerts.repository;
 
 import com.nico5310.safetyNetAlerts.model.Database;
 import com.nico5310.safetyNetAlerts.model.Medicalrecord;
