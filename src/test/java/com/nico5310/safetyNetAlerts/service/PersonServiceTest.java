@@ -2,13 +2,11 @@ package com.nico5310.safetyNetAlerts.service;
 
 import com.nico5310.safetyNetAlerts.model.Person;
 import com.nico5310.safetyNetAlerts.repository.PersonRepositoryInterface;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.junit.runner.RunWith;
 import org.mockito.Mock;
-import org.mockito.junit.MockitoJUnitRunner;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.ArrayList;
@@ -19,7 +17,6 @@ import static org.hamcrest.Matchers.containsString;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
-@RunWith(MockitoJUnitRunner.class)
 public class PersonServiceTest {
 
 
@@ -28,8 +25,9 @@ public class PersonServiceTest {
     @Mock
     private PersonRepositoryInterface personRepositoryInterface;
 
-    @Before
+    @BeforeEach
     public void setUp() throws Exception {
+
         personService = new PersonService(personRepositoryInterface);
     }
 
@@ -96,7 +94,7 @@ public class PersonServiceTest {
         //WHEN
         when(personRepositoryInterface.updatePersonList("nicolasbiancucci", person)).thenReturn(person);
 
-             //THEN
+        //THEN
         assertThat(personService.updatePersonList("nicolasbiancucci", person).toString(), containsString("nicolas"));
 
     }
@@ -181,13 +179,13 @@ public class PersonServiceTest {
         List<Person> listPerson = new ArrayList<Person>();
         listPerson.add(person);
         //WHEN
-        when(personRepositoryInterface.findByFirstNameAndLastName("nicolas","biancucci")).thenReturn(listPerson);
+        when(personRepositoryInterface.findByFirstNameAndLastName("nicolas", "biancucci")).thenReturn(listPerson);
 
         //THEN
-        assertThat(personService.findByFirstNameAndLastName("nicolas","biancucci").toString(), containsString("biancucci"));
+        assertThat(personService.findByFirstNameAndLastName("nicolas", "biancucci")
+                                .toString(), containsString("biancucci"));
 
     }
-
 
 
 }

@@ -2,13 +2,11 @@ package com.nico5310.safetyNetAlerts.service;
 
 import com.nico5310.safetyNetAlerts.model.Firestation;
 import com.nico5310.safetyNetAlerts.repository.FirestationRepositoryInterface;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.junit.runner.RunWith;
 import org.mockito.Mock;
-import org.mockito.junit.MockitoJUnitRunner;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.ArrayList;
@@ -20,7 +18,6 @@ import static org.mockito.Mockito.when;
 
 
 @ExtendWith(MockitoExtension.class)
-@RunWith(MockitoJUnitRunner.class)
 public class FirestationServiceTest {
 
 
@@ -29,8 +26,9 @@ public class FirestationServiceTest {
     @Mock
     private FirestationRepositoryInterface firestationRepositoryInterface;
 
-    @Before
+    @BeforeEach
     public void setUp() {
+
         firestationService = new FirestationService(firestationRepositoryInterface);
     }
 

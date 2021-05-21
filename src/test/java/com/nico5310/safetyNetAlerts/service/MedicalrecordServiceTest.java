@@ -3,13 +3,12 @@ package com.nico5310.safetyNetAlerts.service;
 
 import com.nico5310.safetyNetAlerts.model.Medicalrecord;
 import com.nico5310.safetyNetAlerts.repository.MedicalrecordRepositoryInterface;
-import org.junit.Before;
-import org.junit.Test;
+
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.junit.runner.RunWith;
 import org.mockito.Mock;
-import org.mockito.junit.MockitoJUnitRunner;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.ArrayList;
@@ -22,7 +21,6 @@ import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
-@RunWith(MockitoJUnitRunner.class)
 public class MedicalrecordServiceTest {
 
     private MedicalrecordService medicalrecordService;
@@ -31,8 +29,9 @@ public class MedicalrecordServiceTest {
     private MedicalrecordRepositoryInterface medicalrecordRepositoryInterface;
 
 
-    @Before
+    @BeforeEach
     public void setUp() throws Exception {
+
         medicalrecordService = new MedicalrecordService(medicalrecordRepositoryInterface);
     }
 
@@ -40,8 +39,8 @@ public class MedicalrecordServiceTest {
     @DisplayName("Test findMedicalrecordAll")
     public void findMedicalrecordAll() {
         //GIVEN
-        Medicalrecord       medicalrecord = new Medicalrecord();
-        List<String>        medications   = new ArrayList<>();
+        Medicalrecord medicalrecord = new Medicalrecord();
+        List<String>  medications   = new ArrayList<>();
         medications.add("kestin");
         medications.add("doliprane");
         List<String> allergies = new LinkedList<>();
@@ -112,7 +111,7 @@ public class MedicalrecordServiceTest {
         medicalrecordRepositoryInterface.deleteMedicalrecordList("nicolasbiancucci");
 
         //THEN
-        assertDoesNotThrow(()->medicalrecordService.deleteMedicalrecordList("nicolasbiancucci"));
+        assertDoesNotThrow(() -> medicalrecordService.deleteMedicalrecordList("nicolasbiancucci"));
         verify(medicalrecordRepositoryInterface, times(1)).findMedicalrecordAll();
 
     }
