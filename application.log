@@ -1,0 +1,12 @@
+2021-05-14 10:56:28,893 INFO com.nico5310.safetyNetAlerts.SafetyNetAlertsApplication [restartedMain] Starting SafetyNetAlertsApplication using Java 11.0.10 on PCNICO with PID 6664 (E:\OpenCLassRooms\Workspace\IntelliJ\Projet5_safetyNetAlerts\target\classes started by NICO in E:\OpenCLassRooms\Workspace\IntelliJ\Projet5_safetyNetAlerts)
+2021-05-14 10:56:28,898 INFO com.nico5310.safetyNetAlerts.SafetyNetAlertsApplication [restartedMain] No active profile set, falling back to default profiles: default
+2021-05-14 10:56:29,433 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 8080 (http)
+2021-05-14 10:56:29,766 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat started on port(s): 8080 (http) with context path ''
+2021-05-14 10:56:29,774 INFO com.nico5310.safetyNetAlerts.SafetyNetAlertsApplication [restartedMain] Started SafetyNetAlertsApplication in 1.131 seconds (JVM running for 2.015)
+2021-05-14 10:56:56,870 INFO com.nico5310.safetyNetAlerts.controller.UrlEndpointsController [http-nio-8080-exec-3] allPersonsByAddress
+2021-05-14 10:56:56,872 INFO com.nico5310.safetyNetAlerts.service.FirestationService [http-nio-8080-exec-3] findById SUCCESS :892 Downing Ct
+2021-05-14 10:56:56,872 INFO com.nico5310.safetyNetAlerts.service.PersonService [http-nio-8080-exec-3] findByAddress SUCCESS :892 Downing Ct
+2021-05-14 10:56:56,873 INFO com.nico5310.safetyNetAlerts.service.MedicalrecordService [http-nio-8080-exec-3] findByFirstName SUCCESS :Sophia
+2021-05-14 10:56:56,879 INFO com.nico5310.safetyNetAlerts.service.MedicalrecordService [http-nio-8080-exec-3] findByFirstName SUCCESS :Warren
+2021-05-14 10:56:56,879 INFO com.nico5310.safetyNetAlerts.service.MedicalrecordService [http-nio-8080-exec-3] findByFirstName SUCCESS :Zach
+2021-05-14 10:56:56,879 INFO com.nico5310.safetyNetAlerts.service.UrlEndpointService [http-nio-8080-exec-3] allPersonsByStation SUCCESS :892 Downing Ct

@@ -1,0 +1,275 @@
+[INFO ] 2021-05-21 12:08:12.358 [main] WebMvcTestContextBootstrapper (305)  - Neither @ContextConfiguration nor @ContextHierarchy found for test class [com.nico5310.safetyNetAlerts.controller.FirestationControllerTest], using SpringBootContextLoader
+[INFO ] 2021-05-21 12:08:12.389 [main] AbstractContextLoader (264)  - Could not detect default resource locations for test class [com.nico5310.safetyNetAlerts.controller.FirestationControllerTest]: no resource found for suffixes {-context.xml, Context.groovy}.
+[INFO ] 2021-05-21 12:08:12.389 [main] AnnotationConfigContextLoaderUtils (83)  - Could not detect default configuration classes for test class [com.nico5310.safetyNetAlerts.controller.FirestationControllerTest]: FirestationControllerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+[INFO ] 2021-05-21 12:08:12.721 [main] SpringBootTestContextBootstrapper (238)  - Found @SpringBootConfiguration com.nico5310.safetyNetAlerts.SafetyNetAlertsApplication for test class com.nico5310.safetyNetAlerts.controller.FirestationControllerTest
+[INFO ] 2021-05-21 12:08:12.737 [main] WebMvcTestContextBootstrapper (245)  - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.event.ApplicationEventsTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
+[INFO ] 2021-05-21 12:08:12.759 [main] WebMvcTestContextBootstrapper (174)  - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@3f2bf80d, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@6cb5a64d, org.springframework.test.context.event.ApplicationEventsTestExecutionListener@729eef5f, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@264c9994, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@46c7e6c0, org.springframework.test.context.support.DirtiesContextTestExecutionListener@701a79b, org.springframework.test.context.event.EventPublishingTestExecutionListener@2605433, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@40a2fdd2, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@392af2e0, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@331da721, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@335cbcbd, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@64c79b69, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@a94c8e3]
+[INFO ] 2021-05-21 12:08:13.439 [main] FirestationControllerTest (55)  - Starting FirestationControllerTest using Java 11.0.10 on PCNICO with PID 7060 (started by NICO in E:\OpenCLassRooms\Workspace\IntelliJ\Projet5_safetyNetAlerts)
+[INFO ] 2021-05-21 12:08:13.455 [main] FirestationControllerTest (675)  - No active profile set, falling back to default profiles: default
+[DEBUG] 2021-05-21 12:08:13.494 [main] GenericWebApplicationContext (629)  - Refreshing org.springframework.web.context.support.GenericWebApplicationContext@76c6b12c
+[INFO ] 2021-05-21 12:08:15.404 [main] ThreadPoolTaskExecutor (181)  - Initializing ExecutorService 'applicationTaskExecutor'
+[DEBUG] 2021-05-21 12:08:15.427 [main] RequestMappingHandlerAdapter (625)  - ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+[DEBUG] 2021-05-21 12:08:15.558 [main] RequestMappingHandlerMapping (361)  - 6 mappings in 'requestMappingHandlerMapping'
+[DEBUG] 2021-05-21 12:08:15.643 [main] SimpleUrlHandlerMapping (188)  - Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+[DEBUG] 2021-05-21 12:08:15.705 [main] ExceptionHandlerExceptionResolver (307)  - ControllerAdvice beans: 1 @ExceptionHandler, 1 ResponseBodyAdvice
+[INFO ] 2021-05-21 12:08:15.859 [main] SpringBootMockServletContext (455)  - Initializing Spring TestDispatcherServlet ''
+[INFO ] 2021-05-21 12:08:15.859 [main] TestDispatcherServlet (525)  - Initializing Servlet ''
+[INFO ] 2021-05-21 12:08:15.859 [main] TestDispatcherServlet (547)  - Completed initialization in 0 ms
+[INFO ] 2021-05-21 12:08:15.890 [main] FirestationControllerTest (61)  - Started FirestationControllerTest in 3.023 seconds (JVM running for 5.629)
+[DEBUG] 2021-05-21 12:08:15.991 [main] RequestMappingHandlerMapping (522)  - Mapped to com.nico5310.safetyNetAlerts.controller.FirestationController#addFirestation(Firestation)
+[DEBUG] 2021-05-21 12:08:16.129 [main] RequestResponseBodyMethodProcessor (91)  - Read "application/json;charset=UTF-8" to [4 le village, 7
+]
+[INFO ] 2021-05-21 12:08:16.144 [main] FirestationController (35)  - addFirestation POST request SUCCESS
+[DEBUG] 2021-05-21 12:08:16.160 [main] RequestResponseBodyMethodProcessor (268)  - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+[DEBUG] 2021-05-21 12:08:16.160 [main] RequestResponseBodyMethodProcessor (91)  - Writing [[]]
+[DEBUG] 2021-05-21 12:08:16.207 [main] RequestMappingHandlerMapping (522)  - Mapped to com.nico5310.safetyNetAlerts.controller.FirestationController#deleteFirestation(String)
+[INFO ] 2021-05-21 12:08:16.207 [main] FirestationController (57)  - deleteFirestation DELETE request SUCCESS
+[DEBUG] 2021-05-21 12:08:16.207 [main] RequestResponseBodyMethodProcessor (268)  - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+[DEBUG] 2021-05-21 12:08:16.207 [main] RequestResponseBodyMethodProcessor (298)  - Nothing to write: null body
+[DEBUG] 2021-05-21 12:08:16.222 [main] RequestMappingHandlerMapping (522)  - Mapped to com.nico5310.safetyNetAlerts.controller.FirestationController#findFirestationAll()
+[INFO ] 2021-05-21 12:08:16.222 [main] FirestationController (23)  - findFirestation GET request SUCCESS
+[DEBUG] 2021-05-21 12:08:16.222 [main] RequestResponseBodyMethodProcessor (268)  - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+[DEBUG] 2021-05-21 12:08:16.222 [main] RequestResponseBodyMethodProcessor (91)  - Writing [[4 le village, 7
+]]
+[DEBUG] 2021-05-21 12:08:16.244 [main] RequestMappingHandlerMapping (522)  - Mapped to com.nico5310.safetyNetAlerts.controller.FirestationController#updateFirestation(Firestation)
+[DEBUG] 2021-05-21 12:08:16.244 [main] RequestResponseBodyMethodProcessor (91)  - Read "application/json;charset=UTF-8" to [4 le village, 7
+]
+[INFO ] 2021-05-21 12:08:16.244 [main] FirestationController (47)  - updateFirestation PUT request SUCCESS
+[DEBUG] 2021-05-21 12:08:16.244 [main] RequestResponseBodyMethodProcessor (268)  - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+[DEBUG] 2021-05-21 12:08:16.244 [main] RequestResponseBodyMethodProcessor (91)  - Writing [4 le village, 7
+]
+[INFO ] 2021-05-21 12:08:16.260 [main] WebMvcTestContextBootstrapper (305)  - Neither @ContextConfiguration nor @ContextHierarchy found for test class [com.nico5310.safetyNetAlerts.controller.MedicalrecordControllerTest], using SpringBootContextLoader
+[INFO ] 2021-05-21 12:08:16.260 [main] AbstractContextLoader (264)  - Could not detect default resource locations for test class [com.nico5310.safetyNetAlerts.controller.MedicalrecordControllerTest]: no resource found for suffixes {-context.xml, Context.groovy}.
+[INFO ] 2021-05-21 12:08:16.260 [main] AnnotationConfigContextLoaderUtils (83)  - Could not detect default configuration classes for test class [com.nico5310.safetyNetAlerts.controller.MedicalrecordControllerTest]: MedicalrecordControllerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+[INFO ] 2021-05-21 12:08:16.260 [main] SpringBootTestContextBootstrapper (238)  - Found @SpringBootConfiguration com.nico5310.safetyNetAlerts.SafetyNetAlertsApplication for test class com.nico5310.safetyNetAlerts.controller.MedicalrecordControllerTest
+[INFO ] 2021-05-21 12:08:16.260 [main] WebMvcTestContextBootstrapper (245)  - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.event.ApplicationEventsTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
+[INFO ] 2021-05-21 12:08:16.260 [main] WebMvcTestContextBootstrapper (174)  - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@7840b111, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@25c9edf9, org.springframework.test.context.event.ApplicationEventsTestExecutionListener@f806f0, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@19d36342, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@64e68150, org.springframework.test.context.support.DirtiesContextTestExecutionListener@eaa0e10, org.springframework.test.context.event.EventPublishingTestExecutionListener@4ea556b3, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@4c6ee556, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@1cd2018a, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@42d6568e, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@26a290a9, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@1ddd957e, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@118f091e]
+[INFO ] 2021-05-21 12:08:16.323 [main] MedicalrecordControllerTest (55)  - Starting MedicalrecordControllerTest using Java 11.0.10 on PCNICO with PID 7060 (started by NICO in E:\OpenCLassRooms\Workspace\IntelliJ\Projet5_safetyNetAlerts)
+[INFO ] 2021-05-21 12:08:16.323 [main] MedicalrecordControllerTest (675)  - No active profile set, falling back to default profiles: default
+[DEBUG] 2021-05-21 12:08:16.329 [main] GenericWebApplicationContext (629)  - Refreshing org.springframework.web.context.support.GenericWebApplicationContext@4113a761
+[INFO ] 2021-05-21 12:08:16.746 [main] ThreadPoolTaskExecutor (181)  - Initializing ExecutorService 'applicationTaskExecutor'
+[DEBUG] 2021-05-21 12:08:16.762 [main] RequestMappingHandlerAdapter (625)  - ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+[DEBUG] 2021-05-21 12:08:16.777 [main] RequestMappingHandlerMapping (361)  - 6 mappings in 'requestMappingHandlerMapping'
+[DEBUG] 2021-05-21 12:08:16.808 [main] SimpleUrlHandlerMapping (188)  - Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+[DEBUG] 2021-05-21 12:08:16.877 [main] ExceptionHandlerExceptionResolver (307)  - ControllerAdvice beans: 1 @ExceptionHandler, 1 ResponseBodyAdvice
+[INFO ] 2021-05-21 12:08:16.946 [main] SpringBootMockServletContext (455)  - Initializing Spring TestDispatcherServlet ''
+[INFO ] 2021-05-21 12:08:16.946 [main] TestDispatcherServlet (525)  - Initializing Servlet ''
+[INFO ] 2021-05-21 12:08:16.946 [main] TestDispatcherServlet (547)  - Completed initialization in 0 ms
+[INFO ] 2021-05-21 12:08:16.962 [main] MedicalrecordControllerTest (61)  - Started MedicalrecordControllerTest in 0.697 seconds (JVM running for 6.713)
+[DEBUG] 2021-05-21 12:08:16.978 [main] RequestMappingHandlerMapping (522)  - Mapped to com.nico5310.safetyNetAlerts.controller.MedicalrecordController#deleteMedicalrecord(String)
+[INFO ] 2021-05-21 12:08:16.978 [main] MedicalrecordController (58)  - deleteMedicalrecord DELETE request SUCCESS
+[DEBUG] 2021-05-21 12:08:16.978 [main] RequestResponseBodyMethodProcessor (268)  - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+[DEBUG] 2021-05-21 12:08:16.978 [main] RequestResponseBodyMethodProcessor (298)  - Nothing to write: null body
+[DEBUG] 2021-05-21 12:08:16.978 [main] RequestMappingHandlerMapping (522)  - Mapped to com.nico5310.safetyNetAlerts.controller.MedicalrecordController#findMedicalrecordAll()
+[INFO ] 2021-05-21 12:08:16.993 [main] MedicalrecordController (24)  - findMedicalrecordAll GET request SUCCESS
+[DEBUG] 2021-05-21 12:08:16.993 [main] RequestResponseBodyMethodProcessor (268)  - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+[DEBUG] 2021-05-21 12:08:16.993 [main] RequestResponseBodyMethodProcessor (91)  - Writing [[nicolas, biancucci, 10/07/1980, [kestin, doliprane], [gramines, pollen]
+]]
+[DEBUG] 2021-05-21 12:08:17.009 [main] RequestMappingHandlerMapping (522)  - Mapped to com.nico5310.safetyNetAlerts.controller.MedicalrecordController#addMedicalrecord(Medicalrecord)
+[DEBUG] 2021-05-21 12:08:17.009 [main] RequestResponseBodyMethodProcessor (91)  - Read "application/json;charset=UTF-8" to [nicolas, biancucci, 10/07/1980, [kestin: 10mg, doliprane:1000mg], [gramines, pollen]
+]
+[INFO ] 2021-05-21 12:08:17.009 [main] MedicalrecordController (36)  - addMedicalrecord POST request SUCCESS
+[DEBUG] 2021-05-21 12:08:17.009 [main] RequestResponseBodyMethodProcessor (268)  - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+[DEBUG] 2021-05-21 12:08:17.009 [main] RequestResponseBodyMethodProcessor (91)  - Writing [[]]
+[DEBUG] 2021-05-21 12:08:17.031 [main] RequestMappingHandlerMapping (522)  - Mapped to com.nico5310.safetyNetAlerts.controller.MedicalrecordController#updateMedicalrecord(Medicalrecord, String)
+[DEBUG] 2021-05-21 12:08:17.031 [main] RequestResponseBodyMethodProcessor (91)  - Read "application/json;charset=UTF-8" to [nicolas, null, null, null, null
+]
+[INFO ] 2021-05-21 12:08:17.031 [main] MedicalrecordController (48)  - updateMedicalrecord PUT request SUCCESS
+[DEBUG] 2021-05-21 12:08:17.031 [main] RequestResponseBodyMethodProcessor (268)  - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+[DEBUG] 2021-05-21 12:08:17.031 [main] RequestResponseBodyMethodProcessor (91)  - Writing [nicolas, biancucci, 10/07/1980, [kes, doli], [gram, poll]
+]
+[INFO ] 2021-05-21 12:08:17.047 [main] WebMvcTestContextBootstrapper (305)  - Neither @ContextConfiguration nor @ContextHierarchy found for test class [com.nico5310.safetyNetAlerts.controller.PersonControllerTest], using SpringBootContextLoader
+[INFO ] 2021-05-21 12:08:17.047 [main] AbstractContextLoader (264)  - Could not detect default resource locations for test class [com.nico5310.safetyNetAlerts.controller.PersonControllerTest]: no resource found for suffixes {-context.xml, Context.groovy}.
+[INFO ] 2021-05-21 12:08:17.047 [main] AnnotationConfigContextLoaderUtils (83)  - Could not detect default configuration classes for test class [com.nico5310.safetyNetAlerts.controller.PersonControllerTest]: PersonControllerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+[INFO ] 2021-05-21 12:08:17.047 [main] SpringBootTestContextBootstrapper (238)  - Found @SpringBootConfiguration com.nico5310.safetyNetAlerts.SafetyNetAlertsApplication for test class com.nico5310.safetyNetAlerts.controller.PersonControllerTest
+[INFO ] 2021-05-21 12:08:17.047 [main] WebMvcTestContextBootstrapper (245)  - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.event.ApplicationEventsTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
+[INFO ] 2021-05-21 12:08:17.047 [main] WebMvcTestContextBootstrapper (174)  - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@48b0123a, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@1be36b12, org.springframework.test.context.event.ApplicationEventsTestExecutionListener@6f942437, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@76bc642f, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@3ed59900, org.springframework.test.context.support.DirtiesContextTestExecutionListener@3eeece33, org.springframework.test.context.event.EventPublishingTestExecutionListener@7015e045, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@659d6f74, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@7792e75e, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@3f4520c9, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@608df8ac, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@6ee5cd06, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@ead7f93]
+[INFO ] 2021-05-21 12:08:17.078 [main] PersonControllerTest (55)  - Starting PersonControllerTest using Java 11.0.10 on PCNICO with PID 7060 (started by NICO in E:\OpenCLassRooms\Workspace\IntelliJ\Projet5_safetyNetAlerts)
+[INFO ] 2021-05-21 12:08:17.094 [main] PersonControllerTest (675)  - No active profile set, falling back to default profiles: default
+[DEBUG] 2021-05-21 12:08:17.094 [main] GenericWebApplicationContext (629)  - Refreshing org.springframework.web.context.support.GenericWebApplicationContext@81b2f0e
+[INFO ] 2021-05-21 12:08:17.579 [main] ThreadPoolTaskExecutor (181)  - Initializing ExecutorService 'applicationTaskExecutor'
+[DEBUG] 2021-05-21 12:08:17.595 [main] RequestMappingHandlerAdapter (625)  - ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+[DEBUG] 2021-05-21 12:08:17.611 [main] RequestMappingHandlerMapping (361)  - 6 mappings in 'requestMappingHandlerMapping'
+[DEBUG] 2021-05-21 12:08:17.648 [main] SimpleUrlHandlerMapping (188)  - Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+[DEBUG] 2021-05-21 12:08:17.711 [main] ExceptionHandlerExceptionResolver (307)  - ControllerAdvice beans: 1 @ExceptionHandler, 1 ResponseBodyAdvice
+[INFO ] 2021-05-21 12:08:17.780 [main] SpringBootMockServletContext (455)  - Initializing Spring TestDispatcherServlet ''
+[INFO ] 2021-05-21 12:08:17.780 [main] TestDispatcherServlet (525)  - Initializing Servlet ''
+[INFO ] 2021-05-21 12:08:17.796 [main] TestDispatcherServlet (547)  - Completed initialization in 0 ms
+[INFO ] 2021-05-21 12:08:17.796 [main] PersonControllerTest (61)  - Started PersonControllerTest in 0.742 seconds (JVM running for 7.546)
+[DEBUG] 2021-05-21 12:08:17.833 [main] RequestMappingHandlerMapping (522)  - Mapped to com.nico5310.safetyNetAlerts.controller.PersonController#updatePerson(Person, String)
+[DEBUG] 2021-05-21 12:08:17.849 [main] RequestResponseBodyMethodProcessor (91)  - Read "application/json;charset=UTF-8" to [ZZZZ, null, null, null, null, null, null
+]
+[INFO ] 2021-05-21 12:08:17.849 [main] PersonController (47)  - updatePerson PUT request SUCCESS
+[DEBUG] 2021-05-21 12:08:17.849 [main] RequestResponseBodyMethodProcessor (268)  - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+[DEBUG] 2021-05-21 12:08:17.849 [main] RequestResponseBodyMethodProcessor (91)  - Writing [nicolas, biancucci, le village, thurigneux, 01390, 0611111111, nicolas@gmail.com
+]
+[DEBUG] 2021-05-21 12:08:17.865 [main] RequestMappingHandlerMapping (522)  - Mapped to com.nico5310.safetyNetAlerts.controller.PersonController#deletePerson(String)
+[INFO ] 2021-05-21 12:08:17.865 [main] PersonController (57)  - deletePerson DELETE request SUCCESS
+[DEBUG] 2021-05-21 12:08:17.865 [main] RequestResponseBodyMethodProcessor (268)  - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+[DEBUG] 2021-05-21 12:08:17.865 [main] RequestResponseBodyMethodProcessor (91)  - Writing [[]]
+[DEBUG] 2021-05-21 12:08:17.880 [main] RequestMappingHandlerMapping (522)  - Mapped to com.nico5310.safetyNetAlerts.controller.PersonController#addPerson(Person)
+[DEBUG] 2021-05-21 12:08:17.880 [main] RequestResponseBodyMethodProcessor (91)  - Read "application/json;charset=UTF-8" to [nicolas, biancucci, 4 le village, thurigneux, null, null, null
+]
+[INFO ] 2021-05-21 12:08:17.880 [main] PersonController (35)  - addPerson POST request SUCCESS
+[DEBUG] 2021-05-21 12:08:17.880 [main] RequestResponseBodyMethodProcessor (268)  - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+[DEBUG] 2021-05-21 12:08:17.880 [main] RequestResponseBodyMethodProcessor (91)  - Writing [[nicolas, biancucci, le village, thurigneux, 01390, 0611111111, nicolas@gmail.com
+]]
+[DEBUG] 2021-05-21 12:08:17.896 [main] RequestMappingHandlerMapping (522)  - Mapped to com.nico5310.safetyNetAlerts.controller.PersonController#findPersonAll()
+[INFO ] 2021-05-21 12:08:17.896 [main] PersonController (23)  - findPersonAll GET request SUCCESS
+[DEBUG] 2021-05-21 12:08:17.896 [main] RequestResponseBodyMethodProcessor (268)  - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+[DEBUG] 2021-05-21 12:08:17.896 [main] RequestResponseBodyMethodProcessor (91)  - Writing [[nicolas, biancucci, 4 le village, thurigneux, 01390, 0611111111, nicolas@gmail.com
+]]
+[INFO ] 2021-05-21 12:08:17.896 [main] SpringBootTestContextBootstrapper (305)  - Neither @ContextConfiguration nor @ContextHierarchy found for test class [com.nico5310.safetyNetAlerts.controller.UrlControllerTest], using SpringBootContextLoader
+[INFO ] 2021-05-21 12:08:17.896 [main] AbstractContextLoader (264)  - Could not detect default resource locations for test class [com.nico5310.safetyNetAlerts.controller.UrlControllerTest]: no resource found for suffixes {-context.xml, Context.groovy}.
+[INFO ] 2021-05-21 12:08:17.896 [main] AnnotationConfigContextLoaderUtils (83)  - Could not detect default configuration classes for test class [com.nico5310.safetyNetAlerts.controller.UrlControllerTest]: UrlControllerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+[INFO ] 2021-05-21 12:08:17.912 [main] SpringBootTestContextBootstrapper (238)  - Found @SpringBootConfiguration com.nico5310.safetyNetAlerts.SafetyNetAlertsApplication for test class com.nico5310.safetyNetAlerts.controller.UrlControllerTest
+[INFO ] 2021-05-21 12:08:17.912 [main] SpringBootTestContextBootstrapper (245)  - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.event.ApplicationEventsTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
+[INFO ] 2021-05-21 12:08:17.912 [main] SpringBootTestContextBootstrapper (174)  - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@7ac0799e, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@3f45c55, org.springframework.test.context.event.ApplicationEventsTestExecutionListener@2913fb8c, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@63c014aa, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@1a359dc5, org.springframework.test.context.support.DirtiesContextTestExecutionListener@3b826c22, org.springframework.test.context.event.EventPublishingTestExecutionListener@dfb3f45, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@6efd0f14, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@58107cbb, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@70dbf8e7, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@248ef0ae, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@220dce84, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@79a38bda]
+[INFO ] 2021-05-21 12:08:17.934 [main] UrlControllerTest (55)  - Starting UrlControllerTest using Java 11.0.10 on PCNICO with PID 7060 (started by NICO in E:\OpenCLassRooms\Workspace\IntelliJ\Projet5_safetyNetAlerts)
+[INFO ] 2021-05-21 12:08:17.949 [main] UrlControllerTest (675)  - No active profile set, falling back to default profiles: default
+[DEBUG] 2021-05-21 12:08:17.949 [main] GenericWebApplicationContext (629)  - Refreshing org.springframework.web.context.support.GenericWebApplicationContext@729556e6
+[INFO ] 2021-05-21 12:08:19.030 [main] ThreadPoolTaskExecutor (181)  - Initializing ExecutorService 'applicationTaskExecutor'
+[DEBUG] 2021-05-21 12:08:19.037 [main] RequestMappingHandlerAdapter (625)  - ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+[DEBUG] 2021-05-21 12:08:19.052 [main] RequestMappingHandlerMapping (361)  - 21 mappings in 'requestMappingHandlerMapping'
+[DEBUG] 2021-05-21 12:08:19.099 [main] SimpleUrlHandlerMapping (188)  - Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+[DEBUG] 2021-05-21 12:08:19.168 [main] ExceptionHandlerExceptionResolver (307)  - ControllerAdvice beans: 1 @ExceptionHandler, 1 ResponseBodyAdvice
+[INFO ] 2021-05-21 12:08:19.516 [main] SpringBootMockServletContext (455)  - Initializing Spring TestDispatcherServlet ''
+[INFO ] 2021-05-21 12:08:19.516 [main] TestDispatcherServlet (525)  - Initializing Servlet ''
+[INFO ] 2021-05-21 12:08:19.516 [main] EndpointLinksResolver (58)  - Exposing 3 endpoint(s) beneath base path '/actuator'
+[INFO ] 2021-05-21 12:08:19.569 [main] TestDispatcherServlet (547)  - Completed initialization in 53 ms
+[INFO ] 2021-05-21 12:08:19.601 [main] UrlControllerTest (61)  - Started UrlControllerTest in 1.683 seconds (JVM running for 9.348)
+[DEBUG] 2021-05-21 12:08:19.632 [main] RequestMappingHandlerMapping (522)  - Mapped to com.nico5310.safetyNetAlerts.controller.UrlEndpointsController#allPersonsByAddress(String)
+[INFO ] 2021-05-21 12:08:19.654 [main] UrlEndpointsController (56)  - allPersonsByAddress
+[INFO ] 2021-05-21 12:08:19.670 [main] UrlEndpointService (132)  - allPersonsByStation SUCCESS :892 Downing Ct
+[DEBUG] 2021-05-21 12:08:19.670 [main] RequestResponseBodyMethodProcessor (268)  - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+[DEBUG] 2021-05-21 12:08:19.670 [main] RequestResponseBodyMethodProcessor (91)  - Writing [PersonFireAddress [firestation=892 Downing Ct, 2
+, personFireAddress=[PersonFireAddress [lastName=Ze (truncated)...]
+[DEBUG] 2021-05-21 12:08:19.685 [main] RequestMappingHandlerMapping (522)  - Mapped to com.nico5310.safetyNetAlerts.controller.UrlEndpointsController#allFamilyByStation(List)
+[INFO ] 2021-05-21 12:08:19.685 [main] UrlEndpointsController (64)  - allFamilyByStation
+[INFO ] 2021-05-21 12:08:19.685 [main] UrlEndpointService (161)  - allPersonsByStation SUCCESS :[]
+[DEBUG] 2021-05-21 12:08:19.685 [main] RequestResponseBodyMethodProcessor (268)  - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+[DEBUG] 2021-05-21 12:08:19.685 [main] RequestResponseBodyMethodProcessor (91)  - Writing [[]]
+[DEBUG] 2021-05-21 12:08:19.701 [main] RequestMappingHandlerMapping (522)  - Mapped to com.nico5310.safetyNetAlerts.controller.UrlEndpointsController#allPersonsByAddress(String)
+[INFO ] 2021-05-21 12:08:19.701 [main] UrlEndpointsController (56)  - allPersonsByAddress
+[DEBUG] 2021-05-21 12:08:19.701 [main] ExceptionHandlerExceptionResolver (416)  - Using @ExceptionHandler com.nico5310.safetyNetAlerts.exceptions.ExceptionHandling#handleNoFoundException(NoFoundException, HttpServletRequest, HttpServletResponse)
+[DEBUG] 2021-05-21 12:08:19.701 [main] RequestResponseBodyMethodProcessor (268)  - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+[DEBUG] 2021-05-21 12:08:19.779 [main] RequestResponseBodyMethodProcessor (91)  - Writing [ExceptionResponse{timestamp=Fri May 21 12:08:19 CEST 2021, status=404, error='allPersonsByAddress do (truncated)...]
+[DEBUG] 2021-05-21 12:08:19.781 [main] ExceptionHandlerExceptionResolver (145)  - Resolved [com.nico5310.safetyNetAlerts.exceptions.NoFoundException: allPersonsByAddress dont exist :]
+[DEBUG] 2021-05-21 12:08:19.802 [main] RequestMappingHandlerMapping (522)  - Mapped to com.nico5310.safetyNetAlerts.controller.UrlEndpointsController#allPersonsByAddress(String)
+[INFO ] 2021-05-21 12:08:19.802 [main] UrlEndpointsController (56)  - allPersonsByAddress
+[DEBUG] 2021-05-21 12:08:19.802 [main] ExceptionHandlerExceptionResolver (416)  - Using @ExceptionHandler com.nico5310.safetyNetAlerts.exceptions.ExceptionHandling#handleNoFoundException(NoFoundException, HttpServletRequest, HttpServletResponse)
+[DEBUG] 2021-05-21 12:08:19.802 [main] RequestResponseBodyMethodProcessor (268)  - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+[DEBUG] 2021-05-21 12:08:19.810 [main] RequestResponseBodyMethodProcessor (91)  - Writing [ExceptionResponse{timestamp=Fri May 21 12:08:19 CEST 2021, status=404, error='allPersonsByAddress do (truncated)...]
+[DEBUG] 2021-05-21 12:08:19.812 [main] ExceptionHandlerExceptionResolver (145)  - Resolved [com.nico5310.safetyNetAlerts.exceptions.NoFoundException: allPersonsByAddress dont exist :village]
+[DEBUG] 2021-05-21 12:08:19.822 [main] RequestMappingHandlerMapping (522)  - Mapped to com.nico5310.safetyNetAlerts.controller.UrlEndpointsController#allFamilyByStation(List)
+[INFO ] 2021-05-21 12:08:19.822 [main] UrlEndpointsController (64)  - allFamilyByStation
+[INFO ] 2021-05-21 12:08:19.830 [main] UrlEndpointService (161)  - allPersonsByStation SUCCESS :[4]
+[DEBUG] 2021-05-21 12:08:19.832 [main] RequestResponseBodyMethodProcessor (268)  - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+[DEBUG] 2021-05-21 12:08:19.832 [main] RequestResponseBodyMethodProcessor (91)  - Writing [[Flood [Cooper, 841-874-9845, 27, [], []], Flood [Cooper, 841-874-6874, 27, [hydrapermazol:300mg, do (truncated)...]
+[DEBUG] 2021-05-21 12:08:19.850 [main] RequestMappingHandlerMapping (522)  - Mapped to com.nico5310.safetyNetAlerts.controller.UrlEndpointsController#allPersonsByStation(int)
+[DEBUG] 2021-05-21 12:08:19.854 [main] HandlerMethod (177)  - Could not resolve parameter [0] in public com.nico5310.safetyNetAlerts.dto.url1firestation.PersonsByStationDto com.nico5310.safetyNetAlerts.controller.UrlEndpointsController.allPersonsByStation(int) throws java.text.ParseException: Failed to convert value of type 'java.lang.String' to required type 'int'; nested exception is java.lang.NumberFormatException: For input string: ""
+[WARN ] 2021-05-21 12:08:19.855 [main] DefaultHandlerExceptionResolver (207)  - Resolved [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'int'; nested exception is java.lang.NumberFormatException: For input string: ""]
+[DEBUG] 2021-05-21 12:08:19.863 [main] RequestMappingHandlerMapping (522)  - Mapped to com.nico5310.safetyNetAlerts.controller.UrlEndpointsController#allPersonsByStation(int)
+[INFO ] 2021-05-21 12:08:19.872 [main] UrlEndpointsController (32)  - allPersonsByStation
+[INFO ] 2021-05-21 12:08:19.872 [main] UrlEndpointService (61)  - allPersonsByStation SUCCESS :3
+[DEBUG] 2021-05-21 12:08:19.872 [main] RequestResponseBodyMethodProcessor (268)  - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+[DEBUG] 2021-05-21 12:08:19.913 [main] RequestResponseBodyMethodProcessor (91)  - Writing [ [ PersonsByFirestation=[John, Boyd, 1509 Culver St, Culver, 97451, 841-874-6512, jaboyd@email.com
+, (truncated)...]
+[DEBUG] 2021-05-21 12:08:19.923 [main] RequestMappingHandlerMapping (522)  - Mapped to com.nico5310.safetyNetAlerts.controller.UrlEndpointsController#allPersonInfo(String, String)
+[DEBUG] 2021-05-21 12:08:19.923 [main] HandlerMethod (177)  - Could not resolve parameter [1] in public java.util.List<com.nico5310.safetyNetAlerts.dto.url6personInfo.PersonInfoDto> com.nico5310.safetyNetAlerts.controller.UrlEndpointsController.allPersonInfo(java.lang.String,java.lang.String) throws java.text.ParseException: Required request parameter 'lastName' for method parameter type String is not present
+[WARN ] 2021-05-21 12:08:19.923 [main] DefaultHandlerExceptionResolver (207)  - Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'lastName' for method parameter type String is not present]
+[DEBUG] 2021-05-21 12:08:19.938 [main] RequestMappingHandlerMapping (522)  - Mapped to com.nico5310.safetyNetAlerts.controller.UrlEndpointsController#allEmailsByCity(String)
+[INFO ] 2021-05-21 12:08:19.939 [main] UrlEndpointsController (80)  - allEmailsByCity
+[INFO ] 2021-05-21 12:08:19.940 [main] UrlEndpointService (194)  - allPersonsByStation SUCCESS :Culver
+[DEBUG] 2021-05-21 12:08:19.942 [main] RequestResponseBodyMethodProcessor (268)  - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+[DEBUG] 2021-05-21 12:08:19.943 [main] RequestResponseBodyMethodProcessor (91)  - Writing [EmailList [[jaboyd@email.com, drk@email.com, tenz@email.com, jaboyd@email.com, jaboyd@email.com, drk (truncated)...]
+[DEBUG] 2021-05-21 12:08:19.954 [main] RequestMappingHandlerMapping (522)  - Mapped to com.nico5310.safetyNetAlerts.controller.UrlEndpointsController#allChildByAddress(String)
+[INFO ] 2021-05-21 12:08:19.956 [main] UrlEndpointsController (40)  - allChildByAddress
+[INFO ] 2021-05-21 12:08:19.957 [main] UrlEndpointService (95)  - allChildByAddress SUCCESS :
+[DEBUG] 2021-05-21 12:08:19.960 [main] RequestResponseBodyMethodProcessor (268)  - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+[DEBUG] 2021-05-21 12:08:19.961 [main] RequestResponseBodyMethodProcessor (91)  - Writing [ChildByAddressDto [children=[], adults=[]]]
+[DEBUG] 2021-05-21 12:08:19.968 [main] RequestMappingHandlerMapping (522)  - Mapped to com.nico5310.safetyNetAlerts.controller.UrlEndpointsController#allPersonInfo(String, String)
+[INFO ] 2021-05-21 12:08:19.969 [main] UrlEndpointsController (72)  - allPersonInfo
+[INFO ] 2021-05-21 12:08:19.973 [main] UrlEndpointService (179)  - allPersonInfo SUCCESS :JohnBoyd
+[DEBUG] 2021-05-21 12:08:19.973 [main] RequestResponseBodyMethodProcessor (268)  - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+[DEBUG] 2021-05-21 12:08:19.983 [main] RequestResponseBodyMethodProcessor (91)  - Writing [[Flood [Boyd, 1509 Culver St, 37, jaboyd@email.com, [aznol:350mg, hydrapermazol:100mg], [nillacilan] (truncated)...]
+[DEBUG] 2021-05-21 12:08:19.993 [main] RequestMappingHandlerMapping (522)  - Mapped to com.nico5310.safetyNetAlerts.controller.UrlEndpointsController#allChildByAddress(String)
+[INFO ] 2021-05-21 12:08:19.993 [main] UrlEndpointsController (40)  - allChildByAddress
+[INFO ] 2021-05-21 12:08:20.001 [main] UrlEndpointService (95)  - allChildByAddress SUCCESS :1509 Culver St
+[DEBUG] 2021-05-21 12:08:20.001 [main] RequestResponseBodyMethodProcessor (268)  - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+[DEBUG] 2021-05-21 12:08:20.003 [main] RequestResponseBodyMethodProcessor (91)  - Writing [ChildByAddressDto [children=[ChildByAddressDto [firstName=Tenley, lastName=Boyd, age= 9], ChildByAdd (truncated)...]
+[DEBUG] 2021-05-21 12:08:20.013 [main] RequestMappingHandlerMapping (522)  - Mapped to com.nico5310.safetyNetAlerts.controller.UrlEndpointsController#allPhoneByFirestation(int)
+[INFO ] 2021-05-21 12:08:20.013 [main] UrlEndpointsController (48)  - allPhoneByFirestation
+[INFO ] 2021-05-21 12:08:20.013 [main] UrlEndpointService (110)  - allPhoneByFirestation SUCCESS :2
+[DEBUG] 2021-05-21 12:08:20.023 [main] RequestResponseBodyMethodProcessor (268)  - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+[DEBUG] 2021-05-21 12:08:20.023 [main] RequestResponseBodyMethodProcessor (91)  - Writing [com.nico5310.safetyNetAlerts.dto.url3phoneAlert.PhoneAlertListDto@5bdc7fa1]
+[DEBUG] 2021-05-21 12:08:20.032 [main] RequestMappingHandlerMapping (522)  - Mapped to com.nico5310.safetyNetAlerts.controller.UrlEndpointsController#allPhoneByFirestation(int)
+[DEBUG] 2021-05-21 12:08:20.032 [main] HandlerMethod (177)  - Could not resolve parameter [0] in public com.nico5310.safetyNetAlerts.dto.url3phoneAlert.PhoneAlertListDto com.nico5310.safetyNetAlerts.controller.UrlEndpointsController.allPhoneByFirestation(int): Failed to convert value of type 'java.lang.String' to required type 'int'; nested exception is java.lang.NumberFormatException: For input string: "aze"
+[WARN ] 2021-05-21 12:08:20.032 [main] DefaultHandlerExceptionResolver (207)  - Resolved [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'int'; nested exception is java.lang.NumberFormatException: For input string: "aze"]
+[DEBUG] 2021-05-21 12:08:20.034 [main] RequestMappingHandlerMapping (522)  - Mapped to com.nico5310.safetyNetAlerts.controller.UrlEndpointsController#allPersonsByStation(int)
+[DEBUG] 2021-05-21 12:08:20.034 [main] HandlerMethod (177)  - Could not resolve parameter [0] in public com.nico5310.safetyNetAlerts.dto.url1firestation.PersonsByStationDto com.nico5310.safetyNetAlerts.controller.UrlEndpointsController.allPersonsByStation(int) throws java.text.ParseException: Failed to convert value of type 'java.lang.String' to required type 'int'; nested exception is java.lang.NumberFormatException: For input string: "test"
+[WARN ] 2021-05-21 12:08:20.042 [main] DefaultHandlerExceptionResolver (207)  - Resolved [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'int'; nested exception is java.lang.NumberFormatException: For input string: "test"]
+[INFO ] 2021-05-21 12:08:20.155 [main] SpringBootTestContextBootstrapper (305)  - Neither @ContextConfiguration nor @ContextHierarchy found for test class [com.nico5310.safetyNetAlerts.SafetyNetAlertsApplicationTests], using SpringBootContextLoader
+[INFO ] 2021-05-21 12:08:20.163 [main] AbstractContextLoader (264)  - Could not detect default resource locations for test class [com.nico5310.safetyNetAlerts.SafetyNetAlertsApplicationTests]: no resource found for suffixes {-context.xml, Context.groovy}.
+[INFO ] 2021-05-21 12:08:20.163 [main] AnnotationConfigContextLoaderUtils (83)  - Could not detect default configuration classes for test class [com.nico5310.safetyNetAlerts.SafetyNetAlertsApplicationTests]: SafetyNetAlertsApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+[INFO ] 2021-05-21 12:08:20.165 [main] SpringBootTestContextBootstrapper (238)  - Found @SpringBootConfiguration com.nico5310.safetyNetAlerts.SafetyNetAlertsApplication for test class com.nico5310.safetyNetAlerts.SafetyNetAlertsApplicationTests
+[INFO ] 2021-05-21 12:08:20.165 [main] SpringBootTestContextBootstrapper (245)  - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.event.ApplicationEventsTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
+[INFO ] 2021-05-21 12:08:20.173 [main] SpringBootTestContextBootstrapper (174)  - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@50b2fe37, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@3ac49cfb, org.springframework.test.context.event.ApplicationEventsTestExecutionListener@279e7acb, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@20391068, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@67bd111e, org.springframework.test.context.support.DirtiesContextTestExecutionListener@79806a56, org.springframework.test.context.event.EventPublishingTestExecutionListener@2d9c1f8f, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@45cee004, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@4af43c42, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@30dc3d90, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@7df12c63, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@4f0d3d19, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@24f01e96]
+[INFO ] 2021-05-21 12:08:20.215 [main] SafetyNetAlertsApplicationTests (55)  - Starting SafetyNetAlertsApplicationTests using Java 11.0.10 on PCNICO with PID 7060 (started by NICO in E:\OpenCLassRooms\Workspace\IntelliJ\Projet5_safetyNetAlerts)
+[INFO ] 2021-05-21 12:08:20.215 [main] SafetyNetAlertsApplicationTests (675)  - No active profile set, falling back to default profiles: default
+[DEBUG] 2021-05-21 12:08:20.215 [main] GenericWebApplicationContext (629)  - Refreshing org.springframework.web.context.support.GenericWebApplicationContext@65293970
+[INFO ] 2021-05-21 12:08:20.890 [main] ThreadPoolTaskExecutor (181)  - Initializing ExecutorService 'applicationTaskExecutor'
+[DEBUG] 2021-05-21 12:08:20.900 [main] RequestMappingHandlerAdapter (625)  - ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+[DEBUG] 2021-05-21 12:08:20.911 [main] RequestMappingHandlerMapping (361)  - 21 mappings in 'requestMappingHandlerMapping'
+[DEBUG] 2021-05-21 12:08:20.949 [main] SimpleUrlHandlerMapping (188)  - Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+[DEBUG] 2021-05-21 12:08:20.996 [main] ExceptionHandlerExceptionResolver (307)  - ControllerAdvice beans: 1 @ExceptionHandler, 1 ResponseBodyAdvice
+[INFO ] 2021-05-21 12:08:21.234 [main] EndpointLinksResolver (58)  - Exposing 3 endpoint(s) beneath base path '/actuator'
+[INFO ] 2021-05-21 12:08:21.266 [main] SafetyNetAlertsApplicationTests (61)  - Started SafetyNetAlertsApplicationTests in 1.089 seconds (JVM running for 11.007)
+[INFO ] 2021-05-21 12:08:21.297 [main] FirestationService (35)  - Firestation saved SUCCESS :4 le village, 7
+
+[INFO ] 2021-05-21 12:08:21.297 [main] FirestationService (35)  - Firestation saved SUCCESS :4 le village, 7
+
+[INFO ] 2021-05-21 12:08:21.297 [main] FirestationService (61)  - findById SUCCESS :4 le village
+[INFO ] 2021-05-21 12:08:21.297 [main] FirestationService (44)  - updateFirestationList SUCCESS4 le village, 7
+
+[INFO ] 2021-05-21 12:08:21.297 [main] FirestationService (35)  - Firestation saved SUCCESS :4 le village, 7
+
+[INFO ] 2021-05-21 12:08:21.297 [main] FirestationService (27)  - findFirestationAll SUCCESS :
+[INFO ] 2021-05-21 12:08:21.297 [main] FirestationService (27)  - findFirestationAll SUCCESS :
+[INFO ] 2021-05-21 12:08:21.312 [main] FirestationService (69)  - findAddressByStation SUCCESS :7
+[INFO ] 2021-05-21 12:08:21.328 [main] MedicalrecordService (28)  - findMedicalrecordAll SUCCESS :
+[INFO ] 2021-05-21 12:08:21.328 [main] MedicalrecordService (36)  - saveMedicalrecordList SUCCESSnicolas, biancucci, 10/07/1980, [kestin, doliprane], [gramines, pollen]
+
+[INFO ] 2021-05-21 12:08:21.328 [main] MedicalrecordService (36)  - saveMedicalrecordList SUCCESSnicolas, biancucci, 10/07/1980, [kestin, doliprane], [gramines, pollen]
+
+[INFO ] 2021-05-21 12:08:21.344 [main] MedicalrecordService (69)  - findByFirstNameAndLastName SUCCESS :nicolasbiancucci
+[INFO ] 2021-05-21 12:08:21.366 [main] PersonService (33)  - Person saved SUCCESS :nicolas, biancucci, le village, thurigneux, 01390, 061111111, nicolas@gmail.com
+
+[INFO ] 2021-05-21 12:08:21.366 [main] PersonService (33)  - Person saved SUCCESS :nicolas, biancucci, le village, thurigneux, 01390, 061111111, nicolas@gmail.com
+
+[INFO ] 2021-05-21 12:08:21.366 [main] PersonService (33)  - Person saved SUCCESS :nicolas, biancucci, le village, thurigneux, 01390, 061111111, nicolas@gmail.com
+
+[INFO ] 2021-05-21 12:08:21.366 [main] PersonService (48)  - deletePersonList SUCCESS :nicolasbiancucci
+[INFO ] 2021-05-21 12:08:21.366 [main] PersonService (41)  - updatePersonList SUCCESS :nicolas, biancucci, le village, thurigneux, 01390, 061111111, nicolas@gmail.com
+
+[INFO ] 2021-05-21 12:08:21.366 [main] PersonService (66)  - findByAddress SUCCESS :biancucci
+[INFO ] 2021-05-21 12:08:21.366 [main] PersonService (59)  - findByAddress SUCCESS :4 le village
+[INFO ] 2021-05-21 12:08:21.381 [main] PersonService (74)  - findByFirstNameAndLastName SUCCESS :nicolasbiancucci
+[INFO ] 2021-05-21 12:08:21.428 [main] UrlEndpointService (179)  - allPersonInfo SUCCESS :nicolasbiancucci
+[INFO ] 2021-05-21 12:08:21.428 [main] UrlEndpointService (194)  - allPersonsByStation SUCCESS :thurigneux
+[INFO ] 2021-05-21 12:08:21.444 [main] UrlEndpointService (110)  - allPhoneByFirestation SUCCESS :7
+[INFO ] 2021-05-21 12:08:21.444 [main] UrlEndpointService (132)  - allPersonsByStation SUCCESS :4 le village
+[INFO ] 2021-05-21 12:08:21.450 [main] UrlEndpointService (161)  - allPersonsByStation SUCCESS :[1, 2]
+[INFO ] 2021-05-21 12:08:21.450 [main] UrlEndpointService (95)  - allChildByAddress SUCCESS :4 le village
+[INFO ] 2021-05-21 12:08:21.450 [main] UrlEndpointService (61)  - allPersonsByStation SUCCESS :2
+[INFO ] 2021-05-21 12:08:21.466 [main] UrlEndpointService (61)  - allPersonsByStation SUCCESS :2
+[DEBUG] 2021-05-21 12:08:21.589 [SpringContextShutdownHook] GenericWebApplicationContext (1049)  - Closing org.springframework.web.context.support.GenericWebApplicationContext@81b2f0e, started on Fri May 21 12:08:17 CEST 2021
+[DEBUG] 2021-05-21 12:08:21.589 [SpringContextShutdownHook] GenericWebApplicationContext (1049)  - Closing org.springframework.web.context.support.GenericWebApplicationContext@4113a761, started on Fri May 21 12:08:16 CEST 2021
+[DEBUG] 2021-05-21 12:08:21.589 [SpringContextShutdownHook] GenericWebApplicationContext (1049)  - Closing org.springframework.web.context.support.GenericWebApplicationContext@65293970, started on Fri May 21 12:08:20 CEST 2021
+[DEBUG] 2021-05-21 12:08:21.589 [SpringContextShutdownHook] GenericWebApplicationContext (1049)  - Closing org.springframework.web.context.support.GenericWebApplicationContext@729556e6, started on Fri May 21 12:08:17 CEST 2021
+[DEBUG] 2021-05-21 12:08:21.589 [SpringContextShutdownHook] GenericWebApplicationContext (1049)  - Closing org.springframework.web.context.support.GenericWebApplicationContext@76c6b12c, started on Fri May 21 12:08:13 CEST 2021
+[INFO ] 2021-05-21 12:08:21.589 [SpringContextShutdownHook] ThreadPoolTaskExecutor (218)  - Shutting down ExecutorService 'applicationTaskExecutor'
+[INFO ] 2021-05-21 12:08:21.607 [SpringContextShutdownHook] ThreadPoolTaskExecutor (218)  - Shutting down ExecutorService 'applicationTaskExecutor'
+[INFO ] 2021-05-21 12:08:21.611 [SpringContextShutdownHook] ThreadPoolTaskExecutor (218)  - Shutting down ExecutorService 'applicationTaskExecutor'
+[INFO ] 2021-05-21 12:08:21.611 [SpringContextShutdownHook] ThreadPoolTaskExecutor (218)  - Shutting down ExecutorService 'applicationTaskExecutor'
+[INFO ] 2021-05-21 12:08:21.611 [SpringContextShutdownHook] ThreadPoolTaskExecutor (218)  - Shutting down ExecutorService 'applicationTaskExecutor'
